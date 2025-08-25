@@ -121,73 +121,73 @@ export const AccountDashboard = () => {
   }
 
   return (
-    <div className="space-y-6 min-h-screen bg-gradient-to-br from-purple-900 via-purple-800 to-purple-900">
-      <div className="flex items-center justify-between">
+    <div className="space-y-4 sm:space-y-6 min-h-screen bg-gradient-to-br from-purple-900 via-purple-800 to-purple-900">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-bold text-primary">
+          <h1 className="text-2xl sm:text-3xl font-bold text-primary">
             Account Dashboard
           </h1>
-          <p className="text-white/80 mt-2">Track your spending, orders, and biometric data over the last 24 months</p>
+          <p className="text-white/80 mt-2 text-sm sm:text-base">Track your spending, orders, and biometric data over the last 24 months</p>
         </div>
-        <Badge className="bg-primary text-black border-primary hover:bg-primary/90 font-semibold">
-          <Calendar className="w-4 h-4 mr-2" />
+        <Badge className="bg-primary text-black border-primary hover:bg-primary/90 font-semibold text-xs sm:text-sm self-start sm:self-auto">
+          <Calendar className="w-3 h-3 sm:w-4 sm:h-4 mr-2" />
           Last 24 Months
         </Badge>
       </div>
 
       {/* Summary Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
         <Card className="bg-purple-900/60 backdrop-blur-sm border-purple-600/50 hover:border-primary/70 transition-all duration-300 shadow-2xl">
-          <CardContent className="p-6">
+          <CardContent className="p-4 sm:p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-white/80 text-sm font-medium">Total Spending</p>
-                <p className="text-3xl font-bold text-accent mt-1">${totals.totalSpending.toFixed(2)}</p>
+                <p className="text-white/80 text-xs sm:text-sm font-medium">Total Spending</p>
+                <p className="text-2xl sm:text-3xl font-bold text-accent mt-1">${totals.totalSpending.toFixed(2)}</p>
               </div>
-              <div className="bg-primary/30 p-3 rounded-full">
-                <DollarSign className="h-6 w-6 text-primary" />
+              <div className="bg-primary/30 p-2 sm:p-3 rounded-full">
+                <DollarSign className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
               </div>
             </div>
           </CardContent>
         </Card>
 
         <Card className="bg-purple-900/60 backdrop-blur-sm border-purple-600/50 hover:border-primary/70 transition-all duration-300 shadow-2xl">
-          <CardContent className="p-6">
+          <CardContent className="p-4 sm:p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-white/80 text-sm font-medium">Total Orders</p>
-                <p className="text-3xl font-bold text-primary mt-1">{totals.totalOrders}</p>
+                <p className="text-white/80 text-xs sm:text-sm font-medium">Total Orders</p>
+                <p className="text-2xl sm:text-3xl font-bold text-primary mt-1">{totals.totalOrders}</p>
               </div>
-              <div className="bg-primary/30 p-3 rounded-full">
-                <ShoppingBag className="h-6 w-6 text-primary" />
+              <div className="bg-primary/30 p-2 sm:p-3 rounded-full">
+                <ShoppingBag className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
               </div>
             </div>
           </CardContent>
         </Card>
 
         <Card className="bg-purple-900/60 backdrop-blur-sm border-purple-600/50 hover:border-primary/70 transition-all duration-300 shadow-2xl">
-          <CardContent className="p-6">
+          <CardContent className="p-4 sm:p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-white/80 text-sm font-medium">Avg Monthly Spending</p>
-                <p className="text-3xl font-bold text-accent mt-1">${totals.avgMonthlySpending.toFixed(2)}</p>
+                <p className="text-white/80 text-xs sm:text-sm font-medium">Avg Monthly Spending</p>
+                <p className="text-2xl sm:text-3xl font-bold text-accent mt-1">${totals.avgMonthlySpending.toFixed(2)}</p>
               </div>
-              <div className="bg-primary/30 p-3 rounded-full">
-                <TrendingUp className="h-6 w-6 text-primary" />
+              <div className="bg-primary/30 p-2 sm:p-3 rounded-full">
+                <TrendingUp className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
               </div>
             </div>
           </CardContent>
         </Card>
 
         <Card className="bg-purple-900/60 backdrop-blur-sm border-purple-600/50 hover:border-primary/70 transition-all duration-300 shadow-2xl">
-          <CardContent className="p-6">
+          <CardContent className="p-4 sm:p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-white/80 text-sm font-medium">Biometric Sessions</p>
-                <p className="text-3xl font-bold text-primary mt-1">{totals.biometricSessions}</p>
+                <p className="text-white/80 text-xs sm:text-sm font-medium">Biometric Sessions</p>
+                <p className="text-2xl sm:text-3xl font-bold text-primary mt-1">{totals.biometricSessions}</p>
               </div>
-              <div className="bg-primary/30 p-3 rounded-full">
-                <Activity className="h-6 w-6 text-primary" />
+              <div className="bg-primary/30 p-2 sm:p-3 rounded-full">
+                <Activity className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
               </div>
             </div>
           </CardContent>
@@ -195,15 +195,15 @@ export const AccountDashboard = () => {
       </div>
 
       {/* Charts */}
-      <Tabs defaultValue="spending" className="space-y-6">
-        <TabsList className="grid w-full grid-cols-3 bg-purple-900/80 backdrop-blur-sm border-purple-600/50">
-          <TabsTrigger value="spending" className="data-[state=active]:bg-primary data-[state=active]:text-black text-white/80 font-semibold">
+      <Tabs defaultValue="spending" className="space-y-4 sm:space-y-6">
+        <TabsList className="grid w-full grid-cols-1 sm:grid-cols-3 bg-purple-900/80 backdrop-blur-sm border-purple-600/50 gap-1 sm:gap-0">
+          <TabsTrigger value="spending" className="data-[state=active]:bg-primary data-[state=active]:text-black text-white/80 font-semibold text-xs sm:text-sm">
             Spending Trends
           </TabsTrigger>
-          <TabsTrigger value="orders" className="data-[state=active]:bg-primary data-[state=active]:text-black text-white/80 font-semibold">
+          <TabsTrigger value="orders" className="data-[state=active]:bg-primary data-[state=active]:text-black text-white/80 font-semibold text-xs sm:text-sm">
             Order Volume
           </TabsTrigger>
-          <TabsTrigger value="biometrics" className="data-[state=active]:bg-primary data-[state=active]:text-black text-white/80 font-semibold">
+          <TabsTrigger value="biometrics" className="data-[state=active]:bg-primary data-[state=active]:text-black text-white/80 font-semibold text-xs sm:text-sm">
             Biometric Activity
           </TabsTrigger>
         </TabsList>
@@ -213,8 +213,8 @@ export const AccountDashboard = () => {
             <CardHeader>
               <CardTitle className="text-white font-semibold">Monthly Spending Trends</CardTitle>
             </CardHeader>
-            <CardContent>
-              <ResponsiveContainer width="100%" height={400}>
+            <CardContent className="p-4 sm:p-6">
+              <ResponsiveContainer width="100%" height={300}>
                 <LineChart data={monthlyData}>
                   <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
                   <XAxis 
@@ -251,8 +251,8 @@ export const AccountDashboard = () => {
             <CardHeader>
               <CardTitle className="text-white font-semibold">Monthly Order Volume</CardTitle>
             </CardHeader>
-            <CardContent>
-              <ResponsiveContainer width="100%" height={400}>
+            <CardContent className="p-4 sm:p-6">
+              <ResponsiveContainer width="100%" height={300}>
                 <BarChart data={monthlyData}>
                   <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
                   <XAxis 
@@ -287,8 +287,8 @@ export const AccountDashboard = () => {
             <CardHeader>
               <CardTitle className="text-white font-semibold">Biometric Activity & Average BAC</CardTitle>
             </CardHeader>
-            <CardContent>
-              <ResponsiveContainer width="100%" height={400}>
+            <CardContent className="p-4 sm:p-6">
+              <ResponsiveContainer width="100%" height={300}>
                 <LineChart data={monthlyData}>
                   <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
                   <XAxis 

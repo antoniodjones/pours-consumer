@@ -85,11 +85,11 @@ export const BiometricSettings = () => {
       </div>
 
       <Tabs defaultValue="settings" className="w-full">
-        <TabsList className="grid w-full grid-cols-2 bg-black/40 border border-purple-500/20">
-          <TabsTrigger value="settings" className="data-[state=active]:bg-purple-600">
+        <TabsList className="grid w-full grid-cols-1 sm:grid-cols-2 bg-black/40 border border-purple-500/20 gap-1 sm:gap-0">
+          <TabsTrigger value="settings" className="data-[state=active]:bg-purple-600 text-xs sm:text-sm">
             Biometric Settings
           </TabsTrigger>
-          <TabsTrigger value="monitoring" className="data-[state=active]:bg-purple-600">
+          <TabsTrigger value="monitoring" className="data-[state=active]:bg-purple-600 text-xs sm:text-sm">
             Sobriety Monitoring
           </TabsTrigger>
         </TabsList>
@@ -103,7 +103,7 @@ export const BiometricSettings = () => {
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                 <div className="flex items-center gap-3 p-4 rounded-lg bg-purple-500/10 border border-purple-500/20">
                   <Scale className="h-8 w-8 text-purple-400" />
                   <div>

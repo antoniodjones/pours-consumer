@@ -125,7 +125,7 @@ export const SobrietyDashboard: React.FC<SobrietyDashboardProps> = ({ venueId })
   }
 
   return (
-    <div className="w-full max-w-4xl mx-auto space-y-6">
+    <div className="w-full max-w-7xl mx-auto space-y-4 sm:space-y-6 px-2 sm:px-4">
       {/* Alerts */}
       {alerts.length > 0 && (
         <div className="space-y-3">
@@ -161,7 +161,7 @@ export const SobrietyDashboard: React.FC<SobrietyDashboardProps> = ({ venueId })
       )}
 
       {/* Main Dashboard */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
         {/* BAC Monitor */}
         <Card className="bg-black/40 backdrop-blur-sm border-purple-500/20">
           <CardHeader>

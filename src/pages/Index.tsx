@@ -29,21 +29,21 @@ const Index = () => {
       <Navigation />
       
       {/* Hero Section - Bar/Club Focus */}
-      <section className="relative h-screen flex items-center justify-center px-6 pt-16">
+      <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 pt-16 pb-8">
         <div className="max-w-6xl mx-auto text-center">
           <div className="mb-4">
-            <span className="inline-block bg-yellow-400 text-gray-900 px-8 py-3 rounded-full text-base font-bold tracking-wide uppercase">
+            <span className="inline-block bg-yellow-400 text-gray-900 px-4 sm:px-8 py-2 sm:py-3 rounded-full text-sm sm:text-base font-bold tracking-wide uppercase">
               Premium Bar Experience
             </span>
           </div>
           
-          <h1 className="text-6xl md:text-8xl lg:text-9xl font-black text-white mb-1 leading-[0.8] tracking-tight">
+          <h1 className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-black text-white mb-1 leading-[0.8] tracking-tight">
             PREMIUM
             <br />
             <span className="text-yellow-400">POURS</span>
           </h1>
           
-          <h2 className="text-xl md:text-2xl text-gray-300 font-light mb-8 max-w-xl mx-auto leading-tight">
+          <h2 className="text-lg sm:text-xl md:text-2xl text-gray-300 font-light mb-8 max-w-xl mx-auto leading-tight px-4">
             AT YOUR FINGERTIPS
           </h2>
           
@@ -51,26 +51,26 @@ const Index = () => {
             <Button 
               size="lg" 
               onClick={handleOrderNow}
-              className="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold px-8 py-3 text-base tracking-wide transition-all duration-300 hover:shadow-xl hover:shadow-yellow-400/25 rounded-full"
+              className="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold px-6 sm:px-8 py-2.5 sm:py-3 text-sm sm:text-base tracking-wide transition-all duration-300 hover:shadow-xl hover:shadow-yellow-400/25 rounded-full w-full sm:w-auto"
             >
               Order Now
             </Button>
-            <Link to="/backoffice">
-              <Button size="lg" variant="outline" className="border-2 border-white/20 text-gray-900 hover:bg-white/10 hover:border-white/40 px-8 py-3 text-base font-light tracking-wide transition-all duration-300 backdrop-blur-sm rounded-full">
+            <Link to="/backoffice" className="w-full sm:w-auto">
+              <Button size="lg" variant="outline" className="border-2 border-white/20 text-gray-900 hover:bg-white/10 hover:border-white/40 px-6 sm:px-8 py-2.5 sm:py-3 text-sm sm:text-base font-light tracking-wide transition-all duration-300 backdrop-blur-sm rounded-full w-full">
                 Partner With Us
               </Button>
             </Link>
           </div>
           
           {/* Age Verification Notice */}
-          <div className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-4 max-w-sm mx-auto border border-purple-400/20">
+          <div className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-3 sm:p-4 max-w-xs sm:max-w-sm mx-auto border border-purple-400/20">
             <p className="text-xs text-gray-300 mb-2">
               Must be 21+ to order alcoholic beverages
             </p>
-            <div className="flex items-center justify-center gap-3">
+            <div className="flex items-center justify-center gap-2 sm:gap-3">
               <span className="text-yellow-400 font-bold text-lg">21+</span>
               <span className="text-gray-400">|</span>
-              <span className="text-purple-400 font-medium text-sm">Verified Service</span>
+              <span className="text-purple-400 font-medium text-xs sm:text-sm">Verified Service</span>
             </div>
           </div>
         </div>
