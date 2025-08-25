@@ -4,6 +4,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { User, Gift, ChevronDown, ChevronUp, ExternalLink } from 'lucide-react';
 import { ProfileHeader } from '@/components/profile/common/ProfileHeader';
+import { PageHeader } from '@/components/profile/common/PageHeader';
 import { ProfileInfo } from '@/components/profile/sections/ProfileInfo';
 import { RewardsStatusCard } from '@/components/profile/sections/RewardsStatusCard';
 import { OrderHistoryCard } from '@/components/profile/sections/OrderHistoryCard';
@@ -74,8 +75,13 @@ export const ProfileSummary: React.FC = React.memo(() => {
   const toggleVenues = React.useCallback(() => setShowAllVenues(prev => !prev), []);
 
   if (loading) {
-    return (
-      <div className="space-y-6">
+  return (
+    <div className="space-y-6">
+      <PageHeader 
+        icon={User}
+        title="Profile Summary"
+        subtitle="Your complete account overview and activity"
+      />
         <div className="bg-black/40 backdrop-blur-sm border border-purple-500/20 rounded-lg p-6">
           <div className="flex items-center gap-6">
             <Skeleton className="h-20 w-20 rounded-full" />
@@ -103,6 +109,12 @@ export const ProfileSummary: React.FC = React.memo(() => {
 
   return (
     <div className="space-y-6">
+      <PageHeader 
+        icon={User}
+        title="Profile Summary"
+        subtitle="Your complete account overview and activity"
+      />
+      
       {/* Header */}
       <ProfileHeader 
         profile={profileData} 

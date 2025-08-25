@@ -3,7 +3,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { ShoppingBag } from 'lucide-react';
 import { OrderDetail } from '@/components/profile/OrderDetail';
 import { OrderCard } from '@/components/profile/common/OrderCard';
-import { SectionHeader } from '@/components/profile/common/SectionHeader';
+import { PageHeader } from '@/components/profile/common/PageHeader';
 import { Order } from '@/types/profile';
 import { mockOrders } from '@/data/mockCustomerData';
 
@@ -29,10 +29,10 @@ export const OrderHistory: React.FC = () => {
 
   return (
     <div className="space-y-6">
-      <SectionHeader 
-        icon={ShoppingBag} 
-        title="Order History" 
-        description="View all your past orders"
+      <PageHeader 
+        icon={ShoppingBag}
+        title="Order History"
+        subtitle="View all your past orders and track delivery status"
       />
 
       <div className="space-y-4">

@@ -7,6 +7,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Separator } from '@/components/ui/separator';
 import { Badge } from '@/components/ui/badge';
 import { User, Settings, Plus, X } from 'lucide-react';
+import { PageHeader } from '@/components/profile/common/PageHeader';
 import { useToast } from '@/hooks/use-toast';
 import { useProfile } from '@/contexts/ProfileContext';
 
@@ -95,13 +96,11 @@ export const ManageProfile = () => {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center gap-3 mb-6">
-        <Settings className="h-8 w-8 text-purple-400" />
-        <div>
-          <h2 className="text-2xl font-bold text-white">Manage Profile</h2>
-          <p className="text-gray-400">Update your personal information and preferences</p>
-        </div>
-      </div>
+      <PageHeader 
+        icon={Settings}
+        title="Manage Profile"
+        subtitle="Update your personal information and preferences"
+      />
 
       {/* Personal Information */}
       <Card className="bg-black/40 backdrop-blur-sm border-purple-500/20">

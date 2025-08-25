@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useToast } from "@/hooks/use-toast";
+import { PageHeader } from '@/components/profile/common/PageHeader';
 import { 
   Gift, 
   Star, 
@@ -292,16 +293,11 @@ export const RewardsSection = () => {
 
   return (
     <div className="space-y-8">
-      {/* Header */}
-      <div className="mb-8">
-        <h1 className="text-4xl md:text-5xl font-black text-white mb-4 leading-none tracking-tight flex items-center">
-          <Trophy className="w-12 h-12 mr-4 text-yellow-400" />
-          <span className="text-yellow-400">REWARDS</span>
-        </h1>
-        <p className="text-lg text-gray-300 font-light">
-          Earn points, unlock rewards, enjoy exclusive perks
-        </p>
-      </div>
+      <PageHeader 
+        icon={Trophy}
+        title="Rewards"
+        subtitle="Earn points, unlock rewards, enjoy exclusive perks"
+      />
 
       {/* Current Status Card */}
       <Card className="mb-8 bg-black/40 backdrop-blur-sm border-purple-500/20">

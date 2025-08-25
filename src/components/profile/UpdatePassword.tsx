@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Lock, Eye, EyeOff } from 'lucide-react';
+import { PageHeader } from '@/components/profile/common/PageHeader';
 import { useToast } from '@/hooks/use-toast';
 
 export const UpdatePassword = () => {
@@ -56,6 +57,11 @@ export const UpdatePassword = () => {
 
   return (
     <div className="space-y-6">
+      <PageHeader 
+        icon={Lock}
+        title="Manage Password"
+        subtitle="Update your account password for enhanced security"
+      />
       <Card className="bg-black/40 backdrop-blur-sm border-purple-500/20">
         <CardHeader>
           <CardTitle className="flex items-center gap-2 text-white">

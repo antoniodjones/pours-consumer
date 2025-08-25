@@ -5,6 +5,7 @@ import { Badge } from '@/components/ui/badge';
 import { Activity, Heart, Scale, Ruler } from 'lucide-react';
 import { BiometricSetup } from '@/components/sobriety/BiometricSetup';
 import { SobrietyDashboard } from '@/components/sobriety/SobrietyDashboard';
+import { PageHeader } from '@/components/profile/common/PageHeader';
 import { useSobrietyMonitoring } from '@/hooks/useSobrietyMonitoring';
 import { useToast } from '@/hooks/use-toast';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -76,14 +77,12 @@ export const BiometricSettings = () => {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center gap-3 mb-6">
-        <Activity className="h-8 w-8 text-purple-400" />
-        <div>
-          <h2 className="text-2xl font-bold text-white">Biometric Settings & Sobriety Monitoring</h2>
-          <p className="text-gray-400">Configure your biometric data and monitor your sobriety</p>
-        </div>
-      </div>
-
+      <PageHeader 
+        icon={Activity}
+        title="Biometric Settings"
+        subtitle="Configure your biometric data and monitor your sobriety"
+      />
+      
       <Tabs defaultValue="settings" className="w-full">
         <TabsList className="grid w-full grid-cols-1 sm:grid-cols-2 bg-black/40 border border-purple-500/20 gap-1 sm:gap-0">
           <TabsTrigger value="settings" className="data-[state=active]:bg-purple-600 text-xs sm:text-sm">

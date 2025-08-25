@@ -3,7 +3,8 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Badge } from '@/components/ui/badge';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar } from 'recharts';
-import { DollarSign, Activity, ShoppingBag, TrendingUp, Calendar } from 'lucide-react';
+import { BarChart3, Activity, ShoppingBag, TrendingUp, Calendar } from 'lucide-react';
+import { PageHeader } from '@/components/profile/common/PageHeader';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/hooks/useAuth';
 import { format, subMonths, startOfMonth, endOfMonth } from 'date-fns';
@@ -121,35 +122,36 @@ export const AccountDashboard = () => {
   }
 
   return (
-    <div className="space-y-4 sm:space-y-6 min-h-screen bg-gradient-to-br from-purple-900 via-purple-800 to-purple-900">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        <div>
-          <h1 className="text-2xl sm:text-3xl font-bold text-primary">
-            Account Dashboard
-          </h1>
-          <p className="text-white/80 mt-2 text-sm sm:text-base">Track your spending, orders, and biometric data over the last 24 months</p>
+    <div className="space-y-4 sm:space-y-6">
+      <PageHeader 
+        icon={BarChart3}
+        title="Account Dashboard"
+        subtitle="Track your spending, orders, and biometric data over the last 24 months"
+      />
+      
+      <div className="min-h-screen bg-gradient-to-br from-purple-900 via-purple-800 to-purple-900 p-4 sm:p-6 rounded-lg">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+          <Badge className="bg-primary text-black border-primary hover:bg-primary/90 font-semibold text-xs sm:text-sm self-start sm:self-auto">
+            <Calendar className="w-3 h-3 sm:w-4 sm:h-4 mr-2" />
+            Last 24 Months
+          </Badge>
         </div>
-        <Badge className="bg-primary text-black border-primary hover:bg-primary/90 font-semibold text-xs sm:text-sm self-start sm:self-auto">
-          <Calendar className="w-3 h-3 sm:w-4 sm:h-4 mr-2" />
-          Last 24 Months
-        </Badge>
-      </div>
 
-      {/* Summary Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-        <Card className="bg-purple-900/60 backdrop-blur-sm border-purple-600/50 hover:border-primary/70 transition-all duration-300 shadow-2xl">
-          <CardContent className="p-4 sm:p-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-white/80 text-xs sm:text-sm font-medium">Total Spending</p>
-                <p className="text-2xl sm:text-3xl font-bold text-accent mt-1">${totals.totalSpending.toFixed(2)}</p>
+        {/* Summary Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+          <Card className="bg-purple-900/60 backdrop-blur-sm border-purple-600/50 hover:border-primary/70 transition-all duration-300 shadow-2xl">
+            <CardContent className="p-4 sm:p-6">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-white/80 text-xs sm:text-sm font-medium">Total Spending</p>
+                  <p className="text-2xl sm:text-3xl font-bold text-accent mt-1">${totals.totalSpending.toFixed(2)}</p>
+                </div>
+                <div className="bg-primary/30 p-2 sm:p-3 rounded-full">
+                  <TrendingUp className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
+                </div>
               </div>
-              <div className="bg-primary/30 p-2 sm:p-3 rounded-full">
-                <DollarSign className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
-              </div>
-            </div>
-          </CardContent>
-        </Card>
+            </CardContent>
+          </Card>
 
         <Card className="bg-purple-900/60 backdrop-blur-sm border-purple-600/50 hover:border-primary/70 transition-all duration-300 shadow-2xl">
           <CardContent className="p-4 sm:p-6">
@@ -339,6 +341,7 @@ export const AccountDashboard = () => {
           </Card>
         </TabsContent>
       </Tabs>
+      </div>
     </div>
   );
 };

@@ -7,7 +7,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { CreditCard, Plus, Edit, Trash2, Shield } from 'lucide-react';
-import { SectionHeader } from '@/components/profile/common/SectionHeader';
+import { PageHeader } from '@/components/profile/common/PageHeader';
 import { PaymentMethod } from '@/types/profile';
 import { mockPaymentMethods } from '@/data/mockCustomerData';
 import { generateCardBrand } from '@/utils/profile';
@@ -163,10 +163,10 @@ export const ManagePayments: React.FC = () => {
 
   return (
     <div className="space-y-6">
-      <SectionHeader 
-        icon={CreditCard} 
-        title="Manage Payments" 
-        description="Add, edit, or remove payment methods"
+      <PageHeader 
+        icon={CreditCard}
+        title="Manage Payments"
+        subtitle="Add, edit, and manage your payment methods securely"
       />
       
       <div className="flex justify-end">
