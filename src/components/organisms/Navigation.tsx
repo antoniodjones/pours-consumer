@@ -64,6 +64,7 @@ export const Navigation: React.FC = () => {
             <Link to="/menu">
               <CartWithIcon />
             </Link>
+            <UserMenu onLoginClick={() => setShowLoginModal(true)} />
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild>
                 <Button variant="ghost" size="icon">

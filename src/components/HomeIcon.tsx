@@ -1,9 +1,16 @@
 import React from 'react';
 import { Home } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 
 export const HomeIcon = () => {
+  const location = useLocation();
+  
+  // Only show home icon when NOT on the home page
+  if (location.pathname === '/') {
+    return null;
+  }
+
   return (
     <Link to="/">
       <Button 
