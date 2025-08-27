@@ -7,6 +7,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Separator } from '@/components/ui/separator';
 import { Badge } from '@/components/ui/badge';
 import { User, Settings, Plus, X, Shield, FileText } from 'lucide-react';
+import { AvatarUpload } from './AvatarUpload';
 import { PageHeader } from '@/components/profile/common/PageHeader';
 import { useToast } from '@/hooks/use-toast';
 import { useProfile } from '@/contexts/ProfileContext';
@@ -103,6 +104,9 @@ export const ManageProfile = () => {
         title="Manage Profile"
         subtitle="Update your personal information and preferences"
       />
+
+      {/* Avatar Upload */}
+      <AvatarUpload />
 
       {/* Personal Information */}
       <Card className="bg-black/40 backdrop-blur-sm border-purple-500/20">

@@ -84,7 +84,7 @@ export const UserMenu = ({ onLoginClick }: UserMenuProps) => {
         variant="ghost" 
         size="sm"
         onClick={onLoginClick || (() => navigate('/auth'))}
-        className="text-white hover:bg-purple-400/10 p-2"
+        className="text-foreground hover:bg-muted p-2"
       >
         <User className="w-6 h-6" />
       </Button>
@@ -97,7 +97,7 @@ export const UserMenu = ({ onLoginClick }: UserMenuProps) => {
       <DropdownMenuTrigger asChild>
         <Button 
           variant="ghost" 
-          className="relative h-10 w-10 rounded-full p-0 hover:bg-purple-400/10"
+          className="relative h-10 w-10 rounded-full p-0 hover:bg-muted"
         >
           <Avatar className="h-9 w-9 border-2 border-purple-400/30">
             <AvatarImage 
