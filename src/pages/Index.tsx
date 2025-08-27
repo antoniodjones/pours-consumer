@@ -54,7 +54,7 @@ const Index = () => {
             >
               Order Now
             </Button>
-            <Link to="/backoffice" className="w-full sm:w-auto">
+            <Link to="/venue-partnership" className="w-full sm:w-auto">
               <Button size="lg" variant="outline" className="border-2 border-white/20 text-gray-900 hover:bg-white/10 hover:border-white/40 px-6 sm:px-8 py-2.5 sm:py-3 text-sm sm:text-base font-light tracking-wide transition-all duration-300 backdrop-blur-sm rounded-full w-full">
                 Partner With Us
               </Button>
@@ -259,7 +259,7 @@ const Index = () => {
             >
               Start Ordering
             </Button>
-            <Link to="/backoffice">
+            <Link to="/venue-partnership">
               <Button size="lg" variant="outline" className="border-2 border-purple-400/50 text-gray-900 hover:bg-purple-400/10 hover:border-purple-400 px-16 py-6 text-xl font-light tracking-wide transition-all duration-300 backdrop-blur-sm rounded-full">
                 Become a Partner
               </Button>

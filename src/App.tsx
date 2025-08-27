@@ -10,7 +10,7 @@ import Index from "./pages/Index";
 import Menu from "./pages/Menu";
 import ProductDetail from "./pages/ProductDetail";
 import TrackOrder from "./pages/TrackOrder";
-import BackOffice from "./pages/BackOffice";
+
 import NotFound from "./pages/NotFound";
 import RewardsInfo from "./pages/RewardsInfo";
 import Rewards from "./pages/Rewards";
@@ -42,7 +42,7 @@ const App = () => (
           <Route path="/profile" element={<ProtectedRoute><CustomerProfilePage /></ProtectedRoute>} />
           <Route path="/track-order" element={<TrackOrder />} />
           <Route path="/sobriety" element={<SobrietyMonitoring />} />
-          <Route path="/backoffice" element={<BackOffice />} />
+          
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/venue-partnership" element={<VenuePartnership />} />
           <Route path="/compliance" element={<ComplianceDashboard />} />
