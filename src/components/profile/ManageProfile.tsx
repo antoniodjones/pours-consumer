@@ -6,10 +6,11 @@ import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Separator } from '@/components/ui/separator';
 import { Badge } from '@/components/ui/badge';
-import { User, Settings, Plus, X } from 'lucide-react';
+import { User, Settings, Plus, X, Shield, FileText } from 'lucide-react';
 import { PageHeader } from '@/components/profile/common/PageHeader';
 import { useToast } from '@/hooks/use-toast';
 import { useProfile } from '@/contexts/ProfileContext';
+import { useNavigate } from 'react-router-dom';
 
 const mockPreferences = {
   favorite_categories: ['Cocktails', 'Premium Appetizers', 'Cannabis Products'],
@@ -20,6 +21,7 @@ const mockPreferences = {
 export const ManageProfile = () => {
   const { toast } = useToast();
   const { profile, updateProfile, isLoading } = useProfile();
+  const navigate = useNavigate();
   
   const [profileData, setProfileData] = useState({
     first_name: '',
@@ -327,6 +329,39 @@ export const ManageProfile = () => {
           <Button onClick={handlePreferencesUpdate} className="bg-purple-500 hover:bg-purple-600">
             Update Preferences
           </Button>
+        </CardContent>
+      </Card>
+
+      {/* Privacy and Compliance */}
+      <Card className="bg-black/40 backdrop-blur-sm border-purple-500/20">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2 text-white">
+            <Shield className="h-5 w-5" />
+            Privacy & Compliance
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <p className="text-gray-300 text-sm">
+            Manage your data privacy settings and view compliance information.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-3">
+            <Button 
+              onClick={() => navigate('/compliance')}
+              variant="outline"
+              className="border-blue-500/30 text-blue-300 hover:bg-blue-500/10"
+            >
+              <Shield className="h-4 w-4 mr-2" />
+              Privacy Dashboard
+            </Button>
+            <Button 
+              onClick={() => navigate('/privacy-policy')}
+              variant="outline"
+              className="border-gray-500/30 text-gray-300 hover:bg-gray-500/10"
+            >
+              <FileText className="h-4 w-4 mr-2" />
+              Privacy Policy
+            </Button>
+          </div>
         </CardContent>
       </Card>
     </div>

@@ -5,6 +5,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ProtectedRoute } from "@/components/ProtectedRoute";
+import { CookieConsent } from "@/components/compliance/CookieConsent";
 import Index from "./pages/Index";
 import Menu from "./pages/Menu";
 import ProductDetail from "./pages/ProductDetail";
@@ -17,6 +18,8 @@ import Auth from "./pages/Auth";
 import CheckoutPage from "./pages/CheckoutPage";
 import CustomerProfilePage from "./pages/CustomerProfile";
 import SobrietyMonitoring from "./pages/SobrietyMonitoring";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import ComplianceDashboard from "./pages/ComplianceDashboard";
 
 const queryClient = new QueryClient();
 
@@ -39,9 +42,12 @@ const App = () => (
           <Route path="/track-order" element={<TrackOrder />} />
           <Route path="/sobriety" element={<SobrietyMonitoring />} />
           <Route path="/backoffice" element={<BackOffice />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/compliance" element={<ComplianceDashboard />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
+        <CookieConsent />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
