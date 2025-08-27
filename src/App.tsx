@@ -18,6 +18,7 @@ import Auth from "./pages/Auth";
 import CheckoutPage from "./pages/CheckoutPage";
 import CustomerProfilePage from "./pages/CustomerProfile";
 import SobrietyMonitoring from "./pages/SobrietyMonitoring";
+import VenuePartnership from "./pages/VenuePartnership";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import ComplianceDashboard from "./pages/ComplianceDashboard";
 
@@ -43,6 +44,7 @@ const App = () => (
           <Route path="/sobriety" element={<SobrietyMonitoring />} />
           <Route path="/backoffice" element={<BackOffice />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/venue-partnership" element={<VenuePartnership />} />
           <Route path="/compliance" element={<ComplianceDashboard />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />

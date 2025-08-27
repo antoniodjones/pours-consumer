@@ -27,8 +27,8 @@ export const HeroSection: React.FC = () => {
               </Link>
             </Button>
             <Button asChild variant="outline" size="lg" className="text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4">
-              <Link to="/rewards">
-                Learn About Rewards
+              <Link to="/venue-partnership">
+                Partner With Us
               </Link>
             </Button>
           </div>
