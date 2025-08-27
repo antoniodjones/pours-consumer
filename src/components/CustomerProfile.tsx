@@ -1,6 +1,6 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { ProfileSidebar } from '@/components/profile/ProfileSidebar';
+import { MainLayout, ProfileLayout } from '@/components/templates';
 import { ProfileSummary } from '@/components/profile/ProfileSummary';
 import { ManageProfile } from '@/components/profile/ManageProfile';
 import { UpdatePassword } from '@/components/profile/UpdatePassword';
@@ -63,19 +63,16 @@ export const CustomerProfile: React.FC = () => {
   }, [activeSection]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900">
-      <HomeIcon />
-      
-      <div className="flex flex-col lg:flex-row">
-        <ProfileSidebar 
-          activeSection={activeSection} 
-          onSectionChange={handleSectionChange} 
-        />
-        
-        <div className="flex-1 p-4 sm:p-6 lg:p-8">
+    <MainLayout>
+      <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900">
+        <HomeIcon />
+        <ProfileLayout 
+          activeSection={activeSection}
+          onSectionChange={handleSectionChange}
+        >
           {renderActiveSection()}
-        </div>
+        </ProfileLayout>
       </div>
-    </div>
+    </MainLayout>
   );
 };

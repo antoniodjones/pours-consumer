@@ -2,8 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Wine, Coffee, Star, Award, Users, TrendingUp, Clock, Smartphone } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
-import { Navigation } from "@/components/Navigation";
-import { Footer } from "@/components/Footer";
+import { MainLayout } from "@/components/templates";
 import { useState } from "react";
 
 const Index = () => {
@@ -25,8 +24,8 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900">
-      <Navigation />
+    <MainLayout>
+      <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900">
       
       {/* Hero Section - Bar/Club Focus */}
       <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 pt-16 pb-8">
@@ -268,8 +267,7 @@ const Index = () => {
           </div>
         </div>
       </section>
-
-      <Footer />
+      </div>
 
       {/* Login Modal */}
       <Dialog open={showLoginModal} onOpenChange={setShowLoginModal}>
@@ -300,7 +298,7 @@ const Index = () => {
           </div>
         </DialogContent>
       </Dialog>
-    </div>
+    </MainLayout>
   );
 };
 
