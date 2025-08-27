@@ -29,7 +29,7 @@ export const Navigation: React.FC = () => {
 
   const navigationItems = [
     { to: '/menu', label: 'Menu' },
-    { to: '/rewards', label: 'Rewards' },
+    { to: '/rewards-info', label: 'Rewards' },
   ];
 
   return (
