@@ -19,7 +19,7 @@ import {
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '@/hooks/useAuth';
 
-export const ComplianceDashboard = () => {
+const ComplianceDashboard = () => {
   const navigate = useNavigate();
   const { user } = useAuth();
 
@@ -240,3 +240,5 @@ export const ComplianceDashboard = () => {
     </div>
   );
 };
+
+export default ComplianceDashboard;

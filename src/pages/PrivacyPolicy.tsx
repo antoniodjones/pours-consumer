@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { ArrowLeft, Shield, Eye, Lock, FileText } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
-export const PrivacyPolicy = () => {
+const PrivacyPolicy = () => {
   const navigate = useNavigate();
 
   return (
@@ -251,3 +251,5 @@ export const PrivacyPolicy = () => {
     </div>
   );
 };
+
+export default PrivacyPolicy;
