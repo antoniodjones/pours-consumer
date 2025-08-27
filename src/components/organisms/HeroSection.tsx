@@ -10,7 +10,7 @@ export const HeroSection: React.FC = () => {
         <div className="max-w-4xl mx-auto space-y-6 sm:space-y-8">
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight">
             <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
-              TapCheck
+              pours+
             </span>
           </h1>
           

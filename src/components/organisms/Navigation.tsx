@@ -39,7 +39,7 @@ export const Navigation: React.FC = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2">
             <HomeIcon />
-            <span className="text-xl font-bold">TapCheck</span>
+            <span className="text-xl font-bold">pours+</span>
           </Link>
 
           {/* Desktop Navigation */}
