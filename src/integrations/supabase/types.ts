@@ -1151,18 +1151,9 @@ export type Database = {
         }
         Returns: number
       }
-      cleanup_expired_otps: {
-        Args: Record<PropertyKey, never>
-        Returns: undefined
-      }
-      generate_opt_out_token: {
-        Args: Record<PropertyKey, never>
-        Returns: string
-      }
-      generate_referral_code: {
-        Args: Record<PropertyKey, never>
-        Returns: string
-      }
+      cleanup_expired_otps: { Args: never; Returns: undefined }
+      generate_opt_out_token: { Args: never; Returns: string }
+      generate_referral_code: { Args: never; Returns: string }
       update_order_status: {
         Args: {
           new_status: string
