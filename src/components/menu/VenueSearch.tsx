@@ -206,10 +206,9 @@ export const VenueSearch = ({ onVenueSelect, selectedVenueId }: VenueSearchProps
             {venues.map((venue) => (
               <Card 
                 key={venue.id} 
-                className={`bg-gray-800/50 border-gray-600 hover:border-purple-500/50 transition-colors cursor-pointer ${
+                className={`bg-gray-800/50 border-gray-600 transition-colors ${
                   selectedVenueId === venue.id ? 'border-purple-500 bg-purple-500/10' : ''
                 }`}
-                onClick={() => onVenueSelect(venue.id, venue.name)}
               >
                 <CardContent className="p-4">
                   <div className="flex justify-between items-start mb-2">
@@ -221,6 +220,17 @@ export const VenueSearch = ({ onVenueSelect, selectedVenueId }: VenueSearchProps
                       </div>
                     )}
                   </div>
+                  
+                  <Button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      onVenueSelect(venue.id, venue.name);
+                    }}
+                    className="w-full mb-3 bg-purple-500 hover:bg-purple-600 text-white"
+                    size="sm"
+                  >
+                    Select Venue
+                  </Button>
                   
                   <div className="space-y-2">
                     <div className="flex items-center gap-2 text-sm text-gray-300">
