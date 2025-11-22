@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { MapPin } from "lucide-react";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { HomeIcon } from "@/components/HomeIcon";
 import { AgeVerificationModal } from "@/components/AgeVerificationModal";
 import { CartSummary } from "@/components/CartSummary";
+import { Button } from "@/components/ui/button";
 import { useEnhancedCart } from "@/hooks/useEnhancedCart";
 import { useMenuData } from "@/hooks/useMenuData";
 import { useAgeVerification } from "@/hooks/useAgeVerification";
@@ -31,8 +33,9 @@ const getStoredVenue = (): { id: string; name: string } | null => {
 const Menu = () => {
   const navigate = useNavigate();
   const storedVenue = getStoredVenue();
-  const [selectedVenue, setSelectedVenue] = React.useState<string | null>(storedVenue?.id || null);
-  const [selectedVenueName, setSelectedVenueName] = React.useState<string>(storedVenue?.name || '');
+  const [selectedVenue, setSelectedVenue] = useState<string | null>(storedVenue?.id || null);
+  const [selectedVenueName, setSelectedVenueName] = useState<string>(storedVenue?.name || '');
+  const [showVenueSearch, setShowVenueSearch] = useState<boolean>(!storedVenue);
   
   const { user } = useAuth();
   const { cart, addToCart, removeFromCart, getCartItemQuantity, cartTotal, cartItemCount, deleteFromCart } = useEnhancedCart({
@@ -56,6 +59,7 @@ const Menu = () => {
   const handleVenueSelect = (venueId: string, venueName: string) => {
     setSelectedVenue(venueId);
     setSelectedVenueName(venueName);
+    setShowVenueSearch(false);
     
     // Persist to localStorage
     localStorage.setItem(SELECTED_VENUE_KEY, JSON.stringify({ id: venueId, name: venueName }));
@@ -95,18 +99,28 @@ const Menu = () => {
       <div className="max-w-7xl mx-auto px-4 py-8">
         <MenuHero />
 
-        <VenueSearch 
-          onVenueSelect={handleVenueSelect}
-          selectedVenueId={selectedVenue}
-          cartItemCount={cartItemCount}
-          onClearCart={handleClearCart}
-        />
+        {showVenueSearch && (
+          <VenueSearch 
+            onVenueSelect={handleVenueSelect}
+            selectedVenueId={selectedVenue}
+            cartItemCount={cartItemCount}
+            onClearCart={handleClearCart}
+          />
+        )}
 
         {selectedVenue && selectedVenueName && (
           <div className="mb-8 text-center">
-            <h2 className="text-3xl font-bold text-white">
+            <h2 className="text-3xl font-bold text-white mb-3">
               Menu of {selectedVenueName}
             </h2>
+            <Button
+              onClick={() => setShowVenueSearch(true)}
+              variant="outline"
+              className="bg-transparent border-purple-500/50 text-purple-300 hover:bg-purple-500/20 hover:text-white"
+            >
+              <MapPin className="w-4 h-4 mr-2" />
+              Change Venue
+            </Button>
           </div>
         )}
 
