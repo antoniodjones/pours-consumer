@@ -4,6 +4,16 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from '@/components/ui/alert-dialog';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
 
@@ -34,13 +44,17 @@ interface Venue {
 interface VenueSearchProps {
   onVenueSelect: (venueId: string, venueName: string) => void;
   selectedVenueId: string | null;
+  cartItemCount: number;
+  onClearCart: () => void;
 }
 
-export const VenueSearch = ({ onVenueSelect, selectedVenueId }: VenueSearchProps) => {
+export const VenueSearch = ({ onVenueSelect, selectedVenueId, cartItemCount, onClearCart }: VenueSearchProps) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [venues, setVenues] = useState<Venue[]>([]);
   const [loading, setLoading] = useState(false);
   const [userLocation, setUserLocation] = useState<{ lat: number; lng: number } | null>(null);
+  const [showConfirmDialog, setShowConfirmDialog] = useState(false);
+  const [pendingVenue, setPendingVenue] = useState<{ id: string; name: string } | null>(null);
   const { toast } = useToast();
 
   // Calculate distance between two coordinates (Haversine formula)
@@ -169,6 +183,41 @@ export const VenueSearch = ({ onVenueSelect, selectedVenueId }: VenueSearchProps
     return '$'.repeat(priceRange);
   };
 
+  const handleVenueSelection = (venueId: string, venueName: string) => {
+    // Check if user is changing venue and has items in cart
+    if (selectedVenueId && selectedVenueId !== venueId && cartItemCount > 0) {
+      setPendingVenue({ id: venueId, name: venueName });
+      setShowConfirmDialog(true);
+    } else {
+      // No cart items or same venue, proceed directly
+      onVenueSelect(venueId, venueName);
+      toast({
+        title: `Thank you for choosing ${venueName}`,
+        description: "Please proceed to peruse and order what you'd like.",
+        duration: 4000,
+      });
+    }
+  };
+
+  const handleConfirmVenueChange = () => {
+    if (pendingVenue) {
+      onClearCart();
+      onVenueSelect(pendingVenue.id, pendingVenue.name);
+      toast({
+        title: `Thank you for choosing ${pendingVenue.name}`,
+        description: "Please proceed to peruse and order what you'd like.",
+        duration: 4000,
+      });
+      setShowConfirmDialog(false);
+      setPendingVenue(null);
+    }
+  };
+
+  const handleCancelVenueChange = () => {
+    setShowConfirmDialog(false);
+    setPendingVenue(null);
+  };
+
   const getTodayHours = (venue: Venue) => {
     const today = new Date().getDay();
     const days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
@@ -224,12 +273,7 @@ export const VenueSearch = ({ onVenueSelect, selectedVenueId }: VenueSearchProps
                   <Button
                     onClick={(e) => {
                       e.stopPropagation();
-                      onVenueSelect(venue.id, venue.name);
-                      toast({
-                        title: `Thank you for choosing ${venue.name}`,
-                        description: "Please proceed to peruse and order what you'd like.",
-                        duration: 4000,
-                      });
+                      handleVenueSelection(venue.id, venue.name);
                     }}
                     className="w-full mb-3 bg-purple-500 hover:bg-purple-600 text-white"
                     size="sm"
@@ -288,6 +332,25 @@ export const VenueSearch = ({ onVenueSelect, selectedVenueId }: VenueSearchProps
           </div>
         )}
       </div>
+
+      <AlertDialog open={showConfirmDialog} onOpenChange={setShowConfirmDialog}>
+        <AlertDialogContent className="bg-gray-900 border-purple-500/20">
+          <AlertDialogHeader>
+            <AlertDialogTitle className="text-white">Change Venue?</AlertDialogTitle>
+            <AlertDialogDescription className="text-gray-300">
+              You have {cartItemCount} item{cartItemCount !== 1 ? 's' : ''} in your cart. Changing venues will clear your current cart. Do you want to continue?
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel onClick={handleCancelVenueChange} className="bg-gray-700 text-white hover:bg-gray-600">
+              Cancel
+            </AlertDialogCancel>
+            <AlertDialogAction onClick={handleConfirmVenueChange} className="bg-purple-500 text-white hover:bg-purple-600">
+              Change Venue
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   );
 };
