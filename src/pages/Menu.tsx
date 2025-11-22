@@ -17,10 +17,22 @@ import { FeaturedProductsSection } from "@/components/menu/FeaturedProductsSecti
 import { CategorySelector } from "@/components/menu/CategorySelector";
 import { ProductsGrid } from "@/components/menu/ProductsGrid";
 
+const SELECTED_VENUE_KEY = 'selected_venue';
+
+const getStoredVenue = (): { id: string; name: string } | null => {
+  try {
+    const stored = localStorage.getItem(SELECTED_VENUE_KEY);
+    return stored ? JSON.parse(stored) : null;
+  } catch {
+    return null;
+  }
+};
+
 const Menu = () => {
   const navigate = useNavigate();
-  const [selectedVenue, setSelectedVenue] = React.useState<string | null>(null);
-  const [selectedVenueName, setSelectedVenueName] = React.useState<string>('');
+  const storedVenue = getStoredVenue();
+  const [selectedVenue, setSelectedVenue] = React.useState<string | null>(storedVenue?.id || null);
+  const [selectedVenueName, setSelectedVenueName] = React.useState<string>(storedVenue?.name || '');
   
   const { user } = useAuth();
   const { cart, addToCart, removeFromCart, getCartItemQuantity, cartTotal, cartItemCount, deleteFromCart } = useEnhancedCart({
@@ -44,10 +56,19 @@ const Menu = () => {
   const handleVenueSelect = (venueId: string, venueName: string) => {
     setSelectedVenue(venueId);
     setSelectedVenueName(venueName);
+    
+    // Persist to localStorage
+    localStorage.setItem(SELECTED_VENUE_KEY, JSON.stringify({ id: venueId, name: venueName }));
   };
 
   const handleClearCart = () => {
     cart.forEach(item => deleteFromCart(item.product.id));
+  };
+
+  const clearVenueSelection = () => {
+    setSelectedVenue(null);
+    setSelectedVenueName('');
+    localStorage.removeItem(SELECTED_VENUE_KEY);
   };
 
   if (loading) {
