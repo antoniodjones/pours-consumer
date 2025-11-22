@@ -99,14 +99,16 @@ const Menu = () => {
       <div className="max-w-7xl mx-auto px-4 py-8">
         <MenuHero />
 
-        {showVenueSearch && (
+        <div className={`transition-all duration-300 overflow-hidden ${
+          showVenueSearch ? 'animate-fade-in max-h-[2000px] opacity-100' : 'max-h-0 opacity-0'
+        }`}>
           <VenueSearch 
             onVenueSelect={handleVenueSelect}
             selectedVenueId={selectedVenue}
             cartItemCount={cartItemCount}
             onClearCart={handleClearCart}
           />
-        )}
+        </div>
 
         {selectedVenue && selectedVenueName && (
           <div className="mb-8 text-center">
