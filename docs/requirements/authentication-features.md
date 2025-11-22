@@ -1,9 +1,9 @@
 # Authentication Features - Product Requirements
 
-**Document Version:** 1.0  
+**Document Version:** 2.0  
 **Last Updated:** 2025-11-22  
-**Epic:** EPIC-1: Core Authentication & User Management  
-**Status:** ✅ Implemented  
+**Epic:** CNS-0001: Core Authentication & User Management  
+**Status:** 🟡 Partially Implemented (Core features complete, enhancements planned)  
 **Priority:** P0 - Critical
 
 ---
@@ -846,24 +846,722 @@ supabase.auth.onAuthStateChange((event, session) => {
 
 ---
 
-## Open Issues & Future Enhancements
+## Planned Enhancements (Not Yet Implemented)
 
-### Planned Enhancements
-1. **US-AUTH.8**: Passkey Authentication (WebAuthn)
-2. **US-AUTH.9**: SMS/Phone Number OTP Authentication
-3. **US-AUTH.10**: Social OAuth (Google, Apple, Facebook)
-4. **US-AUTH.11**: Multi-Factor Authentication (2FA)
-5. **US-AUTH.12**: Biometric Authentication (Touch ID, Face ID)
-6. **US-AUTH.13**: Account Linking (merge demo and real accounts)
-7. **US-AUTH.14**: Authentication Analytics Dashboard
-8. **US-AUTH.15**: Suspicious Login Detection
+---
 
-### Known Limitations
+### US-AUTH.11: Passkey Authentication
+
+**Implementation Status:** ❌ NOT IMPLEMENTED  
+**As a** user  
+**I want to** use passkey (WebAuthn) authentication for sign-in  
+**So that** I can securely authenticate using biometric sensors or security keys without passwords
+
+#### Story Points: 13
+#### Priority: P2 - Medium
+
+#### Background
+Passkeys leverage WebAuthn standard for secure, phishing-resistant authentication using device biometrics (fingerprint, Face ID) or hardware security keys. This provides the highest level of security while maintaining excellent user experience.
+
+#### Value Proposition
+- Phishing-resistant authentication
+- No passwords to remember or manage
+- Fast biometric authentication
+- Cross-device passkey syncing (via platform providers)
+- Industry-standard security (FIDO2/WebAuthn)
+
+#### Acceptance Criteria
+
+**Scenario 1: Register Passkey During Sign-Up**
+```gherkin
+Given I am completing user registration
+And my device supports WebAuthn
+When I reach the "Setup Security" step
+And I click "Register Passkey"
+Then my browser should prompt for biometric authentication
+When I authenticate with my fingerprint or Face ID
+Then a passkey should be registered to my account
+And I should see a confirmation "Passkey registered successfully"
+And I should be able to use this passkey for future sign-ins
+```
+
+**Scenario 2: Sign In with Passkey**
+```gherkin
+Given I have a passkey registered for my account
+And I am on the sign-in page
+When I enter my email "user@example.com"
+And I click "Sign In with Passkey"
+Then my browser should prompt for biometric authentication
+When I authenticate with my fingerprint or Face ID
+Then I should be signed in immediately
+And I should be redirected to the home page
+And no OTP code should be required
+```
+
+**Scenario 3: Fallback to OTP When Passkey Unavailable**
+```gherkin
+Given I have a passkey registered
+And I am on a device without my passkey
+When I attempt to sign in with my email
+Then I should see an option to "Use Email Code Instead"
+When I click "Use Email Code Instead"
+Then the standard OTP flow should be available
+And I should be able to sign in with an email verification code
+```
+
+**Scenario 4: Manage Multiple Passkeys**
+```gherkin
+Given I am signed in to my account
+And I navigate to "Security Settings"
+When I view my registered passkeys
+Then I should see a list of all registered passkeys with:
+  | Field | Example |
+  | Device Name | "iPhone 15 Pro" |
+  | Registration Date | "Nov 15, 2024" |
+  | Last Used | "2 hours ago" |
+When I click "Add New Passkey"
+Then I should be able to register a passkey for another device
+When I click "Remove" on a passkey
+Then that passkey should be revoked
+And I should no longer be able to use it for authentication
+```
+
+**Scenario 5: Device Does Not Support Passkeys**
+```gherkin
+Given I am on a device that does not support WebAuthn
+When I view authentication options
+Then the passkey option should not be displayed
+And I should only see email/OTP authentication options
+```
+
+#### Technical Requirements
+
+**Frontend:**
+- WebAuthn API integration (`navigator.credentials.create()`, `navigator.credentials.get()`)
+- Passkey registration flow in Security Settings
+- Passkey management UI
+- Browser compatibility detection
+
+**Backend:**
+- Database table for storing passkey credentials (challenge, public key, counter)
+- Edge Function: `register-passkey` - Handles credential registration
+- Edge Function: `authenticate-passkey` - Verifies passkey authentication
+- Supabase Auth integration for session creation after passkey verification
+
+**Security:**
+- Attestation verification for passkey registration
+- Challenge-response protocol for authentication
+- Counter verification to prevent replay attacks
+- Credential public key storage (never store private keys)
+
+---
+
+### US-AUTH.12: SMS/Phone OTP Authentication
+
+**Implementation Status:** ❌ NOT IMPLEMENTED  
+**As a** user  
+**I want to** sign in using my phone number and receive OTP codes via SMS  
+**So that** I can authenticate quickly using my mobile device
+
+#### Story Points: 8
+#### Priority: P2 - Medium
+
+#### Background
+SMS-based OTP authentication provides an alternative to email, particularly useful for users who prefer mobile-first experiences or may not have reliable email access.
+
+#### Value Proposition
+- Mobile-first authentication option
+- Faster delivery than email (typically 5-10 seconds)
+- Familiar authentication method
+- International phone number support
+- Reduces email dependency
+
+#### Acceptance Criteria
+
+**Scenario 1: Register with Phone Number**
+```gherkin
+Given I am on the registration page
+When I select "Sign Up with Phone"
+And I enter my phone number "+1 (555) 123-4567"
+And I complete the registration form
+And I click "Send Verification Code"
+Then I should receive a 6-digit OTP code via SMS within 10 seconds
+And I should see the OTP input form
+When I enter the correct SMS code
+Then my account should be created
+And my phone number should be verified
+```
+
+**Scenario 2: Sign In with Phone Number**
+```gherkin
+Given I have an account registered with phone number "+1 (555) 123-4567"
+And I am on the sign-in page
+When I select "Sign In with Phone"
+And I enter my phone number
+And I click "Send Code"
+Then I should receive a 6-digit SMS code within 10 seconds
+When I enter the correct code
+Then I should be signed in to my account
+```
+
+**Scenario 3: International Phone Number Support**
+```gherkin
+Given I am registering with an international phone number
+When I select my country code from the dropdown
+And I enter my phone number "20 1234567890" (Egypt)
+Then the phone number should be formatted according to country rules
+And the SMS should be sent to the correct international number
+And I should receive the SMS code successfully
+```
+
+**Scenario 4: Phone Number Already Registered**
+```gherkin
+Given an account exists with phone number "+1 (555) 123-4567"
+When I attempt to register with the same phone number
+And I verify the SMS code
+Then I should see an error "This phone number is already registered"
+And I should be prompted to sign in instead
+```
+
+**Scenario 5: SMS Delivery Failure**
+```gherkin
+Given I request an SMS code
+And the SMS delivery fails
+Then I should see an error message "Unable to send SMS. Please try again or use email instead."
+And I should have the option to switch to email authentication
+```
+
+#### Technical Requirements
+
+**Frontend:**
+- Phone number input component with country code selector
+- Phone number formatting and validation
+- SMS code input (6-digit)
+- Switch between email and phone authentication
+
+**Backend:**
+- Twilio SMS API integration
+- Edge Function: `send-sms-otp` - Sends SMS codes
+- Edge Function: `verify-sms-otp` - Verifies SMS codes
+- Database: Add `phone_number` field to profiles table
+- Database: Add SMS codes to `otp_codes` table with type 'sms'
+
+**Security:**
+- Rate limiting: Max 3 SMS per phone number per hour
+- Phone number verification before account linking
+- Prevent SMS pumping attacks
+- Store phone numbers in E.164 format
+
+**Cost Considerations:**
+- SMS delivery costs per message
+- International SMS pricing varies by country
+- Implement SMS delivery monitoring and alerts
+
+---
+
+### US-AUTH.13: Social OAuth Authentication
+
+**Implementation Status:** ❌ NOT IMPLEMENTED  
+**As a** user  
+**I want to** sign in using my social media accounts (Google, Apple, Facebook)  
+**So that** I can quickly register and sign in without creating a new password
+
+#### Story Points: 13
+#### Priority: P2 - Medium
+
+#### Background
+Social OAuth authentication reduces friction by allowing users to leverage existing trusted accounts. This is particularly effective for increasing conversion rates during onboarding.
+
+#### Value Proposition
+- Frictionless registration (no form filling)
+- Trusted authentication providers
+- Auto-populated profile data
+- Single sign-on experience
+- Higher conversion rates
+
+#### Acceptance Criteria
+
+**Scenario 1: Sign Up with Google**
+```gherkin
+Given I am on the registration page
+When I click "Continue with Google"
+Then I should be redirected to Google's OAuth consent screen
+When I select my Google account and grant permissions
+Then I should be redirected back to the Pours Consumer app
+And a new account should be created with my Google email
+And my profile should be populated with:
+  | Field | Source |
+  | Email | Google account email |
+  | First Name | Google account first name |
+  | Last Name | Google account last name |
+  | Avatar | Google profile picture |
+And I should be automatically signed in
+And I should be redirected to the home page
+```
+
+**Scenario 2: Sign In with Existing Apple Account**
+```gherkin
+Given I have previously registered using "Sign in with Apple"
+And I am on the sign-in page
+When I click "Continue with Apple"
+Then I should be redirected to Apple's authentication page
+When I authenticate with Face ID or Apple ID password
+Then I should be signed in to my existing account
+And I should be redirected to the home page
+```
+
+**Scenario 3: Link Social Account to Existing Email Account**
+```gherkin
+Given I have an existing account with email "user@example.com"
+And I am signed in
+When I navigate to "Account Settings" > "Connected Accounts"
+And I click "Connect Google Account"
+Then I should authenticate with Google
+And my Google account should be linked to my Pours Consumer account
+And I should see "Google account connected successfully"
+And I should be able to sign in using Google in the future
+```
+
+**Scenario 4: OAuth Provider Email Already Registered**
+```gherkin
+Given an account exists with email "user@example.com"
+And this account was created with email/OTP authentication
+When I attempt to sign up with Google using the same email
+Then the system should recognize the existing account
+And I should be prompted: "An account with this email already exists. Would you like to link your Google account?"
+When I confirm linking
+Then my Google account should be linked to the existing account
+And I should be signed in
+```
+
+**Scenario 5: Handle OAuth Cancellation**
+```gherkin
+Given I am on the sign-in page
+When I click "Continue with Facebook"
+And I am redirected to Facebook
+And I click "Cancel" on Facebook's consent screen
+Then I should be redirected back to the sign-in page
+And I should see a message "Sign-in cancelled"
+And I should be able to try again or use a different method
+```
+
+**Scenario 6: Sign In with Apple "Hide My Email"**
+```gherkin
+Given I am signing up with Apple
+When I choose "Hide My Email" on Apple's consent screen
+Then Apple should generate a proxy email (e.g., "abc123@privaterelay.appleid.com")
+And my account should be created with the proxy email
+And emails sent to the proxy should be forwarded to my real email
+And I should be able to sign in normally
+```
+
+#### Technical Requirements
+
+**Frontend:**
+- OAuth provider buttons (Google, Apple, Facebook)
+- Redirect handling after OAuth flow
+- Account linking UI in settings
+- Error handling for OAuth failures
+
+**Backend:**
+- Supabase Auth OAuth configuration for each provider
+- OAuth app registration with Google, Apple, Facebook
+- Callback URL handling
+- Account linking logic
+- Edge Function: `link-oauth-account` - Links social accounts
+
+**OAuth Provider Setup:**
+- **Google**: Google Cloud Console OAuth 2.0 Client
+- **Apple**: Apple Developer Sign in with Apple configuration
+- **Facebook**: Facebook App OAuth settings
+
+**Database:**
+- Store OAuth provider and provider user ID in auth.identities
+- Supabase Auth handles multiple identities per user
+
+**Security:**
+- PKCE flow for OAuth 2.0
+- Verify OAuth state parameter
+- Validate OAuth tokens server-side
+- Secure storage of OAuth tokens
+
+---
+
+### US-AUTH.14: Unified Authentication UI
+
+**Implementation Status:** ❌ NOT IMPLEMENTED  
+**As a** user  
+**I want to** see all authentication options in a single, intuitive interface  
+**So that** I can easily choose my preferred sign-in method
+
+#### Story Points: 5
+#### Priority: P3 - Low
+
+#### Background
+With multiple authentication methods (email OTP, passkeys, SMS, OAuth), a unified UI is essential to prevent user confusion and provide a cohesive experience.
+
+#### Value Proposition
+- Reduced cognitive load
+- Clear authentication method selection
+- Consistent user experience
+- Easy method switching
+- Professional appearance
+
+#### Acceptance Criteria
+
+**Scenario 1: View All Authentication Options**
+```gherkin
+Given I am on the sign-in page
+Then I should see the following authentication options clearly displayed:
+  | Option | Visual |
+  | Email OTP | Email icon + "Continue with Email" |
+  | Phone SMS | Phone icon + "Continue with Phone" |
+  | Passkey | Key icon + "Sign in with Passkey" |
+  | Google OAuth | Google logo + "Continue with Google" |
+  | Apple OAuth | Apple logo + "Continue with Apple" |
+  | Facebook OAuth | Facebook logo + "Continue with Facebook" |
+And each option should be equally prominent
+And the most popular method should be suggested but not forced
+```
+
+**Scenario 2: Switch Authentication Methods**
+```gherkin
+Given I have started sign-in with "Email OTP"
+And I am on the OTP verification screen
+When I click "Use a different method"
+Then I should return to the authentication method selection screen
+And I should be able to choose any other method
+And my previous OTP request should be cancelled
+```
+
+**Scenario 3: Remember Last Used Method**
+```gherkin
+Given I last signed in using "Google OAuth"
+When I return to the sign-in page
+Then "Google OAuth" should be visually highlighted as "Last used"
+But I should still have easy access to all other methods
+```
+
+**Scenario 4: Responsive Layout**
+```gherkin
+Given I am viewing the authentication page on mobile
+Then all authentication options should be displayed vertically
+And each button should be easily tappable (min 44px height)
+And the layout should adapt to small screens gracefully
+```
+
+**Scenario 5: Accessibility**
+```gherkin
+Given I am using a screen reader
+When I navigate the authentication page
+Then each authentication option should be announced clearly
+And I should be able to navigate using keyboard only
+And focus states should be clearly visible
+And all buttons should have descriptive aria-labels
+```
+
+#### Technical Requirements
+
+**Frontend:**
+- Unified authentication page component
+- Authentication method selector
+- Responsive design for all screen sizes
+- Accessibility features (WCAG 2.1 AA)
+- Loading states for each method
+- Error message handling
+
+**Design System:**
+- Consistent button styles for all OAuth providers
+- Clear visual hierarchy
+- Brand color integration
+- Icon set for all authentication methods
+
+**User Experience:**
+- Progressive disclosure (show method details on hover/focus)
+- Clear call-to-action
+- "Continue as Guest" option remains visible
+- Help text for each method
+
+---
+
+### US-AUTH.15: Account Linking and Management
+
+**Implementation Status:** ❌ NOT IMPLEMENTED  
+**As a** user  
+**I want to** link multiple authentication methods to my account  
+**So that** I can sign in using whichever method is most convenient
+
+#### Story Points: 8
+#### Priority: P3 - Low
+
+#### Background
+Users often have multiple preferred authentication methods depending on context (e.g., passkey on personal device, SMS when traveling, OAuth at work). Account linking enables flexibility while maintaining single user identity.
+
+#### Value Proposition
+- Authentication flexibility
+- Seamless multi-device experience
+- Account recovery options
+- Reduced account duplication
+- Enhanced security (multiple factors)
+
+#### Acceptance Criteria
+
+**Scenario 1: Link Additional Authentication Methods**
+```gherkin
+Given I am signed in with email "user@example.com"
+And I navigate to "Security Settings" > "Sign-In Methods"
+Then I should see my current authentication methods:
+  | Method | Status |
+  | Email OTP | Active (Primary) |
+When I click "Add Sign-In Method"
+Then I should see available methods to add:
+  - Phone Number
+  - Passkey
+  - Google Account
+  - Apple Account
+  - Facebook Account
+When I select "Phone Number" and complete verification
+Then my phone should be added as an alternative sign-in method
+And I should be able to use either email or phone to sign in
+```
+
+**Scenario 2: Set Primary Authentication Method**
+```gherkin
+Given I have multiple sign-in methods linked:
+  - Email (Primary)
+  - Phone
+  - Google
+When I click "Set as Primary" next to "Phone"
+Then phone should become my primary authentication method
+And I should see a confirmation "Primary sign-in method updated"
+And the sign-in page should remember this preference
+```
+
+**Scenario 3: Remove Linked Authentication Method**
+```gherkin
+Given I have 3 sign-in methods linked
+When I click "Remove" next to one of my secondary methods
+Then I should see a confirmation dialog "Are you sure? You'll no longer be able to sign in using this method."
+When I confirm removal
+Then that method should be unlinked from my account
+But I should not be able to remove my last remaining method
+And I should see an error if I try: "You must have at least one sign-in method"
+```
+
+**Scenario 4: Merge Duplicate Accounts**
+```gherkin
+Given I have two accounts:
+  - Account A: registered with "user@example.com" (email)
+  - Account B: registered with Google OAuth using "user@example.com"
+And I sign in to Account A
+When I attempt to link my Google account
+Then the system should detect Account B with the same email
+And I should see: "We found another account with this Google email. Would you like to merge the accounts?"
+When I confirm the merge
+Then all data from Account B should be migrated to Account A
+And Account B should be deactivated
+And I should be able to sign in with either email or Google
+```
+
+**Scenario 5: Account Linking Email Verification**
+```gherkin
+Given I am signed in with a phone number
+When I attempt to link an email address
+Then I should receive a verification email
+And I should need to verify the email before it's linked
+And unverified emails should be marked as "Pending Verification"
+When I verify the email
+Then it should become an active sign-in method
+```
+
+#### Technical Requirements
+
+**Frontend:**
+- Account linking UI in Security Settings
+- Method management interface (add, remove, set primary)
+- Verification flows for each method type
+- Confirmation dialogs for critical actions
+
+**Backend:**
+- Database table: `user_auth_methods` - Tracks all linked authentication methods
+- Edge Function: `link-auth-method` - Links new methods
+- Edge Function: `unlink-auth-method` - Removes linked methods
+- Edge Function: `merge-accounts` - Handles account merging
+- Account merge logic (data migration, rewards consolidation)
+
+**Database Schema:**
+```sql
+CREATE TABLE user_auth_methods (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  user_id UUID REFERENCES auth.users NOT NULL,
+  method_type TEXT NOT NULL, -- 'email', 'phone', 'passkey', 'oauth_google', etc.
+  identifier TEXT NOT NULL, -- email, phone number, oauth provider ID
+  is_primary BOOLEAN DEFAULT false,
+  is_verified BOOLEAN DEFAULT false,
+  linked_at TIMESTAMP WITH TIME ZONE DEFAULT now(),
+  last_used_at TIMESTAMP WITH TIME ZONE
+);
+```
+
+---
+
+### US-AUTH.16: Authentication Analytics and Monitoring
+
+**Implementation Status:** ❌ NOT IMPLEMENTED  
+**As an** administrator  
+**I want to** monitor authentication metrics and user behavior  
+**So that** I can optimize authentication flows and detect security issues
+
+#### Story Points: 5
+#### Priority: P3 - Low
+
+#### Background
+Authentication analytics provide insights into user behavior, conversion rates, security threats, and system performance. This data is critical for optimization and security monitoring.
+
+#### Value Proposition
+- Data-driven authentication improvements
+- Security threat detection
+- Conversion funnel optimization
+- Performance monitoring
+- User behavior insights
+
+#### Acceptance Criteria
+
+**Scenario 1: View Authentication Dashboard**
+```gherkin
+Given I am an administrator
+When I navigate to the Authentication Analytics dashboard
+Then I should see the following metrics for the selected time period:
+  | Metric | Description |
+  | Total Sign-Ins | Number of successful authentications |
+  | New Registrations | Number of new accounts created |
+  | Authentication Method Breakdown | % using email, phone, passkey, OAuth |
+  | Success Rate | % of authentication attempts that succeed |
+  | Average Time to Complete | Time from start to successful auth |
+  | Failed Attempts | Number and reasons for failures |
+  | OTP Delivery Time | Average email/SMS delivery time |
+And I should be able to filter by date range, authentication method, and user segment
+```
+
+**Scenario 2: Monitor Failed Authentication Attempts**
+```gherkin
+Given I am viewing the analytics dashboard
+When I navigate to "Failed Attempts"
+Then I should see a breakdown of failure reasons:
+  - Invalid OTP code (%)
+  - Expired OTP code (%)
+  - Rate limit exceeded (%)
+  - Invalid email format (%)
+  - Cancelled OAuth flow (%)
+And I should see trends over time
+And I should receive alerts for unusual spikes in failures
+```
+
+**Scenario 3: Track Authentication Method Adoption**
+```gherkin
+Given I am viewing authentication analytics
+When I view "Method Adoption Trends"
+Then I should see a timeline showing:
+  - New users by authentication method
+  - Existing users adopting new methods (e.g., passkeys)
+  - Method switching patterns
+And I should be able to compare adoption rates before and after UI changes
+```
+
+**Scenario 4: Security Monitoring**
+```gherkin
+Given I am viewing security analytics
+Then I should see:
+  - Suspicious sign-in attempts (unusual locations, devices)
+  - Accounts with multiple failed authentications
+  - Rate limiting triggers
+  - OTP code reuse attempts
+  - Account takeover attempts
+And I should be able to export security logs for investigation
+And I should receive real-time alerts for critical security events
+```
+
+**Scenario 5: Conversion Funnel Analysis**
+```gherkin
+Given I am viewing registration funnel analytics
+Then I should see conversion rates for each step:
+  1. Started registration (100%)
+  2. Completed form (%)
+  3. Received OTP (%)
+  4. Verified OTP (%)
+  5. Account created (%)
+And I should see drop-off points
+And I should be able to A/B test authentication flows
+And I should see recommendations for improvement
+```
+
+#### Technical Requirements
+
+**Frontend:**
+- Analytics dashboard (admin-only)
+- Charts and visualizations
+- Date range filtering
+- Export functionality
+
+**Backend:**
+- Database table: `auth_events` - Logs all authentication events
+- Database table: `auth_analytics` - Aggregated metrics
+- Edge Function: `log-auth-event` - Records auth events
+- Edge Function: `generate-auth-report` - Creates analytics reports
+- Scheduled job: Aggregate daily auth metrics
+
+**Database Schema:**
+```sql
+CREATE TABLE auth_events (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  user_id UUID REFERENCES auth.users,
+  event_type TEXT NOT NULL, -- 'registration_started', 'otp_sent', 'otp_verified', 'sign_in_success', 'sign_in_failed'
+  auth_method TEXT NOT NULL, -- 'email_otp', 'sms_otp', 'passkey', 'oauth_google', etc.
+  success BOOLEAN NOT NULL,
+  failure_reason TEXT,
+  ip_address TEXT,
+  user_agent TEXT,
+  device_type TEXT,
+  location_country TEXT,
+  location_city TEXT,
+  duration_ms INTEGER,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT now()
+);
+
+CREATE TABLE auth_analytics (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  date DATE NOT NULL,
+  metric_name TEXT NOT NULL,
+  metric_value NUMERIC NOT NULL,
+  segment TEXT, -- 'all', 'email_otp', 'mobile', etc.
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT now()
+);
+```
+
+**Analytics Metrics to Track:**
+- Registration started count
+- Registration completed count
+- Registration abandonment rate
+- OTP delivery time (p50, p95, p99)
+- OTP verification success rate
+- Sign-in success rate by method
+- Average authentication time
+- Failed attempt rate
+- Account linking rate
+- Method switching frequency
+
+---
+
+## Known Limitations of Current Implementation
+
 - Demo sessions don't sync with database
-- Email validation service not yet integrated
 - No SMS-based authentication yet
 - Limited account recovery options
 - No OAuth provider integration yet
+- No passkey/WebAuthn support yet
+- No unified authentication UI
+- No account linking or merging capability
+- Limited authentication analytics
 
 ---
 
@@ -872,6 +1570,7 @@ supabase.auth.onAuthStateChange((event, session) => {
 | Version | Date | Author | Changes |
 |---------|------|--------|---------|
 | 1.0 | 2025-11-22 | Product Team | Initial documentation based on implemented authentication system |
+| 2.0 | 2025-11-22 | Product Team | Added planned enhancement user stories: US-AUTH.11 (Passkey), US-AUTH.12 (SMS OTP), US-AUTH.13 (Social OAuth), US-AUTH.14 (Unified UI), US-AUTH.15 (Account Linking), US-AUTH.16 (Analytics) with full Gherkin scenarios and implementation status |
 
 ---
 

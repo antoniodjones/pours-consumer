@@ -79,12 +79,12 @@
 - ✅ US-AUTH.7: Session Persistence and Management (5 pts) - DOCUMENTED
 
 **Planned Enhancements:**
-- 📋 US-AUTH.11: Passkey Authentication (13 pts) - NEEDS DOCUMENTATION
-- 📋 US-AUTH.12: SMS/Phone OTP Authentication (8 pts) - NEEDS DOCUMENTATION
-- 📋 US-AUTH.13: Social OAuth (Google, Apple, Facebook) (13 pts) - NEEDS DOCUMENTATION
-- 📋 US-AUTH.14: Unified Authentication UI (5 pts) - NEEDS DOCUMENTATION
-- 📋 US-AUTH.15: Account Linking and Management (8 pts) - NEEDS DOCUMENTATION
-- 📋 US-AUTH.16: Authentication Analytics and Monitoring (5 pts) - NEEDS DOCUMENTATION
+- ✅ US-AUTH.11: Passkey Authentication (13 pts) - DOCUMENTED (NOT IMPLEMENTED)
+- ✅ US-AUTH.12: SMS/Phone OTP Authentication (8 pts) - DOCUMENTED (NOT IMPLEMENTED)
+- ✅ US-AUTH.13: Social OAuth (Google, Apple, Facebook) (13 pts) - DOCUMENTED (NOT IMPLEMENTED)
+- ✅ US-AUTH.14: Unified Authentication UI (5 pts) - DOCUMENTED (NOT IMPLEMENTED)
+- ✅ US-AUTH.15: Account Linking and Management (8 pts) - DOCUMENTED (NOT IMPLEMENTED)
+- ✅ US-AUTH.16: Authentication Analytics and Monitoring (5 pts) - DOCUMENTED (NOT IMPLEMENTED)
 
 ---
 
