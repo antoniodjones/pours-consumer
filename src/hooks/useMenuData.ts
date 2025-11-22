@@ -22,7 +22,7 @@ interface Product {
   category_id: string;
 }
 
-export const useMenuData = () => {
+export const useMenuData = (venueId?: string | null) => {
   const [categories, setCategories] = useState<ProductCategory[]>([]);
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
@@ -38,11 +38,17 @@ export const useMenuData = () => {
 
       if (categoriesError) throw categoriesError;
 
-      // Fetch products
-      const { data: productsData, error: productsError } = await supabase
+      // Fetch products - filter by venue if venueId is provided
+      let productsQuery = supabase
         .from('products')
         .select('*')
         .eq('is_available', true);
+      
+      if (venueId) {
+        productsQuery = productsQuery.eq('venue_id', venueId);
+      }
+
+      const { data: productsData, error: productsError } = await productsQuery;
 
       if (productsError) throw productsError;
 
@@ -62,7 +68,7 @@ export const useMenuData = () => {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [venueId]);
 
   return {
     categories,
