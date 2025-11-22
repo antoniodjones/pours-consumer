@@ -272,9 +272,9 @@
 
 #### Epic 6.1.1: Biometric Settings
 - **Epic ID:** EPIC-PROFILE-006
-- **Status:** Planned (Requires Capacitor)
+- **Status:** Planned (Requires React Native)
 - **Priority:** Medium
-- **Dependencies:** Capacitor, Native Mobile APIs
+- **Dependencies:** React Native, Native Mobile APIs
 
 **User Stories:**
 - US-BIOMETRIC.1: Enable Biometric Authentication (8 points)
@@ -410,7 +410,7 @@
    - Security alerts
 
 4. **Native Mobile Features** (EPIC-PROFILE-006)
-   - Biometric authentication (requires Capacitor)
+   - Biometric authentication (requires React Native)
    - Health monitoring integration
 
 ---

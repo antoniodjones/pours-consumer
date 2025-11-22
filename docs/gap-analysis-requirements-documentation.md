@@ -106,7 +106,7 @@ These epics have complete product requirements documentation with user stories i
   - US-BIOMETRIC.5: Track Biometric Readings
   - US-BIOMETRIC.6: View Biometric Dashboard
   - US-BIOMETRIC.7: Integrate Health Kit / Google Fit
-- **Gap**: None - Fully documented, requires Capacitor for implementation
+- **Gap**: None - Fully documented, requires React Native for implementation
 
 #### 7. EPIC-PROFILE-007: Password & Security Management
 - **Status**: Planned 📋
