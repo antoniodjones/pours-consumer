@@ -225,6 +225,11 @@ export const VenueSearch = ({ onVenueSelect, selectedVenueId }: VenueSearchProps
                     onClick={(e) => {
                       e.stopPropagation();
                       onVenueSelect(venue.id, venue.name);
+                      toast({
+                        title: `Thank you for choosing ${venue.name}`,
+                        description: "Please proceed to peruse and order what you'd like.",
+                        duration: 4000,
+                      });
                     }}
                     className="w-full mb-3 bg-purple-500 hover:bg-purple-600 text-white"
                     size="sm"

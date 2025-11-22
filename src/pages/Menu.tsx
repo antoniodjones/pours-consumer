@@ -28,7 +28,7 @@ const Menu = () => {
     selectedVenueId: selectedVenue,
   });
   
-  const { categories, products, loading } = useMenuData();
+  const { categories, products, loading } = useMenuData(selectedVenue);
   const { showAgeVerification, handleAgeVerified } = useAgeVerification();
   const { selectedCategory, setSelectedCategory, filteredProducts, featuredProducts } = useCategoryFilter(categories, products);
   const { clearAbandonedCartTimers } = useAbandonedCart({ 
@@ -74,6 +74,14 @@ const Menu = () => {
           onVenueSelect={handleVenueSelect}
           selectedVenueId={selectedVenue}
         />
+
+        {selectedVenue && selectedVenueName && (
+          <div className="mb-8 text-center">
+            <h2 className="text-3xl font-bold text-white">
+              Menu of {selectedVenueName}
+            </h2>
+          </div>
+        )}
 
         <FeaturedProductsSection
           featuredProducts={featuredProducts}
