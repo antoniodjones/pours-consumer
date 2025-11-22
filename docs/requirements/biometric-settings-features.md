@@ -6,13 +6,13 @@
 - **Epic**: EPIC-PROFILE-006 - Biometric Settings
 - **Related Components**: `BiometricSettings`, `BiometricSetup`, `BiometricInput`, `SobrietyDashboard`
 - **Database Tables**: `user_biometrics`, `biometric_readings`, `drinking_sessions`, `sobriety_alerts`
-- **Native Requirements**: Capacitor for mobile biometric APIs
+- **Native Requirements**: React Native for mobile biometric APIs
 
 ---
 
 ## Executive Summary
 
-The Biometric Settings section enables Pours Consumer users to configure biometric authentication for secure access and set up biometric monitoring for responsible alcohol consumption tracking. This dual-purpose feature enhances security through fingerprint/Face ID authentication while promoting user safety through real-time health monitoring during drinking sessions. The feature requires native mobile capabilities through Capacitor for full biometric sensor access.
+The Biometric Settings section enables Pours Consumer users to configure biometric authentication for secure access and set up biometric monitoring for responsible alcohol consumption tracking. This dual-purpose feature enhances security through fingerprint/Face ID authentication while promoting user safety through real-time health monitoring during drinking sessions. The feature requires native mobile capabilities through React Native for full biometric sensor access.
 
 ---
 
@@ -49,16 +49,15 @@ The Biometric Settings section enables Pours Consumer users to configure biometr
 
 **IMPORTANT**: Biometric features require native mobile capabilities:
 
-1. **Capacitor Setup Required**:
-   - Install @capacitor/core, @capacitor/cli, @capacitor/ios, @capacitor/android
-   - Initialize Capacitor with `npx cap init`
-   - Configure native platforms with `npx cap add ios` and `npx cap add android`
-   - Sync after changes with `npx cap sync`
+1. **React Native Setup Required**:
+   - Initialize React Native project for iOS and Android
+   - Configure native platforms with Xcode (iOS) and Android Studio (Android)
+   - Build and run on simulators/devices
 
-2. **Biometric Plugins**:
-   - [@capacitor/biometric-auth](https://capacitorjs.com/docs/apis/biometric-auth) for authentication
-   - [capacitor-health-kit](https://github.com/Ad-Scientiam/capacitor-health-kit) for iOS health data
-   - [capacitor-google-fit](https://github.com/perfood/capacitor-google-fit) for Android health data
+2. **React Native Libraries**:
+   - [react-native-biometrics](https://github.com/SelfLender/react-native-biometrics) for authentication
+   - [react-native-health](https://github.com/agencyenterprise/react-native-health) for iOS health data
+   - [react-native-google-fit](https://github.com/StasDoskalenko/react-native-google-fit) for Android health data
 
 3. **Platform Requirements**:
    - iOS: Face ID/Touch ID (iOS 11+), HealthKit access
@@ -78,7 +77,7 @@ The Biometric Settings section enables Pours Consumer users to configure biometr
 
 **Priority**: High  
 **Story Points**: 8  
-**Dependencies**: Capacitor, @capacitor/biometric-auth plugin, device biometric hardware
+**Dependencies**: React Native, react-native-biometrics library, device biometric hardware
 
 #### Acceptance Criteria
 
@@ -161,9 +160,9 @@ Feature: Enable Biometric Authentication
 
 #### Technical Requirements
 
-**Capacitor Biometric Auth Integration**:
+**React Native Biometric Auth Integration**:
 ```typescript
-import { BiometricAuth } from '@capacitor/biometric-auth';
+import ReactNativeBiometrics from 'react-native-biometrics';
 
 // Check biometric availability
 const checkBiometricAvailability = async () => {
@@ -358,10 +357,14 @@ Feature: Manage Biometric Devices
 
 **Device Information Collection**:
 ```typescript
-import { Device } from '@capacitor/device';
+import DeviceInfo from 'react-native-device-info';
 
 const getDeviceInfo = async () => {
-  const info = await Device.getInfo();
+  const info = {
+    model: await DeviceInfo.getModel(),
+    platform: DeviceInfo.getSystemName(),
+    osVersion: DeviceInfo.getSystemVersion(),
+  };
   const id = await Device.getId();
   
   return {
@@ -725,7 +728,7 @@ Feature: Setup Biometric Health Monitoring
 
 **Health Data Integration (iOS)**:
 ```typescript
-import { HealthKit } from '@capacitor-community/health-kit';
+import AppleHealthKit from 'react-native-health';
 
 // Request HealthKit permissions
 const requestHealthPermissions = async () => {
@@ -799,7 +802,7 @@ const monitorHeartRate = async (sessionId: string, userId: string) => {
 
 **Health Data Integration (Android)**:
 ```typescript
-import { GoogleFit } from '@perfood/capacitor-google-fit';
+import GoogleFit from 'react-native-google-fit';
 
 // Request Google Fit permissions
 const requestFitPermissions = async () => {
@@ -1278,10 +1281,10 @@ class DrinkingSessionMonitor {
 - [Privacy Policy](../privacy-policy.md)
 - [Sobriety Monitoring Epic](../epics/sobriety-monitoring.md)
 
-### Capacitor Setup Guide
-- [Capacitor Documentation](https://capacitorjs.com/docs)
-- [Biometric Auth Plugin](https://capacitorjs.com/docs/apis/biometric-auth)
-- [Lovable Capacitor Guide](https://docs.lovable.dev/tips-tricks/capacitor)
+### React Native Setup Guide
+- [React Native Documentation](https://reactnative.dev/docs/getting-started)
+- [react-native-biometrics](https://github.com/SelfLender/react-native-biometrics)
+- [react-native-health](https://github.com/agencyenterprise/react-native-health)
 
 ### Change Log
 | Version | Date | Author | Changes |
@@ -1294,4 +1297,4 @@ class DrinkingSessionMonitor {
 **Last Review Date**: 2025-11-22  
 **Next Review Date**: 2026-02-22  
 
-**IMPORTANT NOTE**: This feature requires Capacitor setup for native mobile capabilities. Biometric authentication and health monitoring will only work on native iOS/Android apps, not in web browsers. See Capacitor setup instructions at: https://docs.lovable.dev/tips-tricks/capacitor
+**IMPORTANT NOTE**: This feature requires React Native for native mobile capabilities. Biometric authentication and health monitoring will only work on native iOS/Android apps built with React Native, not in web browsers.
