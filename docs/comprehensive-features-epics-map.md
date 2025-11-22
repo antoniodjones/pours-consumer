@@ -1,8 +1,9 @@
 # Pours+ Consumer App - Comprehensive Features & Epics Map
 
-**Document Version:** 2.0  
+**Document Version:** 3.0  
 **Last Updated:** 2025-11-22  
-**Application:** Pours Consumer (pours-consumer)
+**Application:** Pours Consumer (pours-consumer)  
+**Epic Naming Convention:** CNS-XXXX (Consumer)
 
 ---
 
@@ -17,7 +18,8 @@
 8. [Feature Area: Payment Processing](#8-feature-area-payment-processing)
 9. [Feature Area: Security & Compliance](#9-feature-area-security--compliance)
 10. [Feature Area: Business Operations](#10-feature-area-business-operations)
-11. [Summary Statistics](#summary-statistics)
+11. [Epic Master List](#epic-master-list)
+12. [Summary Statistics](#summary-statistics)
 
 **Legend:**
 - ✅ = Implemented & Documented
@@ -27,13 +29,38 @@
 
 ---
 
+## Epic Master List
+
+| Epic ID | Epic Name | Feature Area | Status | Doc Status |
+|---------|-----------|--------------|--------|------------|
+| CNS-0001 | Core Authentication & User Management | Authentication | Implemented | ✅ Complete |
+| CNS-0002 | Venue Search & Discovery | Venue Discovery | Implemented | 🟡 Partial |
+| CNS-0003 | Selected Venue Management | Venue Discovery | Implemented | ✅ Complete |
+| CNS-0004 | Category-Based Product Browsing | Product Discovery | Implemented | 🟡 Needs Docs |
+| CNS-0005 | Text-Based Product Search | Product Discovery | Planned | 📋 Complete |
+| CNS-0006 | Advanced Product Filtering | Product Discovery | Planned | 📋 Complete |
+| CNS-0007 | Product Sort Options | Product Discovery | Planned | 📋 Complete |
+| CNS-0008 | Shopping Cart Management | Shopping | Implemented | 🟡 Needs Docs |
+| CNS-0009 | Checkout Process | Shopping | Implemented | 🟡 Needs Docs |
+| CNS-0010 | Account Dashboard Analytics | Profile | Implemented | ✅ Complete |
+| CNS-0011 | Manage Profile | Profile | Implemented | ✅ Complete |
+| CNS-0012 | Order History Management | Profile | Implemented | ✅ Complete |
+| CNS-0013 | Manage Payments | Profile | Planned | 📋 Complete |
+| CNS-0014 | Password & Security Management | Profile | Planned | 📋 Complete |
+| CNS-0015 | Profile Rewards | Rewards | Implemented | ✅ Complete |
+| CNS-0016 | Biometric Settings | Health & Safety | Planned | 📋 Complete |
+| CNS-0017 | Sobriety Monitoring | Health & Safety | Implemented | 🟡 Needs Docs |
+| CNS-0018 | Real-Time Order Tracking | Order Management | Implemented | 🟡 Needs Docs |
+| CNS-0019 | Stripe Payment Integration | Payment | Planned | ❌ Needs Docs |
+| CNS-0020 | Privacy & Compliance | Compliance | Implemented | 🟡 Needs Docs |
+| CNS-0021 | Venue Partnership | Business Ops | Implemented | ❌ Needs Docs |
+| CNS-0022 | Age Verification | Business Ops | Implemented | ❌ Needs Docs |
+
+---
+
 ## 1. Feature Area: Authentication & User Management
 
-### Feature 1.1: Core Authentication
-**Description:** User registration, sign-in, and session management
-
-#### Epic 1.1.1: Core Authentication & User Management
-- **Epic ID:** EPIC-1
+### CNS-0001: Core Authentication & User Management
 - **Status:** Implemented
 - **Documentation Status:** ✅ Complete
 - **Documentation:** `docs/requirements/authentication-features.md`
@@ -63,11 +90,7 @@
 
 ## 2. Feature Area: Venue Discovery & Selection
 
-### Feature 2.1: Venue Search & Discovery
-**Description:** Finding and exploring nearby venues
-
-#### Epic 2.1.1: Venue Search & Discovery
-- **Epic ID:** EPIC-2
+### CNS-0002: Venue Search & Discovery
 - **Status:** Implemented
 - **Documentation Status:** 🟡 Partial (venue-selection-features.md exists but missing search stories)
 - **Priority:** P1 - High
@@ -80,8 +103,7 @@
 - 🟡 US-VS.3: Display Venue Information (3 pts) - NEEDS DOCUMENTATION
 - 🟡 US-VS.4: Venue List with Ratings (5 pts) - NEEDS DOCUMENTATION
 
-#### Epic 2.1.2: Selected Venue Management
-- **Epic ID:** EPIC-3
+### CNS-0003: Selected Venue Management
 - **Status:** Implemented
 - **Documentation Status:** ✅ Complete
 - **Documentation:** `docs/requirements/venue-selection-features.md`
@@ -99,11 +121,7 @@
 
 ## 3. Feature Area: Product Discovery & Ordering
 
-### Feature 3.1: Product Browsing
-**Description:** Category-based product navigation
-
-#### Epic 3.1.1: Category-Based Product Browsing
-- **Epic ID:** EPIC-4
+### CNS-0004: Category-Based Product Browsing
 - **Status:** Implemented
 - **Documentation Status:** 🟡 Needs Documentation
 - **Priority:** P1 - High
@@ -116,13 +134,9 @@
 - 🟡 US-BROWSE.3: Product Card Information Display (3 pts) - NEEDS DOCUMENTATION
 - 🟡 US-BROWSE.4: Product Detail View (5 pts) - NEEDS DOCUMENTATION
 
-### Feature 3.2: Product Search & Filtering
-**Description:** Advanced product discovery through search and filters
-
-#### Epic 3.2.1: Text-Based Product Search
-- **Epic ID:** EPIC-5
+### CNS-0005: Text-Based Product Search
 - **Status:** Planned
-- **Documentation Status:** ✅ Complete
+- **Documentation Status:** 📋 Complete
 - **Documentation:** `docs/requirements/product-search-features.md`
 - **Priority:** P1 - Must Have
 - **Target Release:** v1.2
@@ -131,10 +145,9 @@
 - 📋 US-PS.1: Search Products by Name (5 pts) - DOCUMENTED
 - 📋 US-PS.2: Search Products by Description (3 pts) - DOCUMENTED
 
-#### Epic 3.2.2: Advanced Filtering
-- **Epic ID:** EPIC-6
+### CNS-0006: Advanced Product Filtering
 - **Status:** Planned
-- **Documentation Status:** ✅ Complete
+- **Documentation Status:** 📋 Complete
 - **Documentation:** `docs/requirements/product-search-features.md`
 - **Priority:** P2 - Should Have
 - **Target Release:** v1.2
@@ -144,10 +157,9 @@
 - 📋 US-PS.4: Filter Products by Price Range (5 pts) - DOCUMENTED
 - 📋 US-PS.5: Filter Products by ABV (3 pts) - DOCUMENTED
 
-#### Epic 3.2.3: Sort Options
-- **Epic ID:** EPIC-7
+### CNS-0007: Product Sort Options
 - **Status:** Planned
-- **Documentation Status:** ✅ Complete
+- **Documentation Status:** 📋 Complete
 - **Documentation:** `docs/requirements/product-search-features.md`
 - **Priority:** P2 - Should Have
 - **Target Release:** v1.2
@@ -155,14 +167,10 @@
 **User Stories:**
 - 📋 US-PS.6: Sort Products (Price, Name, ABV) (3 pts) - DOCUMENTED
 
-### Feature 3.3: Shopping Cart & Checkout
-**Description:** Cart management and order placement
-
-#### Epic 3.3.1: Shopping Cart Management
-- **Epic ID:** EPIC-8
+### CNS-0008: Shopping Cart Management
 - **Status:** Implemented
 - **Documentation Status:** 🟡 Needs Documentation
-- **Priority:** P1 - High
+- **Priority:** P0 - Critical
 - **Components:** `src/components/CartSummary.tsx`, `src/components/CartIcon.tsx`, `src/hooks/useCart.ts`, `src/hooks/useEnhancedCart.ts`, `src/hooks/useAbandonedCart.ts`
 - **Database Tables:** `abandoned_carts`
 - **Edge Functions:** `send-abandoned-cart-email`, `send-abandoned-cart-reminders`
@@ -176,11 +184,10 @@
 - 🟡 US-CART.6: Abandoned Cart Recovery Email (8 pts) - NEEDS DOCUMENTATION
 - 🟡 US-CART.7: Cart Badge Notification Count (2 pts) - NEEDS DOCUMENTATION
 
-#### Epic 3.3.2: Checkout Process
-- **Epic ID:** EPIC-9
+### CNS-0009: Checkout Process
 - **Status:** Implemented
 - **Documentation Status:** 🟡 Needs Documentation
-- **Priority:** P1 - High
+- **Priority:** P0 - Critical
 - **Components:** `src/pages/Checkout.tsx`, `src/pages/CheckoutPage.tsx`, `src/components/GuestCheckoutForm.tsx`
 - **Database Tables:** `orders`, `order_items`
 - **Edge Functions:** `send-order-confirmation`
@@ -198,15 +205,11 @@
 
 ## 4. Feature Area: Customer Profile Management
 
-### Feature 4.1: Account Dashboard
-**Description:** Analytics and insights dashboard
-
-#### Epic 4.1.1: Account Dashboard Analytics
-- **Epic ID:** EPIC-PROFILE-001
+### CNS-0010: Account Dashboard Analytics
 - **Status:** Implemented
 - **Documentation Status:** ✅ Complete
 - **Documentation:** `docs/requirements/account-dashboard-features.md`
-- **Priority:** High
+- **Priority:** P1 - High
 - **Components:** `src/components/profile/AccountDashboard.tsx`
 - **Database Tables:** `orders`, `order_items`, `drinking_sessions`, `biometric_readings`
 
@@ -219,15 +222,11 @@
 - ✅ US-DASH.6: Responsive Dashboard Layout (5 pts) - DOCUMENTED
 - ✅ US-DASH.7: Loading and Error States (5 pts) - DOCUMENTED
 
-### Feature 4.2: Profile Management
-**Description:** Personal information and contact details management
-
-#### Epic 4.2.1: Manage Profile
-- **Epic ID:** EPIC-PROFILE-002
+### CNS-0011: Manage Profile
 - **Status:** Implemented
 - **Documentation Status:** ✅ Complete
 - **Documentation:** `docs/requirements/manage-profile-features.md`
-- **Priority:** High
+- **Priority:** P1 - High
 - **Components:** `src/components/profile/ManageProfile.tsx`, `src/components/profile/AvatarUpload.tsx`
 - **Database Tables:** `profiles`
 - **Storage Buckets:** `avatars`
@@ -239,15 +238,11 @@
 - ✅ US-PROFILE.4: Upload and Manage Avatar (5 pts) - DOCUMENTED
 - ✅ US-PROFILE.5: View Profile Summary (3 pts) - DOCUMENTED
 
-### Feature 4.3: Order History
-**Description:** View and manage past orders
-
-#### Epic 4.3.1: Order History Management
-- **Epic ID:** EPIC-PROFILE-003
+### CNS-0012: Order History Management
 - **Status:** Implemented
 - **Documentation Status:** ✅ Complete
 - **Documentation:** `docs/requirements/order-history-features.md`
-- **Priority:** High
+- **Priority:** P1 - High
 - **Components:** `src/components/profile/OrderHistory.tsx`, `src/components/profile/OrderDetail.tsx`
 - **Database Tables:** `orders`, `order_items`, `order_status_history`
 
@@ -261,15 +256,11 @@
 - ✅ US-ORDER.7: Reorder Previous Orders (5 pts) - DOCUMENTED
 - ✅ US-ORDER.8: Download Order Receipt (3 pts) - DOCUMENTED
 
-### Feature 4.4: Payment Methods
-**Description:** Secure payment method management
-
-#### Epic 4.4.1: Manage Payments
-- **Epic ID:** EPIC-PROFILE-004
+### CNS-0013: Manage Payments
 - **Status:** Planned
-- **Documentation Status:** ✅ Complete
+- **Documentation Status:** 📋 Complete
 - **Documentation:** `docs/requirements/manage-payments-features.md`
-- **Priority:** High
+- **Priority:** P1 - High
 - **Dependencies:** Stripe Integration
 
 **User Stories:**
@@ -281,15 +272,11 @@
 - 📋 US-PAYMENT.6: View Payment History (5 pts) - DOCUMENTED
 - 📋 US-PAYMENT.7: Handle Expired Cards (3 pts) - DOCUMENTED
 
-### Feature 4.5: Security Settings
-**Description:** Password and account security management
-
-#### Epic 4.5.1: Password & Security Management
-- **Epic ID:** EPIC-PROFILE-007
+### CNS-0014: Password & Security Management
 - **Status:** Planned
-- **Documentation Status:** ✅ Complete
+- **Documentation Status:** 📋 Complete
 - **Documentation:** `docs/requirements/update-password-features.md`
-- **Priority:** High
+- **Priority:** P1 - High
 
 **User Stories:**
 - 📋 US-PASSWORD.1: Update Password (5 pts) - DOCUMENTED
@@ -304,15 +291,11 @@
 
 ## 5. Feature Area: Loyalty & Rewards Program
 
-### Feature 5.1: Rewards Management
-**Description:** Loyalty points, tiers, and reward redemption
-
-#### Epic 5.1.1: Profile Rewards
-- **Epic ID:** EPIC-PROFILE-005
+### CNS-0015: Profile Rewards
 - **Status:** Implemented
 - **Documentation Status:** ✅ Complete
 - **Documentation:** `docs/requirements/profile-rewards-features.md`
-- **Priority:** High
+- **Priority:** P1 - High
 - **Components:** `src/components/profile/RewardsSection.tsx`, `src/components/RewardsBadge.tsx`, `src/components/RewardsCheckIn.tsx`
 - **Database Tables:** `user_rewards`, `points_transactions`, `reward_tiers`, `rewards`, `reward_redemptions`, `referrals`, `check_ins`
 - **Edge Functions:** `award-loyalty-points`
@@ -331,15 +314,11 @@
 
 ## 6. Feature Area: Health & Safety
 
-### Feature 6.1: Biometric Monitoring
-**Description:** Biometric authentication and health monitoring
-
-#### Epic 6.1.1: Biometric Settings
-- **Epic ID:** EPIC-PROFILE-006
+### CNS-0016: Biometric Settings
 - **Status:** Planned (Requires React Native)
-- **Documentation Status:** ✅ Complete
+- **Documentation Status:** 📋 Complete
 - **Documentation:** `docs/requirements/biometric-settings-features.md`
-- **Priority:** Medium
+- **Priority:** P2 - Medium
 - **Dependencies:** React Native, Native Mobile APIs
 - **React Native Libraries:** `react-native-biometrics`, `react-native-health`, `react-native-google-fit`
 
@@ -352,11 +331,10 @@
 - 📋 US-BIOMETRIC.6: View Biometric Dashboard (8 pts) - DOCUMENTED
 - 📋 US-BIOMETRIC.7: Integrate Health Kit / Google Fit (13 pts) - DOCUMENTED
 
-#### Epic 6.1.2: Sobriety Monitoring
-- **Epic ID:** EPIC-10
+### CNS-0017: Sobriety Monitoring
 - **Status:** Implemented
 - **Documentation Status:** 🟡 Needs Documentation
-- **Priority:** High
+- **Priority:** P0 - Critical
 - **Components:** `src/components/sobriety/SobrietyDashboard.tsx`, `src/components/sobriety/BiometricInput.tsx`, `src/components/sobriety/BiometricSetup.tsx`, `src/components/sobriety/SobrietyCheckoutWrapper.tsx`
 - **Database Tables:** `drinking_sessions`, `drink_records`, `biometric_readings`, `sobriety_alerts`, `user_biometrics`
 - **Database Functions:** `calculate_bac`, `update_session_bac`
@@ -374,14 +352,10 @@
 
 ## 7. Feature Area: Order Management
 
-### Feature 7.1: Order Tracking
-**Description:** Real-time order status and tracking
-
-#### Epic 7.1.1: Real-Time Order Tracking
-- **Epic ID:** EPIC-11
+### CNS-0018: Real-Time Order Tracking
 - **Status:** Implemented
 - **Documentation Status:** 🟡 Needs Documentation
-- **Priority:** High
+- **Priority:** P1 - High
 - **Components:** `src/components/OrderStatusTimeline.tsx`, `src/pages/TrackOrder.tsx`, `src/hooks/useRealtimeOrderStatus.ts`
 - **Database Tables:** `orders`, `order_status_history`
 - **Database Functions:** `update_order_status`
@@ -397,14 +371,10 @@
 
 ## 8. Feature Area: Payment Processing
 
-### Feature 8.1: Payment Integration
-**Description:** Stripe payment processing
-
-#### Epic 8.1.1: Stripe Payment Integration
-- **Epic ID:** EPIC-12
+### CNS-0019: Stripe Payment Integration
 - **Status:** Planned
 - **Documentation Status:** ❌ Needs Documentation
-- **Priority:** High
+- **Priority:** P1 - High
 - **Dependencies:** Stripe Secret Key
 
 **User Stories:**
@@ -420,14 +390,10 @@
 
 ## 9. Feature Area: Security & Compliance
 
-### Feature 9.1: Data Privacy & Compliance
-**Description:** GDPR, CCPA, PCI compliance
-
-#### Epic 9.1.1: Privacy & Compliance
-- **Epic ID:** EPIC-13
+### CNS-0020: Privacy & Compliance
 - **Status:** Implemented
 - **Documentation Status:** 🟡 Needs Documentation
-- **Priority:** High
+- **Priority:** P1 - High
 - **Components:** `src/components/compliance/CookieConsent.tsx`, `src/components/compliance/DataPrivacyControls.tsx`, `src/components/compliance/SecurityAuditLog.tsx`, `src/pages/ComplianceDashboard.tsx`, `src/pages/PrivacyPolicy.tsx`
 - **Database Tables:** `audit_logs`, `data_retention_requests`, `user_consents`
 
@@ -444,14 +410,10 @@
 
 ## 10. Feature Area: Business Operations
 
-### Feature 10.1: Venue Partnership
-**Description:** Venue onboarding and partnership management
-
-#### Epic 10.1.1: Venue Partnership
-- **Epic ID:** EPIC-14
+### CNS-0021: Venue Partnership
 - **Status:** Implemented
 - **Documentation Status:** ❌ Needs Documentation
-- **Priority:** Medium
+- **Priority:** P2 - Medium
 - **Components:** `src/pages/VenuePartnership.tsx`
 
 **User Stories:**
@@ -460,14 +422,10 @@
 - 🟡 US-PARTNER.3: Sales Team Routing (3 pts) - NEEDS DOCUMENTATION
 - 🟡 US-PARTNER.4: Partnership Tier Information Display (3 pts) - NEEDS DOCUMENTATION
 
-### Feature 10.2: Age Verification
-**Description:** Legal age verification for alcohol purchases
-
-#### Epic 10.2.1: Age Verification
-- **Epic ID:** EPIC-15
+### CNS-0022: Age Verification
 - **Status:** Implemented
 - **Documentation Status:** ❌ Needs Documentation
-- **Priority:** High (Legal Compliance)
+- **Priority:** P0 - Critical (Legal Compliance)
 - **Components:** `src/components/AgeVerificationModal.tsx`, `src/hooks/useAgeVerification.ts`
 
 **User Stories:**
@@ -495,7 +453,7 @@
 | Payment Processing | 1 | 0 | 1 |
 | Security & Compliance | 1 | 1 | 0 |
 | Business Operations | 2 | 2 | 0 |
-| **TOTAL** | **22** | **14** | **7** |
+| **TOTAL** | **22** | **14** | **8** |
 
 ### By Documentation Status
 
@@ -509,10 +467,9 @@
 
 ### By Priority
 
-- **P0 - Critical:** 1 epic
-- **P1 - High:** 15 epics
-- **P2 - Should Have:** 3 epics
-- **P3 - Nice to Have:** 3 epics
+- **P0 - Critical:** 4 epics (CNS-0001, CNS-0008, CNS-0009, CNS-0017, CNS-0022)
+- **P1 - High:** 13 epics
+- **P2 - Medium:** 5 epics
 
 ### By Implementation Status
 
@@ -535,28 +492,28 @@
 ### Phase 1: Critical - Implemented Features (Highest Priority)
 **Goal:** Document all revenue-critical implemented features
 
-1. **EPIC-8: Shopping Cart Management** (7 user stories) - P0
-2. **EPIC-9: Checkout Process** (7 user stories) - P0
-3. **EPIC-10: Sobriety Monitoring** (7 user stories) - P0
-4. **EPIC-15: Age Verification** (5 user stories) - P0 (Legal)
+1. **CNS-0008: Shopping Cart Management** (7 user stories) - P0
+2. **CNS-0009: Checkout Process** (7 user stories) - P0
+3. **CNS-0017: Sobriety Monitoring** (7 user stories) - P0
+4. **CNS-0022: Age Verification** (5 user stories) - P0 (Legal)
 
 ### Phase 2: High Priority - Core User Flows
 **Goal:** Document primary user journeys
 
-5. **EPIC-2: Venue Search & Discovery** (4 user stories) - P1
-6. **EPIC-4: Product Browsing** (4 user stories) - P1
-7. **EPIC-11: Order Tracking** (5 user stories) - P1
-8. **EPIC-13: Privacy & Compliance** (7 user stories) - P1
+5. **CNS-0002: Venue Search & Discovery** (4 user stories) - P1
+6. **CNS-0004: Product Browsing** (4 user stories) - P1
+7. **CNS-0018: Order Tracking** (5 user stories) - P1
+8. **CNS-0020: Privacy & Compliance** (7 user stories) - P1
 
 ### Phase 3: Medium Priority - Support Features
 **Goal:** Document supporting features
 
-9. **EPIC-14: Venue Partnership** (4 user stories) - P2
+9. **CNS-0021: Venue Partnership** (4 user stories) - P2
 
 ### Phase 4: Pre-Implementation - Planned Features
 **Goal:** Document before building
 
-10. **EPIC-12: Stripe Payment Integration** (7 user stories) - P1
+10. **CNS-0019: Stripe Payment Integration** (7 user stories) - P1
 
 ---
 
