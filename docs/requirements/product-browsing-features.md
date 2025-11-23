@@ -411,7 +411,7 @@ Feature: Product Detail View
     Given I am viewing products in a category
     When I click on a product card
     Then I should be navigated to the product detail page
-    And the Uniform Resource Locator (URL) should include the product ID as "/menu/product/:id"
+    And the URL should include the product ID as "/menu/product/:id"
     And the page should load the product details from the database
 
   Scenario: Display product detail layout
@@ -500,7 +500,7 @@ Feature: Product Detail View
     And the chevron icon should rotate 180 degrees
 
   Scenario: Product not found
-    Given I navigate to a product detail page with an invalid product Identifier (ID)
+    Given I navigate to a product detail page with an invalid product ID
     When the page attempts to load
     Then I should see a "Product not found" message
     And the page should display the error on the gradient background
@@ -516,7 +516,7 @@ Feature: Product Detail View
     Then the image should be displayed as:
       | Condition | Display |
       | Local image mapping exists | Display mapped local image |
-      | Database image_url exists | Display Uniform Resource Locator (URL) image |
+      | Database image_url exists | Display URL image |
       | No image available | Display wine glass icon |
     And the image should fill the aspect-ratio container
     And the image should be full width
@@ -560,7 +560,7 @@ Feature: Product Detail View
 ### Database Schema
 - **products table**: Stores all product information including images, pricing, descriptions
 - **product_categories table**: Stores category definitions and display order
-- Products are linked to categories via `category_id` (category identifier) foreign key
+- Products are linked to categories via `category_id` foreign key
 
 ### State Management
 - Category selection managed by `useCategoryFilter` hook
@@ -570,7 +570,7 @@ Feature: Product Detail View
 ### Styling
 - Uses design system tokens for colors (Hue, Saturation, Lightness (HSL) values)
 - Gradient backgrounds: purple to yellow theme
-- Responsive grid layouts using Tailwind Cascading Style Sheets (CSS)
+- Responsive grid layouts using Tailwind CSS
 - Consistent card styling with backdrop blur effects
 
 ---
@@ -580,9 +580,9 @@ Feature: Product Detail View
 ### Technical Dependencies
 - React Router for navigation
 - Supabase for data fetching
-- Tailwind Cascading Style Sheets (CSS) for styling
+- Tailwind CSS for styling
 - Lucide React for icons
-- Shadcn User Interface (UI) components (Card, Button, Badge, Collapsible)
+- Shadcn UI components (Card, Button, Badge, Collapsible)
 
 ### Feature Dependencies
 - **Venue Selection**: Users must select a venue before browsing products
