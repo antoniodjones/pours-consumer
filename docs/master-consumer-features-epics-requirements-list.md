@@ -49,7 +49,7 @@
 | CNS-0014 | Password & Security Management | Profile | Planned | 📋 Complete |
 | CNS-0015 | Profile Rewards | Rewards | Implemented | ✅ Complete |
 | CNS-0016 | Biometric Settings | Health & Safety | Planned | 📋 Complete |
-| CNS-0017 | Sobriety Monitoring | Health & Safety | Implemented | 🟡 Needs Docs |
+| CNS-0017 | Sobriety Monitoring | Health & Safety | Implemented | ✅ Complete |
 | CNS-0018 | Real-Time Order Tracking | Order Management | Implemented | 🟡 Needs Docs |
 | CNS-0019 | Stripe Payment Integration | Payment | Planned | ❌ Needs Docs |
 | CNS-0020 | Privacy & Compliance | Compliance | Implemented | 🟡 Needs Docs |
@@ -337,20 +337,21 @@
 
 ### CNS-0017: Sobriety Monitoring
 - **Status:** Implemented
-- **Documentation Status:** 🟡 Needs Documentation
+- **Documentation Status:** ✅ Complete
+- **Documentation:** `docs/requirements/sobriety-monitoring-features.md`
 - **Priority:** P0 - Critical
 - **Components:** `src/components/sobriety/SobrietyDashboard.tsx`, `src/components/sobriety/BiometricInput.tsx`, `src/components/sobriety/BiometricSetup.tsx`, `src/components/sobriety/SobrietyCheckoutWrapper.tsx`
 - **Database Tables:** `drinking_sessions`, `drink_records`, `biometric_readings`, `sobriety_alerts`, `user_biometrics`
 - **Database Functions:** `calculate_bac`, `update_session_bac`
 
 **User Stories:**
-- 🟡 US-SOBRIETY.1: Start Drinking Session (5 pts) - NEEDS DOCUMENTATION
-- 🟡 US-SOBRIETY.2: Track BAC in Real-Time (8 pts) - NEEDS DOCUMENTATION
-- 🟡 US-SOBRIETY.3: Receive Sobriety Alerts (8 pts) - NEEDS DOCUMENTATION
-- 🟡 US-SOBRIETY.4: View Sobriety Dashboard (8 pts) - NEEDS DOCUMENTATION
-- 🟡 US-SOBRIETY.5: End Drinking Session (3 pts) - NEEDS DOCUMENTATION
-- 🟡 US-SOBRIETY.6: Record Biometric Data (5 pts) - NEEDS DOCUMENTATION
-- 🟡 US-SOBRIETY.7: BAC Calculation and Display (8 pts) - NEEDS DOCUMENTATION
+- ✅ US-SOBRIETY.1: Start Drinking Session (5 pts) - DOCUMENTED
+- ✅ US-SOBRIETY.2: Track Blood Alcohol Content (BAC) in Real-Time (8 pts) - DOCUMENTED
+- ✅ US-SOBRIETY.3: Receive Sobriety Alerts (8 pts) - DOCUMENTED
+- ✅ US-SOBRIETY.4: View Sobriety Dashboard (8 pts) - DOCUMENTED
+- ✅ US-SOBRIETY.5: End Drinking Session (3 pts) - DOCUMENTED
+- ✅ US-SOBRIETY.6: Record Biometric Data (5 pts) - DOCUMENTED
+- ✅ US-SOBRIETY.7: Blood Alcohol Content (BAC) Calculation and Display (8 pts) - DOCUMENTED
 
 ---
 
