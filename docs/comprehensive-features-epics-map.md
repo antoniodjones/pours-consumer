@@ -107,7 +107,7 @@
 ### CNS-0003: Selected Venue Management
 - **Status:** Implemented
 - **Documentation Status:** ✅ Complete
-- **Documentation:** `docs/requirements/venue-selection-features.md`
+- **Documentation:** `docs/requirements/venue-discovery-selection-features.md`
 - **Priority:** P1 - High
 - **Components:** `src/components/menu/VenueSearch.tsx`, `src/hooks/useCart.ts`
 
