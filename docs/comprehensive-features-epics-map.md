@@ -34,7 +34,7 @@
 | Epic ID | Epic Name | Feature Area | Status | Doc Status |
 |---------|-----------|--------------|--------|------------|
 | CNS-0001 | Core Authentication & User Management | Authentication | Implemented | ✅ Complete |
-| CNS-0002 | Venue Search & Discovery | Venue Discovery | Implemented | 🟡 Partial |
+| CNS-0002 | Venue Search & Discovery | Venue Discovery | Implemented | ✅ Complete |
 | CNS-0003 | Selected Venue Management | Venue Discovery | Implemented | ✅ Complete |
 | CNS-0004 | Category-Based Product Browsing | Product Discovery | Implemented | 🟡 Needs Docs |
 | CNS-0005 | Text-Based Product Search | Product Discovery | Planned | 📋 Complete |
@@ -92,16 +92,17 @@
 
 ### CNS-0002: Venue Search & Discovery
 - **Status:** Implemented
-- **Documentation Status:** 🟡 Partial (venue-selection-features.md exists but missing search stories)
+- **Documentation Status:** ✅ Complete
+- **Documentation:** `docs/requirements/venue-discovery-selection-features.md`
 - **Priority:** P1 - High
 - **Components:** `src/components/menu/VenueSearch.tsx`
 - **Database Tables:** `venues`, `cities`, `venue_categories`
 
 **User Stories:**
-- 🟡 US-VS.1: Text-Based Venue Search (5 pts) - NEEDS DOCUMENTATION
-- 🟡 US-VS.2: Near Me Location-Based Search (8 pts) - NEEDS DOCUMENTATION
-- 🟡 US-VS.3: Display Venue Information (3 pts) - NEEDS DOCUMENTATION
-- 🟡 US-VS.4: Venue List with Ratings (5 pts) - NEEDS DOCUMENTATION
+- ✅ US-VS.1: Text-Based Venue Search (5 pts) - DOCUMENTED
+- ✅ US-VS.2: Near Me Location-Based Search (8 pts) - DOCUMENTED
+- ✅ US-VS.3: Display Venue Information (3 pts) - DOCUMENTED
+- ✅ US-VS.4: Venue List with Ratings (5 pts) - DOCUMENTED
 
 ### CNS-0003: Selected Venue Management
 - **Status:** Implemented
