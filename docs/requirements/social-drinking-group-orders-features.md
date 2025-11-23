@@ -22,7 +22,81 @@ This epic encompasses the functionality required for users to manage drinking bu
 
 ## User Stories
 
-### US-BUDDY.1: Add Buddy to List
+### Order Type Selection
+
+#### US-ORDER.1: Select Order Type
+
+**As a** Pours Consumer user  
+**I want to** select whether my order is "Just for Me" or "For a Group"  
+**So that** I can enable drink assignment features when ordering for multiple people
+
+**Background:**  
+When creating an order, users need to specify if they're ordering only for themselves or for a group. This determines whether drink assignment and buddy management features are available during the checkout process.
+
+**Value:**  
+- Simplifies the checkout experience for solo orders
+- Enables group ordering features only when needed
+- Provides clear context for sobriety monitoring
+
+**Gherkin Scenarios:**
+
+```gherkin
+Feature: Select Order Type
+  Epic: Social Drinking & Group Orders (CNS-0023)
+
+  Scenario: User selects "Just for Me" order type
+    Given I am on the checkout page
+    And I have items in my cart
+    When I select "Just for Me" as the order type
+    Then drink assignment features should be disabled
+    And all drinks in my cart should be automatically assigned to me
+    And I should proceed with standard checkout flow
+
+  Scenario: User selects "For a Group" order type
+    Given I am on the checkout page
+    And I have items in my cart
+    When I select "For a Group" as the order type
+    Then drink assignment features should be enabled
+    And I should be able to assign drinks to buddies
+    And I should see an indicator of unassigned drinks
+    And I should be able to proceed with checkout even with unassigned drinks
+
+  Scenario: User switches from "Just for Me" to "For a Group"
+    Given I am on the checkout page
+    And I have selected "Just for Me" as the order type
+    And all drinks are auto-assigned to me
+    When I switch to "For a Group"
+    Then all drinks should become unassigned
+    And I should be able to manually assign drinks to buddies or myself
+
+  Scenario: User switches from "For a Group" to "Just for Me"
+    Given I am on the checkout page
+    And I have selected "For a Group" as the order type
+    And some drinks are assigned to buddies
+    When I switch to "Just for Me"
+    Then I should see a confirmation dialog warning about buddy assignments
+    And if I confirm, all drinks should be reassigned to me
+    And all buddy assignments should be cleared
+```
+
+**Technical Requirements:**  
+- Add `order_type` enum field to `orders` table: `solo` or `group`
+- Store order type selection in order record
+- Conditional UI rendering based on order type
+- Validation to prevent group order submission with pending buddy assignments
+
+**Acceptance Criteria:**  
+- Users can select order type at checkout
+- "Just for Me" auto-assigns all drinks to user
+- "For a Group" enables buddy assignment features
+- Switching order types shows appropriate warnings
+- Order type is stored with the order record
+
+---
+
+### Buddy List Management
+
+#### US-BUDDY.1: Add Buddy to List
 
 **As a** Pours Consumer user  
 **I want to** add friends to my buddy list  
@@ -238,7 +312,97 @@ Feature: View and Manage Buddy List
 
 ---
 
-### US-SOCIAL.1: Assign Drinks to Buddies During Checkout
+### Cart & Drink Assignment
+
+#### US-CART.1: Assign Buddy to Drink in Cart
+
+**As a** Pours Consumer user  
+**I want to** assign a buddy to a drink when I add it to my cart or at any time afterward  
+**So that** I can manage drink assignments flexibly throughout the shopping experience
+
+**Background:**  
+Users should be able to assign drinks to buddies at multiple points in the order flow - when initially adding to cart, while browsing the cart, or during checkout. This provides maximum flexibility for managing group orders.
+
+**Value:**  
+- Enables early assignment while browsing products
+- Allows users to modify assignments before finalizing
+- Reduces checkout friction for group orders
+
+**Gherkin Scenarios:**
+
+```gherkin
+Feature: Assign Buddy to Drink in Cart
+  Epic: Social Drinking & Group Orders (CNS-0023)
+
+  Scenario: User assigns buddy when adding drink to cart
+    Given I am browsing products
+    And I have a "For a Group" order active
+    When I click "Add to Cart" on a product
+    Then I should see an option to "Assign to Buddy" in the add-to-cart modal
+    And I should see a dropdown list of my buddies
+    When I select a buddy and confirm
+    Then the drink should be added to cart with the buddy assignment
+    And I should see a visual indicator showing who the drink is assigned to
+
+  Scenario: User skips buddy assignment when adding to cart
+    Given I am browsing products
+    And I have a "For a Group" order active
+    When I click "Add to Cart" on a product
+    And I select "Assign Later" or skip the assignment
+    Then the drink should be added to cart as unassigned
+    And I should be able to assign it later from the cart view
+
+  Scenario: User assigns buddy to existing cart item
+    Given I have unassigned drinks in my cart
+    And I am viewing my cart
+    When I click on a drink item
+    Then I should see an "Assign to" dropdown or button
+    When I select a buddy from the list
+    Then the drink should be assigned to that buddy
+    And I should see the assignment reflected immediately in the cart
+
+  Scenario: User reassigns drink to different buddy
+    Given I have a drink assigned to "Buddy A" in my cart
+    When I click on the drink assignment indicator
+    And I select "Buddy B" from the dropdown
+    Then the drink should be reassigned to "Buddy B"
+    And I should see the updated assignment in the cart
+
+  Scenario: User removes buddy assignment
+    Given I have a drink assigned to a buddy in my cart
+    When I click on the drink assignment indicator
+    And I select "Remove Assignment" or "Assign to Me"
+    Then the drink should become unassigned or assigned to me
+    And I should see the updated status in the cart
+
+  Scenario: User assigns multiple quantities to different buddies
+    Given I have a cart item with quantity of 3
+    When I expand the assignment options
+    Then I should be able to split the quantity across different buddies
+    And I should be able to assign 1 to "Buddy A", 1 to "Buddy B", and 1 to myself
+    And each assignment should be tracked separately
+```
+
+**Technical Requirements:**  
+- Add `assigned_to` field on cart items (nullable, references buddy or self)
+- Support for quantity splitting across multiple assignees
+- Real-time UI updates when assignments change
+- Store pending assignments with cart in `abandoned_carts.cart_data`
+- Validate assignments before checkout completion
+
+**Acceptance Criteria:**  
+- Users can assign drinks when adding to cart
+- Users can assign drinks from cart view
+- Assignments can be changed before checkout
+- Quantity splitting is supported for group assignments
+- Cart displays assignment status for each item
+- Unassigned drinks are clearly indicated
+
+---
+
+### Group Order Drink Assignment
+
+#### US-SOCIAL.1: Assign Drinks to Buddies During Checkout
 
 **As a** Pours Consumer user  
 **I want to** assign specific drinks in my cart to buddies during checkout  
@@ -830,7 +994,18 @@ Feature: View Buddy Drinking Session Summary
 
 ## Data Models
 
-### buddy_connections Table
+### Enum Types
+
+```sql
+-- Order type enum
+CREATE TYPE public.order_type AS ENUM ('solo', 'group');
+```
+
+---
+
+### New Database Tables
+
+#### buddy_connections Table
 
 ```sql
 CREATE TABLE public.buddy_connections (
@@ -927,7 +1102,42 @@ ON public.drink_assignments FOR DELETE
 USING (auth.uid() = assignor_id);
 ```
 
-### user_preferences Table (Extension)
+### Modified Database Tables
+
+#### orders Table (add group order support)
+
+```sql
+-- Add order type column
+ALTER TABLE public.orders ADD COLUMN order_type public.order_type NOT NULL DEFAULT 'solo';
+
+-- Add index
+CREATE INDEX idx_orders_order_type ON public.orders(order_type);
+```
+
+#### abandoned_carts Table (support cart-level drink assignments)
+
+```sql
+-- Add order type to abandoned carts
+ALTER TABLE public.abandoned_carts ADD COLUMN order_type public.order_type NOT NULL DEFAULT 'solo';
+
+-- Assignment metadata stored in cart_data JSONB
+-- Example structure:
+{
+  "order_type": "group",
+  "items": [
+    {
+      "product_id": "uuid",
+      "quantity": 2,
+      "assignments": [
+        {"quantity": 1, "assigned_to": "buddy_user_id_1", "buddy_name": "John Doe"},
+        {"quantity": 1, "assigned_to": "self"}
+      ]
+    }
+  ]
+}
+```
+
+#### user_preferences Table (Extension)
 
 ```sql
 -- Add new column to existing user preferences or create if doesn't exist
