@@ -309,49 +309,506 @@ Feature: Predictive BAC Alerts
 
 ### User Story: US-SOBRIETY-AI.3 - Personalized Intervention Strategies
 
-**Story Points:** 8
+**As a** Pours+ user showing risky drinking patterns,  
+**I want** the AI to suggest personalized intervention strategies based on my behavior and preferences,  
+**So that** I can receive help that actually works for me.
+
+**Story Points:** 8  
+**Priority:** P0 - Critical
+
+#### Acceptance Criteria
+
+```gherkin
+Feature: Personalized Intervention Strategies
+  Epic: AI Sobriety Advisor (CNS-0024)
+
+  Background:
+    Given I am a registered Pours+ user with drinking history
+    And the AI has learned my patterns and preferences
+    And I am in an active drinking session
+
+  Scenario: AI suggests personalized intervention for stress drinking
+    Given my historical data shows I drink faster when stressed
+    And my current pace is 50% faster than my typical rate
+    And it is a weekday evening
+    When the AI analyzes my current session context
+    Then it should recognize this as a stress-drinking pattern
+    And it should ask if I'm having a stressful day
+    And it should suggest specific coping strategies I've used before
+    And it should recommend activities I enjoy (e.g., "Want to play a game of pool instead?")
+    And the tone should be empathetic and supportive
+
+  Scenario: AI adapts intervention style based on user response history
+    Given I have previously responded well to direct, factual advice
+    And I have dismissed gentle suggestions 80% of the time
+    When the AI needs to intervene about my rising BAC
+    Then it should use a direct, data-driven approach
+    And it should show me charts or numbers
+    And it should avoid overly emotional language
+    And it should provide clear action steps
+
+  Scenario: AI suggests social intervention for group drinking
+    Given I am drinking with friends (based on group order data)
+    And my pace is matching the fastest drinker in the group
+    And my typical solo pace is much slower
+    When the AI detects peer influence
+    Then it should suggest ordering food for the table
+    Or suggest a group activity that doesn't involve drinking
+    And it should frame suggestions as fun social activities
+    And it should avoid making me feel singled out
+
+  Scenario: AI offers distraction-based interventions
+    Given my intervention preference is set to "distraction"
+    And my BAC is approaching 0.08
+    When the AI needs to slow my consumption
+    Then it should suggest venue activities (live music, games, etc.)
+    And it should recommend food items I've ordered before
+    And it should make positive suggestions rather than warnings
+    And it should track which distractions work best for me
+```
 
 ---
 
 ### User Story: US-SOBRIETY-AI.4 - AI-Powered Ride Home Coordination
 
-**Story Points:** 8
+**As a** Pours+ user who has exceeded safe drinking limits,  
+**I want** the AI to help me coordinate a safe ride home,  
+**So that** I don't have to worry about getting home safely when impaired.
+
+**Story Points:** 8  
+**Priority:** P0 - Critical
+
+#### Acceptance Criteria
+
+```gherkin
+Feature: AI Ride Home Coordination
+  Epic: AI Sobriety Advisor (CNS-0024)
+
+  Background:
+    Given I am a registered Pours+ user
+    And I am in an active drinking session at a venue
+    And my BAC is above safe driving limits
+
+  Scenario: AI proactively suggests ride when BAC exceeds safe driving limit
+    Given my current BAC is 0.09
+    And I drove to the venue (based on profile or check-in data)
+    When the AI detects I am above the legal driving limit
+    Then I should receive a notification about ride options
+    And the AI should explain why driving is unsafe at my BAC level
+    And it should offer to help arrange a ride
+    And it should remember my preferred ride service
+
+  Scenario: User requests help getting home
+    Given I am at a venue with BAC of 0.10
+    When I ask the AI "How should I get home?"
+    Then the AI should confirm I should not drive
+    And it should ask for my preferred ride service (Uber, Lyft, taxi, friend)
+    And it should offer to contact a friend if I prefer
+    And it should provide estimated wait time and cost
+    And it should offer to set a reminder to retrieve my car tomorrow
+
+  Scenario: AI coordinates friend pickup with estimated timing
+    Given I prefer rides from friends over ride services
+    And my emergency contacts include "Pick me up" preferences
+    When I accept the AI's suggestion to call a friend
+    Then the AI should provide my current location to share
+    And it should estimate my readiness time (e.g., "ready in 15 minutes")
+    And it should draft a message I can send
+    And it should set a reminder to check if my friend confirmed
+
+  Scenario: AI handles ride service integration
+    Given ride service integration is enabled
+    And my BAC is 0.11
+    When I accept the AI's ride suggestion
+    Then the AI should initiate the ride request
+    And it should pre-fill pickup location (venue address)
+    And it should suggest home address from my profile
+    And it should notify me of estimated arrival time
+    And it should send a copy of ride details to emergency contact
+
+  Scenario: AI tracks safe arrival home
+    Given I have accepted a ride home
+    And the ride was arranged through the AI
+    When the ride is completed
+    Then the AI should send a check-in message
+    And it should ask if I arrived safely
+    And it should close my drinking session automatically
+    And it should log this for future pattern analysis
+```
 
 ---
 
 ### User Story: US-SOBRIETY-AI.5 - Emergency Contact Smart Notifications
 
-**Story Points:** 5
+**As a** concerned friend or family member listed as an emergency contact,  
+**I want** to be notified if the user reaches dangerous consumption levels,  
+**So that** I can check on them or help if needed.
+
+**Story Points:** 5  
+**Priority:** P0 - Critical
+
+#### Acceptance Criteria
+
+```gherkin
+Feature: Emergency Contact Smart Notifications
+  Epic: AI Sobriety Advisor (CNS-0024)
+
+  Background:
+    Given a Pours+ user has configured emergency contacts
+    And emergency contact notification settings are enabled
+    And the AI is monitoring their drinking session
+
+  Scenario: AI notifies emergency contact at critical BAC level
+    Given the user's BAC reaches 0.15
+    And they have ignored 3 previous safety interventions
+    And their emergency contact has opted in to critical alerts
+    When the AI determines the situation is critical
+    Then it should send a notification to the emergency contact
+    And the notification should include the user's name, location, and BAC level
+    And it should request the contact to check in on the user
+    And it should include the venue's contact information
+    And it should respect the user's privacy settings
+
+  Scenario: User manually requests emergency contact notification
+    Given the user feels unsafe or unwell
+    And their BAC is 0.12
+    When the user asks the AI to "notify my emergency contact"
+    Then the AI should immediately alert the designated contact
+    And it should explain that the user requested help
+    And it should share the user's exact location
+    And it should offer to call emergency services if needed
+    And it should keep the contact updated on the situation
+
+  Scenario: AI escalates to multiple contacts if unresponsive
+    Given the user's BAC is 0.16
+    And the primary emergency contact was notified 30 minutes ago
+    And the user has not responded to AI check-ins
+    When the primary contact hasn't acknowledged or responded
+    Then the AI should escalate to the secondary contact
+    And it should explain the urgency and timeline
+    And it should provide the primary contact's response status
+    And it should consider suggesting emergency services
+
+  Scenario: Emergency contact acknowledges and takes action
+    Given an emergency contact received a critical alert
+    When they acknowledge the notification
+    Then the AI should ask how they plan to help
+    And it should offer to provide additional information
+    And it should update the user that their contact is aware
+    And it should log the intervention outcome for learning
+```
 
 ---
 
 ### User Story: US-SOBRIETY-AI.6 - Post-Session Insights & Learning
 
-**Story Points:** 5
+**As a** Pours+ user after a drinking session,  
+**I want** to receive insights about my drinking patterns and behavior,  
+**So that** I can learn from my experiences and make better choices.
+
+**Story Points:** 5  
+**Priority:** P1 - High
+
+#### Acceptance Criteria
+
+```gherkin
+Feature: Post-Session Insights and Learning
+  Epic: AI Sobriety Advisor (CNS-0024)
+
+  Background:
+    Given I am a registered Pours+ user
+    And I have completed a drinking session
+    And the session has been closed for at least 2 hours
+
+  Scenario: User receives morning-after session summary
+    Given my drinking session ended at 11:30 PM last night
+    And it is now 9:00 AM the next day
+    When I open the Pours+ app
+    Then I should see a session summary notification
+    And it should show my total drinks, peak BAC, and session duration
+    And it should highlight positive choices I made
+    And it should note any safety interventions that helped
+    And it should be presented in a non-judgmental, educational tone
+
+  Scenario: AI identifies pattern of Thursday night heavy drinking
+    Given I have completed 4 Thursday evening sessions in the last month
+    And my average Thursday BAC is 30% higher than other weekdays
+    When the AI analyzes my session history
+    Then it should identify this Thursday pattern
+    And it should ask if there's a specific reason (stress, social tradition)
+    And it should suggest strategies for healthier Thursday habits
+    And it should track if patterns change after awareness
+
+  Scenario: User compares session to personal averages
+    Given I want to understand if my last session was typical
+    When I view my session insights
+    Then I should see how this session compares to my averages
+    And it should show metrics like pace, total consumption, and duration
+    And it should highlight what was different (faster/slower, more/less)
+    And it should explain contextual factors (e.g., venue type, day of week)
+
+  Scenario: AI celebrates improved responsible drinking behaviors
+    Given my last 3 sessions showed lower peak BAC than my 3-month average
+    And I responded positively to 90% of AI interventions
+    When I view my insights dashboard
+    Then the AI should recognize and celebrate this improvement
+    And it should specifically mention what strategies worked
+    And it should encourage continued progress
+    And it should offer to set new personal goals
+```
 
 ---
 
 ### User Story: US-SOBRIETY-AI.7 - AI Sobriety Coach Chat Interface
 
-**Story Points:** 13
+**As a** Pours+ user,  
+**I want** to chat with the AI about my drinking in real-time,  
+**So that** I can get immediate answers and support whenever I need it.
+
+**Story Points:** 13  
+**Priority:** P1 - High
+
+#### Acceptance Criteria
+
+```gherkin
+Feature: AI Sobriety Coach Chat Interface
+  Epic: AI Sobriety Advisor (CNS-0024)
+
+  Background:
+    Given I am a registered Pours+ user
+    And I have access to the AI Sobriety Coach
+    And the chat interface is available in the app
+
+  Scenario: User starts conversation with AI during drinking session
+    Given I am in an active drinking session
+    And my current BAC is 0.05
+    When I open the AI Sobriety Coach chat
+    And I ask "Am I good to have another drink?"
+    Then the AI should acknowledge my question
+    And it should analyze my current state and pace
+    And it should provide a personalized recommendation
+    And it should explain the reasoning (e.g., pace, trajectory, time)
+    And it should offer alternatives if suggesting I slow down
+
+  Scenario: AI provides contextual BAC education
+    Given I am chatting with the AI coach
+    When I ask "What does 0.08 BAC actually mean?"
+    Then the AI should explain BAC in simple terms
+    And it should relate it to my specific body metrics
+    And it should describe typical effects at different levels
+    And it should clarify legal limits for driving
+    And it should emphasize individual variation
+
+  Scenario: User seeks advice on handling peer pressure
+    Given I am with friends who are drinking heavily
+    And I want to slow down but feel social pressure
+    When I tell the AI "My friends keep ordering shots for me"
+    Then the AI should validate my desire to slow down
+    And it should suggest tactful ways to decline
+    And it should offer conversation strategies
+    And it should remind me it's okay to set boundaries
+    And the tone should be supportive and empowering
+
+  Scenario: AI chat history persists and learns
+    Given I have had multiple conversations with the AI coach
+    When I start a new chat session
+    Then the AI should remember previous conversations
+    And it should reference past concerns or goals I mentioned
+    And it should track topics I ask about frequently
+    And it should adapt its teaching style based on what worked before
+
+  Scenario: User asks planning questions before going out
+    Given I am planning to go out drinking tonight
+    And I am not yet at a venue
+    When I ask the AI "How can I drink responsibly tonight?"
+    Then the AI should ask about my plans (duration, venue, social context)
+    And it should suggest strategies like eating first, pacing, setting limits
+    And it should offer to send me reminders during the session
+    And it should help me set a personal BAC limit for the night
+```
 
 ---
 
 ### User Story: US-SOBRIETY-AI.8 - Behavioral Pattern Recognition
 
-**Story Points:** 13
+**As a** Pours+ power user,  
+**I want** the AI to detect long-term behavioral patterns in my drinking,  
+**So that** I can understand deeper trends and make meaningful changes.
+
+**Story Points:** 13  
+**Priority:** P1 - High
+
+#### Acceptance Criteria
+
+```gherkin
+Feature: AI Behavioral Pattern Recognition
+  Epic: AI Sobriety Advisor (CNS-0024)
+
+  Background:
+    Given I am a registered Pours+ user with at least 3 months of history
+    And the AI has access to my drinking sessions, venues, and contexts
+    And behavioral pattern analysis is enabled
+
+  Scenario: AI detects escalating consumption trend
+    Given my average drinks per session has increased by 40% over 2 months
+    And my session frequency has also increased
+    When the AI analyzes my 90-day trend
+    Then it should flag this escalation pattern
+    And it should present the data visually
+    And it should ask if I'm aware of this trend
+    And it should explore possible causes (stress, life changes)
+    And it should offer resources or suggest speaking to someone
+
+  Scenario: AI recognizes seasonal drinking patterns
+    Given my data shows higher consumption during summer months
+    And this pattern has repeated over 2 years
+    When summer approaches again
+    Then the AI should proactively mention this seasonal pattern
+    And it should ask if I want to set different goals for summer
+    And it should suggest strategies that worked in previous summers
+    And it should offer to send more frequent check-ins
+
+  Scenario: AI identifies trigger venues or social contexts
+    Given I consistently drink more heavily at a specific venue
+    And my BAC averages 0.09 at "Bar A" vs. 0.05 at other venues
+    When the AI detects I've checked in to "Bar A"
+    Then it should acknowledge this pattern
+    And it should ask if I'm aware I tend to drink more here
+    And it should suggest setting a specific limit for today
+    And it should offer closer monitoring for this session
+
+  Scenario: AI detects correlation between emotions and drinking
+    Given I tend to drink faster when my biometrics show stress indicators
+    And I've logged feeling stressed on heavy drinking days
+    When the AI identifies this emotion-drinking correlation
+    Then it should gently point out this connection
+    And it should suggest healthier stress-management alternatives
+    And it should ask if I'd like reminders when stress is detected
+    And it should track if awareness reduces stress-drinking
+
+  Scenario: AI recognizes positive behavioral changes
+    Given I used to drink 4+ drinks per session regularly
+    And over the last 2 months I've averaged 2-3 drinks
+    And I've been using AI suggestions consistently
+    When the AI analyzes this positive trend
+    Then it should celebrate this improvement
+    And it should identify which strategies were most effective
+    And it should ask what motivated the change
+    And it should offer to help maintain these new habits
+```
 
 ---
 
 ### User Story: US-SOBRIETY-AI.9 - Venue-Specific Safety Recommendations
 
-**Story Points:** 5
+**As a** Pours+ user at different types of venues,  
+**I want** safety advice tailored to the specific venue environment,  
+**So that** I receive relevant guidance for my current situation.
+
+**Story Points:** 5  
+**Priority:** P2 - Medium
+
+#### Acceptance Criteria
+
+```gherkin
+Feature: Venue-Specific Safety Recommendations
+  Epic: AI Sobriety Advisor (CNS-0024)
+
+  Background:
+    Given I am a registered Pours+ user
+    And I have checked in to a specific venue
+    And the AI has data about venue characteristics
+
+  Scenario: AI provides advice for high-volume nightclub environment
+    Given I am at a loud, crowded nightclub venue
+    And the venue is known for strong cocktails
+    When the AI provides safety guidance
+    Then it should warn about drinks potentially being stronger than expected
+    And it should remind me to keep my drink in sight
+    And it should suggest hydrating more due to dancing/heat
+    And it should note that loud environments make BAC harder to self-assess
+
+  Scenario: AI adjusts advice for outdoor beer garden setting
+    Given I am at an outdoor venue on a hot day
+    And the temperature is above 85°F
+    When the AI monitors my session
+    Then it should remind me that heat increases alcohol effects
+    And it should suggest alternating with water more frequently
+    And it should warn about sun exposure and dehydration
+    And it should recommend food to slow absorption
+
+  Scenario: AI recognizes sports bar game-day patterns
+    Given I am at a sports bar during a major game
+    And the venue has a history of heavy drinking during games
+    When the AI provides recommendations
+    Then it should acknowledge the exciting social context
+    And it should suggest pacing strategies for multi-hour games
+    And it should recommend food timing (halftime, between periods)
+    And it should help me set a reasonable limit for the event
+```
 
 ---
 
 ### User Story: US-SOBRIETY-AI.10 - Integration with Wearable Biometrics
 
-**Story Points:** 8 (Requires CNS-0016 Biometric Settings)
+**As a** Pours+ user with a fitness tracker or smartwatch,  
+**I want** the AI to use my real-time biometric data for more accurate advice,  
+**So that** I receive hyper-personalized safety recommendations.
+
+**Story Points:** 8  
+**Priority:** P2 - Medium  
+**Dependencies:** CNS-0016 (Biometric Settings)
+
+#### Acceptance Criteria
+
+```gherkin
+Feature: Wearable Biometric Integration
+  Epic: AI Sobriety Advisor (CNS-0024)
+
+  Background:
+    Given I am a registered Pours+ user
+    And I have connected my wearable device (Apple Watch, Fitbit, etc.)
+    And biometric data sharing is enabled
+    And I am in an active drinking session
+
+  Scenario: AI detects elevated heart rate during drinking
+    Given my wearable shows my heart rate is 15% above my baseline
+    And I have consumed 2 drinks in the last hour
+    When the AI analyzes my biometric data
+    Then it should note the elevated heart rate
+    And it should ask if I'm feeling okay or experiencing anxiety
+    And it should suggest slowing down or taking a break
+    And it should recommend hydration and deep breathing
+
+  Scenario: AI uses hydration indicators for personalized reminders
+    Given my wearable tracks hydration levels
+    And my hydration is below optimal range
+    And I am drinking alcohol
+    When the AI reviews my biometric status
+    Then it should send more frequent water reminders
+    And it should explain the compounding dehydration risk
+    And it should suggest specific water intake amounts
+    And it should track my water consumption for the session
+
+  Scenario: AI correlates sleep quality with alcohol tolerance
+    Given my wearable tracked poor sleep last night (4 hours)
+    And I am drinking this evening
+    When the AI considers my current state
+    Then it should warn that alcohol tolerance is lower when sleep-deprived
+    And it should suggest drinking slower than usual
+    And it should lower my recommended BAC limit for the session
+    And it should be extra vigilant with safety check-ins
+
+  Scenario: AI uses blood oxygen levels for safety monitoring
+    Given my wearable provides SpO2 (blood oxygen) readings
+    And my oxygen saturation drops below 95% during drinking
+    When the AI detects this anomaly
+    Then it should immediately alert me
+    And it should ask if I'm feeling short of breath or dizzy
+    And it should strongly recommend stopping alcohol consumption
+    And it should suggest seeking medical attention if symptoms persist
+    And it should notify emergency contact if I don't respond
+```
 
 ---
 
@@ -398,31 +855,281 @@ Feature: Voice Product Discovery
 
 ### User Story: US-VOICE.2 - Voice Cart Management
 
-**Story Points:** 8
+**As a** Pours+ user,  
+**I want** to manage my cart using voice commands,  
+**So that** I can add, remove, or modify items hands-free.
+
+**Story Points:** 8  
+**Priority:** P1 - High
+
+#### Acceptance Criteria
+
+```gherkin
+Feature: Voice Cart Management
+  Epic: Voice-Activated Ordering (CNS-0025)
+
+  Background:
+    Given I am a registered Pours+ user
+    And voice ordering is enabled
+    And I have products in my cart
+
+  Scenario: User adds item to cart by voice
+    Given I am viewing the menu
+    When I say "Add two Guinness to my cart"
+    Then the AI should confirm understanding
+    And it should add 2 Guinness to my cart
+    And it should confirm the addition verbally
+    And it should show updated cart total
+    And I should see a visual confirmation
+
+  Scenario: User removes item from cart by voice
+    Given my cart contains "Margarita" and "Nachos"
+    When I say "Remove the nachos from my cart"
+    Then the AI should locate "Nachos" in my cart
+    And it should remove the item
+    And it should confirm "I've removed Nachos from your cart"
+    And it should show the updated cart total
+
+  Scenario: User modifies quantity by voice
+    Given my cart contains 2 IPAs
+    When I say "Actually make that 3 IPAs"
+    Then the AI should understand I want to update quantity
+    And it should change the quantity to 3
+    And it should confirm "Updated to 3 IPAs"
+    And it should update the cart total
+
+  Scenario: User reviews entire cart by voice
+    Given my cart has multiple items
+    When I ask "What's in my cart?"
+    Then the AI should read each item and quantity
+    And it should state the subtotal
+    And it should ask if I want to make changes
+    And it should offer to proceed to checkout
+```
 
 ---
 
 ### User Story: US-VOICE.3 - Voice Checkout
 
-**Story Points:** 13
+**As a** Pours+ user ready to complete my order,  
+**I want** to complete checkout using voice commands,  
+**So that** I can place my order entirely hands-free.
+
+**Story Points:** 13  
+**Priority:** P1 - High
+
+#### Acceptance Criteria
+
+```gherkin
+Feature: Voice Checkout
+  Epic: Voice-Activated Ordering (CNS-0025)
+
+  Background:
+    Given I am a registered Pours+ user
+    And I have items in my cart
+    And voice ordering is enabled
+    And I have saved payment methods
+
+  Scenario: User initiates checkout by voice
+    Given my cart has items totaling $45.50
+    When I say "Check out" or "Place my order"
+    Then the AI should confirm my cart contents
+    And it should ask me to confirm the order
+    And it should verify my payment method
+    And it should ask for table number or pickup preference
+
+  Scenario: Voice verification of order details
+    Given I am in voice checkout
+    When the AI asks me to confirm my order
+    Then it should read back all items and quantities
+    And it should state the total amount clearly
+    And it should ask "Would you like to proceed?"
+    And I can say "Yes" or "No, go back"
+
+  Scenario: User provides table number by voice
+    Given the AI asks for my table number
+    When I say "Table twelve"
+    Then the AI should understand "12"
+    And it should confirm "Table 12, is that correct?"
+    And upon my confirmation, it should complete the order
+    And it should provide an order confirmation number
+
+  Scenario: User adds special instructions by voice
+    Given I am in voice checkout
+    When I say "Add a note: no ice in my drink"
+    Then the AI should capture "no ice in my drink" as special instructions
+    And it should confirm the instruction was added
+    And it should include this in the final order
+
+  Scenario: Voice order confirmation
+    Given my order has been placed successfully
+    Then the AI should confirm "Your order has been placed"
+    And it should state the order number
+    And it should give an estimated preparation time
+    And it should offer to track the order status
+```
 
 ---
 
 ### User Story: US-VOICE.4 - Conversational Clarification
 
-**Story Points:** 8
+**As a** Pours+ user using voice,  
+**I want** the AI to ask clarifying questions when my request is ambiguous,  
+**So that** I get exactly what I intended to order.
+
+**Story Points:** 8  
+**Priority:** P1 - High
+
+#### Acceptance Criteria
+
+```gherkin
+Feature: Conversational Clarification
+  Epic: Voice-Activated Ordering (CNS-0025)
+
+  Background:
+    Given I am using voice ordering
+    And the AI is actively listening
+
+  Scenario: AI clarifies ambiguous product request
+    Given the menu has 5 different IPA beers
+    When I say "I want an IPA"
+    Then the AI should respond "We have 5 IPAs available. Which would you like?"
+    And it should list the options with brief descriptions
+    And it should wait for my selection
+    And I can say the name or number
+
+  Scenario: AI handles partial or unclear requests
+    Given I am speaking in a noisy environment
+    When I say "Add... [inaudible]... to my cart"
+    Then the AI should recognize the request was incomplete
+    And it should ask "I didn't catch that. What would you like to add?"
+    And it should be patient and supportive
+    And it should not make assumptions
+
+  Scenario: AI confirms understanding for important actions
+    Given I have items in my cart worth $80
+    When I say "Clear my cart"
+    Then the AI should ask "Are you sure you want to remove all items from your cart?"
+    And it should wait for explicit confirmation
+    And it should only proceed if I say "Yes" or "Confirm"
+
+  Scenario: AI offers suggestions when request can't be fulfilled
+    Given the menu doesn't have "Mojito"
+    When I ask for "A Mojito please"
+    Then the AI should say "We don't have Mojito right now"
+    And it should suggest similar alternatives
+    And it should say "Would you like a Virgin Mojito or a different cocktail?"
+    And it should help me find a suitable option
+```
 
 ---
 
 ### User Story: US-VOICE.5 - Voice Accessibility Mode
 
-**Story Points:** 8
+**As a** user with visual impairment,  
+**I want** a complete voice-driven experience with rich audio feedback,  
+**So that** I can use Pours+ independently without needing to see the screen.
+
+**Story Points:** 8  
+**Priority:** P1 - High (ADA Compliance)
+
+#### Acceptance Criteria
+
+```gherkin
+Feature: Voice Accessibility Mode
+  Epic: Voice-Activated Ordering (CNS-0025)
+
+  Background:
+    Given I am a user with visual impairment
+    And I have enabled voice accessibility mode
+    And screen reader compatibility is active
+
+  Scenario: Full menu navigation by voice
+    Given I am on the menu page
+    When I say "Read the menu"
+    Then the AI should begin reading categories
+    And it should pause between items for me to interrupt
+    And I can say "Tell me more about that one"
+    And the AI should read full descriptions including price and allergens
+
+  Scenario: Voice-only cart management
+    Given I have added items by voice
+    When I want to review my cart
+    Then the AI should read each item name, quantity, and price
+    And it should announce the subtotal and total
+    And I can interrupt at any time with commands
+    And all visual confirmations have audio equivalents
+
+  Scenario: Accessible checkout flow
+    Given I am ready to check out
+    When I say "Checkout"
+    Then the AI should guide me through each step verbally
+    And it should confirm every detail aloud
+    And it should not rely on visual-only confirmation
+    And it should announce success clearly
+
+  Scenario: Audio descriptions of promotions and specials
+    Given there are featured items or promotions
+    When I navigate the menu
+    Then the AI should announce specials clearly
+    And it should describe visual elements (e.g., "Featured: Happy Hour cocktails, 20% off")
+    And it should integrate promotions naturally into menu reading
+```
 
 ---
 
 ### User Story: US-VOICE.6 - Noise Handling & Error Recovery
 
-**Story Points:** 5
+**As a** Pours+ user in a loud bar environment,  
+**I want** the voice recognition to work reliably despite background noise,  
+**So that** I can still use voice ordering in realistic venue settings.
+
+**Story Points:** 5  
+**Priority:** P1 - High
+
+#### Acceptance Criteria
+
+```gherkin
+Feature: Noise Handling and Error Recovery
+  Epic: Voice-Activated Ordering (CNS-0025)
+
+  Background:
+    Given I am in a noisy venue environment
+    And background noise level is significant
+    And voice ordering is active
+
+  Scenario: AI adapts to noisy environment
+    Given ambient noise is detected as high
+    When I activate voice ordering
+    Then the AI should use enhanced noise cancellation
+    And it should ask me to speak closer to the microphone
+    And it should provide visual feedback that it's listening
+    And it should confirm understanding more frequently
+
+  Scenario: AI requests repetition when unclear
+    Given I spoke but the AI didn't understand clearly
+    When the AI processes my speech
+    Then it should honestly say "I didn't catch that. Could you repeat?"
+    And it should not guess what I said
+    And it should remain patient and supportive
+    And it should offer text-based fallback option
+
+  Scenario: Voice command timeout handling
+    Given I activated voice input
+    And I haven't spoken for 10 seconds
+    When the timeout period expires
+    Then the AI should say "I'm still listening. What would you like?"
+    And it should allow additional time
+    And after 30 seconds total, it should say "Say 'Hey Pours' when you're ready"
+
+  Scenario: Fallback to text when voice fails repeatedly
+    Given voice recognition has failed 3 times in a row
+    When the AI detects this pattern
+    Then it should suggest "Would you like to type instead?"
+    And it should seamlessly switch to text input
+    And it should remember context from failed voice attempts
+    And the user can switch back to voice anytime
+```
 
 ---
 
@@ -446,55 +1153,315 @@ Provide AI-powered allergen detection, warnings, and safe alternative suggestion
 
 ### User Story: US-ALLERGEN.1 - Allergy Profile Setup with AI Assistance
 
-**Story Points:** 8
+**As a** Pours+ user with allergies or dietary restrictions,  
+**I want** the AI to help me set up a comprehensive allergy profile,  
+**So that** I'm protected from allergens in all my orders.
 
----
+**Story Points:** 8  
+**Priority:** P1 - High
 
-### User Story: US-ALLERGEN.2 - Real-Time Allergen Scanning
-
-**Story Points:** 13
+#### Acceptance Criteria
 
 ```gherkin
-Feature: Real-Time Allergen Scanning
-  Scenario: User with nut allergy views product
-    Given I have a documented allergy to tree nuts
-    And I am browsing the cocktail menu
-    When I view a product containing amaretto (almond liqueur)
-    Then I should see a prominent allergen warning
-    And the AI should explain the specific allergen present
-    And it should offer nut-free alternatives
-    And it should prevent me from adding to cart without acknowledgment
+Feature: AI-Assisted Allergy Profile Setup
+  Epic: AI Allergen Guardian (CNS-0026)
+
+  Background:
+    Given I am a new or existing Pours+ user
+    And I want to set up allergen protection
+
+  Scenario: AI guides user through allergy profile setup
+    Given I am creating my allergy profile
+    When I select "Set up allergen protection"
+    Then the AI should ask "Do you have any food or drink allergies?"
+    And it should provide common allergy categories
+    And it should allow free-text input for uncommon allergies
+    And it should ask about severity (life-threatening, moderate, mild)
+    And it should confirm understanding of each allergy
+
+  Scenario: AI asks clarifying questions about specific allergens
+    Given I indicate I have a nut allergy
+    When the AI processes this information
+    Then it should ask "Which nuts? Tree nuts, peanuts, or all nuts?"
+    And it should ask about cross-contamination sensitivity
+    And it should explain which products contain these allergens
+    And it should save detailed allergy specifications
+
+  Scenario: AI helps identify hidden allergens
+    Given I say "I'm allergic to sulfites"
+    When the AI analyzes this allergy
+    Then it should explain that sulfites are common in wine
+    And it should mention other beverages that may contain sulfites
+    And it should ask if I want to exclude all sulfite-containing items
+    And it should offer to scan all products for this allergen
+
+  Scenario: User updates allergy profile later
+    Given I have an existing allergy profile
+    When I say "I need to add a new allergy"
+    Then the AI should add to my existing profile
+    And it should re-scan my order history for the new allergen
+    And it should notify me if any past orders contained this allergen
+    And it should update my protection settings
 ```
 
 ---
 
 ### User Story: US-ALLERGEN.3 - AI-Powered Safe Alternatives
 
-**Story Points:** 8
+**As a** Pours+ user viewing a product I can't have due to allergies,  
+**I want** the AI to suggest safe alternatives I'll enjoy,  
+**So that** I can still find great options without risking my health.
+
+**Story Points:** 8  
+**Priority:** P1 - High
+
+#### Acceptance Criteria
+
+```gherkin
+Feature: AI-Powered Safe Alternatives
+  Epic: AI Allergen Guardian (CNS-0026)
+
+  Background:
+    Given I have allergen restrictions in my profile
+    And I am browsing products
+
+  Scenario: AI suggests alternatives when I view unsafe product
+    Given I have a documented gluten allergy
+    When I view a beer containing gluten
+    Then the AI should immediately show "This contains gluten"
+    And it should say "Would you like to see gluten-free alternatives?"
+    And it should list gluten-free beers with similar flavor profiles
+    And each suggestion should explain why it's a good match
+
+  Scenario: AI finds alternatives with similar characteristics
+    Given I wanted an "Old Fashioned" but I'm allergic to the bitters used
+    When the AI searches for alternatives
+    Then it should find cocktails with similar flavor profiles
+    And it should suggest modified Old Fashioned recipes without allergens
+    And it should explain ingredient substitutions
+    And it should note "Made without bitters, uses X instead"
+
+  Scenario: AI learns my preferences for better suggestions
+    Given I've previously chosen vodka alternatives over gin
+    When I try to order a gin-based drink with allergens
+    Then the AI should prioritize vodka-based alternatives
+    And it should say "Based on your preferences, you might like..."
+    And it should rank suggestions by likelihood I'll enjoy them
+
+  Scenario: No safe alternatives available
+    Given I'm allergic to an ingredient in multiple products
+    When there are no safe alternatives in that category
+    Then the AI should honestly say "Unfortunately, we don't have allergen-free options in this category"
+    And it should suggest completely different categories
+    And it should explain what specifically prevents safe options
+    And it should offer to notify me if safe options are added
+```
 
 ---
 
 ### User Story: US-ALLERGEN.4 - Cross-Contamination Warnings
 
-**Story Points:** 5
+**As a** user with severe allergies,  
+**I want** to be warned about potential cross-contamination risks,  
+**So that** I can make fully informed decisions about my safety.
+
+**Story Points:** 5  
+**Priority:** P1 - High
+
+#### Acceptance Criteria
+
+```gherkin
+Feature: Cross-Contamination Warnings
+  Epic: AI Allergen Guardian (CNS-0026)
+
+  Background:
+    Given I have severe allergies documented in my profile
+    And cross-contamination sensitivity is marked as high
+
+  Scenario: AI warns about shared equipment
+    Given a cocktail is made with equipment also used for nut-based drinks
+    And I have a severe nut allergy
+    When I view this cocktail
+    Then the AI should show a cross-contamination warning
+    And it should explain the specific risk
+    And it should recommend discussing with bartender
+    And it should mark this as "Moderate Risk" or "High Risk"
+
+  Scenario: AI identifies kitchen-level contamination risks
+    Given I'm ordering food alongside drinks
+    And I have a shellfish allergy
+    When the venue's kitchen prepares shellfish dishes
+    Then the AI should note "This kitchen handles shellfish"
+    And it should suggest asking about preparation practices
+    And it should recommend allergy-safe food items
+
+  Scenario: User acknowledges contamination risk
+    Given a product has cross-contamination warnings
+    When I decide to order it anyway
+    Then the AI should require explicit acknowledgment
+    And it should ask "Are you sure? This has cross-contamination risk."
+    And it should log my decision
+    And it should not prevent the order but ensure informed consent
+```
 
 ---
 
 ### User Story: US-ALLERGEN.5 - Dietary Restriction Assistant
 
-**Story Points:** 8
+**As a** user with dietary restrictions (vegan, kosher, halal, etc.),  
+**I want** AI assistance filtering products by my dietary needs,  
+**So that** I can easily find options that meet my requirements.
+
+**Story Points:** 8  
+**Priority:** P1 - High
+
+#### Acceptance Criteria
+
+```gherkin
+Feature: Dietary Restriction Assistant
+  Epic: AI Allergen Guardian (CNS-0026)
+
+  Background:
+    Given I have dietary restrictions configured
+    And I am browsing the menu
+
+  Scenario: AI filters menu for vegan options
+    Given my dietary preference is vegan
+    When I view the menu
+    Then the AI should automatically highlight vegan options
+    And it should explain "Contains no animal products"
+    And it should hide or gray out non-vegan items
+    And I can toggle to see all items if desired
+
+  Scenario: AI explains why product doesn't meet dietary needs
+    Given I'm vegan
+    When I click on a non-vegan cocktail
+    Then the AI should say "This contains honey" (specific ingredient)
+    And it should suggest vegan alternatives
+    And it should explain the substitution (e.g., "Try this with agave instead")
+
+  Scenario: AI handles multiple simultaneous restrictions
+    Given I am both kosher and lactose-intolerant
+    When I browse products
+    Then the AI should filter by both restrictions
+    And it should clearly mark items meeting all criteria
+    And it should explain which restriction an item violates
+    And it should find options satisfying both requirements
+
+  Scenario: AI assists with religious dietary laws
+    Given I follow halal dietary laws
+    When I view alcoholic products
+    Then the AI should note my profile includes halal preference
+    And it should offer to show only non-alcoholic options
+    Or it should respect that I may choose to view all options
+    And it should not make judgments about my choices
+```
 
 ---
 
 ### User Story: US-ALLERGEN.6 - Allergen Confidence Scoring
 
-**Story Points:** 5
+**As a** user relying on allergen information,  
+**I want** to know how confident the AI is about allergen data,  
+**So that** I can assess the reliability of safety information.
+
+**Story Points:** 5  
+**Priority:** P1 - High
+
+#### Acceptance Criteria
+
+```gherkin
+Feature: Allergen Confidence Scoring
+  Epic: AI Allergen Guardian (CNS-0026)
+
+  Background:
+    Given allergen information is displayed for products
+    And AI confidence scoring is enabled
+
+  Scenario: High confidence allergen data
+    Given a product has complete, verified allergen information
+    When I view this product
+    Then the AI should show "Allergen information verified ✓"
+    And the confidence indicator should be green
+    And it should note the data source (e.g., "From manufacturer")
+
+  Scenario: Medium confidence allergen data
+    Given a product's allergen info is inferred from ingredients
+    When I view this product
+    Then the AI should show "Allergen information estimated"
+    And the confidence indicator should be yellow
+    And it should say "We recommend confirming with venue staff"
+
+  Scenario: Low confidence or missing data
+    Given a product has incomplete allergen information
+    When I view this product
+    Then the AI should prominently warn "Limited allergen information available"
+    And the confidence indicator should be red
+    And it should strongly recommend speaking with bartender/kitchen
+    And it should not allow adding to cart without acknowledgment
+
+  Scenario: AI requests verification from venue
+    Given allergen data confidence is low for a product I want
+    When I express interest in ordering
+    Then the AI should offer to "Ask the venue for detailed allergen info"
+    And it should facilitate communication with venue staff
+    And it should update confidence once verified
+```
 
 ---
 
 ### User Story: US-ALLERGEN.7 - Emergency Contact Integration
 
-**Story Points:** 8
+**As a** user with life-threatening allergies,  
+**I want** my emergency contact information linked to my allergen profile,  
+**So that** help can be reached quickly if I have a reaction.
+
+**Story Points:** 8  
+**Priority:** P1 - High
+
+#### Acceptance Criteria
+
+```gherkin
+Feature: Emergency Contact Integration for Allergies
+  Epic: AI Allergen Guardian (CNS-0026)
+
+  Background:
+    Given I have severe, life-threatening allergies
+    And I have designated emergency contacts
+
+  Scenario: User sets up emergency contacts during allergy profile
+    Given I am configuring my allergen profile
+    When I indicate a life-threatening allergy
+    Then the AI should ask "Would you like to add emergency contacts?"
+    And it should collect emergency contact name and phone
+    And it should ask about EpiPen or medication needs
+    And it should confirm this information is stored securely
+
+  Scenario: AI reminds user of emergency preparedness
+    Given I have severe peanut allergy
+    And I'm at a venue for the first time
+    When I check in
+    Then the AI should ask "Do you have your EpiPen with you?"
+    And it should confirm emergency contacts are up to date
+    And it should identify nearest hospital on venue map
+
+  Scenario: User reports allergic reaction
+    Given I'm having symptoms of allergic reaction
+    When I tell the AI "I think I'm having a reaction"
+    Then the AI should immediately ask if I need emergency services
+    And it should offer to call my emergency contact
+    And it should offer to notify venue staff
+    And it should display my allergen profile for medical personnel
+    And it should log the incident with timestamp and location
+
+  Scenario: Automatic notification on high-risk order attempt
+    Given I have severe shellfish allergy
+    When I accidentally try to add a shellfish item to cart
+    Then the AI should block the order
+    And it should send an alert to my designated safety contact
+    And it should log this incident for review
+    And it should ask if my allergen profile needs updating
+```
 
 ---
 
@@ -530,37 +1497,333 @@ Feature: Mood-Based Venue Recommendations
 
 ### User Story: US-VENUE-AI.2 - Occasion-Aware Suggestions
 
-**Story Points:** 8
+**As a** Pours+ user celebrating a special occasion,  
+**I want** venue recommendations suited to my specific event,  
+**So that** I can find the perfect venue for my celebration.
+
+**Story Points:** 8  
+**Priority:** P2 - Medium
+
+#### Acceptance Criteria
+
+```gherkin
+Feature: Occasion-Aware Venue Suggestions
+  Epic: Smart Venue Discovery (CNS-0027)
+
+  Background:
+    Given I am searching for a venue
+    And the AI is analyzing my request
+
+  Scenario: User specifies birthday celebration
+    Given I am planning a birthday celebration
+    When I tell the AI "I need a place for my birthday"
+    Then it should ask about party size and preferences
+    And it should recommend venues with private areas or party packages
+    And it should prioritize places known for celebrations
+    And it should mention special birthday perks (free drinks, dessert)
+
+  Scenario: User needs venue for business meeting
+    Given I specify "quiet place for a business meeting"
+    When the AI searches for venues
+    Then it should recommend upscale, quieter establishments
+    And it should filter out loud sports bars or clubs
+    And it should mention amenities like Wi-Fi or private seating
+    And it should note venues with professional atmosphere
+
+  Scenario: User planning first date
+    Given I ask for "a good spot for a first date"
+    When the AI processes this occasion
+    Then it should suggest romantic or intimate venues
+    And it should avoid overly loud or crowded places
+    And it should consider venues with good ambiance
+    And it should mention conversation-friendly environments
+
+  Scenario: User celebrating with large group
+    Given I need "a place for 15 people"
+    When the AI searches
+    Then it should filter by capacity
+    And it should prioritize venues with group seating
+    And it should mention group packages or deals
+    And it should note reservation requirements
+```
 
 ---
 
 ### User Story: US-VENUE-AI.3 - Social Context Recommendations
 
-**Story Points:** 8
+**As a** Pours+ user going out with different friend groups,  
+**I want** venue suggestions based on who I'm with,  
+**So that** I can find places my entire group will enjoy.
+
+**Story Points:** 8  
+**Priority:** P2 - Medium
+
+#### Acceptance Criteria
+
+```gherkin
+Feature: Social Context Venue Recommendations
+  Epic: Smart Venue Discovery (CNS-0027)
+
+  Background:
+    Given I am searching for venues
+    And the AI has access to my social patterns
+
+  Scenario: AI detects group order participants
+    Given I've created a group order with 5 friends
+    When the AI analyzes the group composition
+    Then it should check these friends' past venue preferences
+    And it should recommend venues popular with this specific group
+    And it should note "You and Sarah both loved this place"
+
+  Scenario: User indicates going out with coworkers
+    Given I specify "out with coworkers"
+    When the AI searches for venues
+    Then it should recommend professional-casual atmospheres
+    And it should avoid overly loud or informal settings
+    And it should suggest venues near business districts
+    And it should consider happy hour timing and deals
+
+  Scenario: AI recognizes regular social patterns
+    Given I always go to sports bars with my friend Mike
+    And I typically go to cocktail lounges with my friend Lisa
+    When I indicate "going out with Mike and Lisa"
+    Then the AI should find a venue that bridges both preferences
+    And it should suggest sports bars with good cocktails
+    Or venues with both sports viewing and upscale drinks
+    And it should explain why this choice works for both
+
+  Scenario: Solo user seeking social venues
+    Given I indicate I'm going out alone
+    When the AI provides recommendations
+    Then it should suggest social, welcoming venues
+    And it should note places "known for friendly atmosphere"
+    And it should avoid overly couple-focused or group-oriented venues
+    And it should mention bar seating or communal tables
+```
 
 ---
 
 ### User Story: US-VENUE-AI.4 - Weather-Adaptive Suggestions
 
-**Story Points:** 5
+**As a** Pours+ user,  
+**I want** venue recommendations that consider current weather conditions,  
+**So that** I can find comfortable options for the conditions.
+
+**Story Points:** 5  
+**Priority:** P2 - Medium
+
+#### Acceptance Criteria
+
+```gherkin
+Feature: Weather-Adaptive Venue Suggestions
+  Epic: Smart Venue Discovery (CNS-0027)
+
+  Background:
+    Given I am searching for venues
+    And the AI has access to current weather data
+
+  Scenario: Hot summer day venue recommendations
+    Given it is 95°F outside
+    When I search for venues
+    Then the AI should prioritize air-conditioned venues
+    And it should highlight outdoor patios with shade
+    And it should suggest rooftop bars with misters or cover
+    And it should note "Perfect AC" or "Cool patio"
+
+  Scenario: Rainy day venue adjustments
+    Given it is currently raining
+    When the AI provides venue suggestions
+    Then it should deprioritize outdoor seating venues
+    And it should highlight cozy indoor atmospheres
+    And it should note "Indoor seating only" or "Covered patio"
+    And it should consider proximity to parking or transit
+
+  Scenario: Beautiful weather outdoor recommendations
+    Given it is 72°F, sunny, with low humidity
+    When I search for venues
+    Then the AI should promote outdoor spaces
+    And it should say "Perfect weather for their patio!"
+    And it should prioritize beer gardens, rooftops, outdoor bars
+    And it should show photos of outdoor seating areas
+
+  Scenario: AI proactively warns about weather changes
+    Given I have a venue selected with outdoor seating
+    And rain is forecast in 2 hours
+    When I'm about to make a reservation
+    Then the AI should warn about upcoming weather
+    And it should ask if I want weather-protected alternatives
+    And it should show venues with indoor/outdoor flexibility
+```
 
 ---
 
 ### User Story: US-VENUE-AI.5 - Time-Optimized Recommendations
 
-**Story Points:** 5
+**As a** Pours+ user,  
+**I want** venue suggestions optimized for the current time and day,  
+**So that** I can find venues that will have the right atmosphere now.
+
+**Story Points:** 5  
+**Priority:** P2 - Medium
+
+#### Acceptance Criteria
+
+```gherkin
+Feature: Time-Optimized Venue Recommendations
+  Epic: Smart Venue Discovery (CNS-0027)
+
+  Background:
+    Given I am searching for venues
+    And the AI considers current time and day
+
+  Scenario: Late night venue search
+    Given it is 11:30 PM on a Saturday
+    When I search for venues
+    Then the AI should filter for late-night options
+    And it should show venues open past midnight
+    And it should note closing times prominently
+    And it should prioritize nightlife-focused venues
+
+  Scenario: Happy hour timing
+    Given it is 5:30 PM on a Wednesday
+    When I search for venues
+    Then the AI should highlight "Happy Hour Now!"
+    And it should show happy hour specials and timing
+    And it should prioritize venues with active happy hours
+    And it should note when happy hour ends
+
+  Scenario: Sunday afternoon recommendations
+    Given it is 2:00 PM on Sunday
+    When the AI suggests venues
+    Then it should recommend brunch or relaxed day-drinking spots
+    And it should note "Great for Sunday funday"
+    And it should filter out venues that don't open until evening
+    And it should consider lower-key atmosphere preferences
+
+  Scenario: Venue crowd prediction
+    Given historical data on venue busy times
+    When I'm searching at peak hours (Friday 9 PM)
+    Then the AI should note "Likely crowded now"
+    And it should estimate wait times if available
+    And it should suggest less crowded alternatives
+    And it should offer to show quieter time options
+```
 
 ---
 
 ### User Story: US-VENUE-AI.6 - Venue Personality Matching
 
-**Story Points:** 8
+**As a** Pours+ user with specific preferences,  
+**I want** the AI to understand and match my preferred venue personality,  
+**So that** I consistently find places I'll enjoy.
+
+**Story Points:** 8  
+**Priority:** P2 - Medium
+
+#### Acceptance Criteria
+
+```gherkin
+Feature: Venue Personality Matching
+  Epic: Smart Venue Discovery (CNS-0027)
+
+  Background:
+    Given the AI has learned my venue preferences
+    And venues have personality profiles
+
+  Scenario: AI learns user prefers dive bars over upscale lounges
+    Given I have visited 8 dive bars and 1 upscale lounge
+    And I gave high ratings to dive bars
+    When I search for venues without specific criteria
+    Then the AI should prioritize dive bar recommendations
+    And it should note "Based on your style, you'll love..."
+    And it should still show some upscale options but lower-ranked
+
+  Scenario: User explicitly describes desired vibe
+    Given I search for "laid-back, no pretense, good beer selection"
+    When the AI processes this request
+    Then it should match venues to personality descriptors
+    And it should find neighborhood pubs and casual bars
+    And it should filter out dress-code or bottle-service venues
+    And it should explain matches: "Neighborhood favorite, great craft beer"
+
+  Scenario: AI detects personality preference shift
+    Given I historically preferred quiet cocktail bars
+    But my last 4 visits were to lively sports bars
+    When the AI updates my preference profile
+    Then it should recognize this shift in taste
+    And it should ask "Noticed you're exploring sports bars more. Want recommendations?"
+    And it should balance old and new preferences
+
+  Scenario: Venue personality tags are explained
+    Given a venue is tagged as "Hipster, craft-focused, industrial"
+    When I view this venue
+    Then the AI should explain what these tags mean
+    And it should say "Think exposed brick, local beers, vinyl records"
+    And it should compare to venues I know
+    And it should help me understand if it matches my vibe
+```
 
 ---
 
 ### User Story: US-VENUE-AI.7 - Exploratory vs. Familiar Balance
 
-**Story Points:** 8
+**As a** Pours+ user,  
+**I want** the AI to balance showing me new venues with my known favorites,  
+**So that** I can discover new places without feeling overwhelmed.
+
+**Story Points:** 8  
+**Priority:** P2 - Medium
+
+#### Acceptance Criteria
+
+```gherkin
+Feature: Exploration vs. Familiarity Balance
+  Epic: Smart Venue Discovery (CNS-0027)
+
+  Background:
+    Given I have a history of venue visits
+    And the AI tracks my exploration preferences
+
+  Scenario: User in exploratory mode
+    Given I say "Show me somewhere new"
+    When the AI generates recommendations
+    Then it should exclude venues I've visited before
+    And it should prioritize highly-rated venues similar to my favorites
+    And it should explain why each new venue matches my taste
+    And it should note "You haven't been here yet, but it's like [favorite venue]"
+
+  Scenario: User wants comfort and familiarity
+    Given I ask for "my usual spots"
+    When the AI responds
+    Then it should show my top 5 most-visited venues
+    And it should note any specials or changes at these venues
+    And it should show my typical orders at each
+    And it should offer quick re-order options
+
+  Scenario: AI detects user is in a venue rut
+    Given I've visited the same 2 venues exclusively for 6 weeks
+    When I search for venues
+    Then the AI should gently suggest "Want to try somewhere new?"
+    And it should show highly-compatible new options
+    And it should ease exploration with low-risk suggestions
+    And I can dismiss and return to familiar venues
+
+  Scenario: Balanced recommendation mix (default)
+    Given I haven't specified exploration preference
+    When the AI shows venue recommendations
+    Then it should include 60% familiar/visited venues
+    And 40% new venues with strong compatibility scores
+    And it should label each: "You've been here 4 times" or "New match for you"
+    And it should let me filter to "Only new" or "Only favorites"
+
+  Scenario: AI celebrates venue exploration milestones
+    Given I've now visited 20 different venues
+    When I check in to my 20th unique venue
+    Then the AI should celebrate "20 venues explored!"
+    And it should offer a summary of my exploration patterns
+    And it should encourage continued discovery
+    And it might offer rewards or recognition
+```
 
 ---
 
@@ -578,7 +1841,21 @@ Provide AI assistance for managing complex group orders, including suggestion ma
 
 ### User Story: US-GROUP-AI.1 - AI Group Order Coordinator
 
+**As a** user organizing a group order,  
+**I want** AI assistance managing the order process,  
+**So that** coordinating drinks for multiple people is easier.
+
 **Story Points:** 13
+
+```gherkin
+Feature: AI Group Order Coordination
+  Scenario: AI helps organize group order
+    Given I'm creating a group order for 6 people
+    When I activate AI assistance
+    Then it should track each person's selections
+    And help coordinate timing and preferences
+    And suggest popular group items
+```
 
 ---
 
@@ -586,11 +1863,28 @@ Provide AI assistance for managing complex group orders, including suggestion ma
 
 **Story Points:** 8
 
+```gherkin
+Feature: Smart Cost Splitting
+  Scenario: AI suggests fair cost split
+    Given a group order with varied item prices
+    When checkout begins
+    Then AI should calculate fair splits
+    And offer multiple split options
+```
+
 ---
 
 ### User Story: US-GROUP-AI.3 - Preference Conflict Resolution
 
 **Story Points:** 8
+
+```gherkin
+Feature: Preference Conflict Resolution
+  Scenario: AI resolves ordering conflicts
+    Given multiple people want different things
+    Then AI should find compromises
+    And suggest shared items
+```
 
 ---
 
@@ -598,11 +1892,27 @@ Provide AI assistance for managing complex group orders, including suggestion ma
 
 **Story Points:** 8
 
+```gherkin
+Feature: Bulk Order Optimization
+  Scenario: AI optimizes large orders
+    Given a group order for 10+ people
+    Then AI should suggest bulk deals
+    And optimize for cost savings
+```
+
 ---
 
 ### User Story: US-GROUP-AI.5 - Group Budget Management
 
 **Story Points:** 5
+
+```gherkin
+Feature: Group Budget Management
+  Scenario: AI tracks group spending limits
+    Given a group sets a budget
+    Then AI monitors spending
+    And warns before exceeding budget
+```
 
 ---
 
@@ -622,11 +1932,29 @@ Provide AI-powered analysis of spending patterns, drinking habits, and personali
 
 **Story Points:** 13
 
+```gherkin
+Feature: AI Spending Analysis
+  Scenario: User views spending insights
+    Given I have 3+ months of order history
+    When I access spending insights
+    Then AI should show spending patterns
+    And identify trends and anomalies
+    And suggest ways to optimize spending
+```
+
 ---
 
 ### User Story: US-INSIGHTS.2 - Habit Pattern Recognition
 
 **Story Points:** 8
+
+```gherkin
+Feature: Habit Pattern Recognition
+  Scenario: AI identifies drinking habits
+    Given sufficient order history
+    Then AI detects patterns like "Friday happy hours"
+    And explains behavioral trends
+```
 
 ---
 
@@ -634,11 +1962,24 @@ Provide AI-powered analysis of spending patterns, drinking habits, and personali
 
 **Story Points:** 8
 
+```gherkin
+Feature: Budget Optimization
+  Scenario: AI suggests cost savings
+    Then AI recommends cheaper alternatives
+    And highlights happy hour opportunities
+```
+
 ---
 
 ### User Story: US-INSIGHTS.4 - Comparative Insights
 
 **Story Points:** 5
+
+```gherkin
+Feature: Comparative Insights
+  Scenario: User compares to averages
+    Then AI shows how spending compares to personal averages
+```
 
 ---
 
@@ -646,11 +1987,25 @@ Provide AI-powered analysis of spending patterns, drinking habits, and personali
 
 **Story Points:** 5
 
+```gherkin
+Feature: Health Impact Insights
+  Scenario: AI provides health awareness
+    Then shows consumption trends
+    And relates to health guidelines
+```
+
 ---
 
 ### User Story: US-INSIGHTS.6 - Predictive Budget Alerts
 
 **Story Points:** 5
+
+```gherkin
+Feature: Predictive Budget Alerts
+  Scenario: AI warns about budget trajectory
+    Then predicts monthly spending
+    And alerts before exceeding budget
+```
 
 ---
 
