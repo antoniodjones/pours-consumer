@@ -36,7 +36,7 @@
 | CNS-0001 | Core Authentication & User Management | Authentication | Implemented | ✅ Complete |
 | CNS-0002 | Venue Search & Discovery | Venue Discovery | Implemented | ✅ Complete |
 | CNS-0003 | Selected Venue Management | Venue Discovery | Implemented | ✅ Complete |
-| CNS-0004 | Category-Based Product Browsing | Product Discovery | Implemented | 🟡 Needs Docs |
+| CNS-0004 | Category-Based Product Browsing | Product Discovery | Implemented | ✅ Complete |
 | CNS-0005 | Text-Based Product Search | Product Discovery | Planned | 📋 Complete |
 | CNS-0006 | Advanced Product Filtering | Product Discovery | Planned | 📋 Complete |
 | CNS-0007 | Product Sort Options | Product Discovery | Planned | 📋 Complete |
@@ -124,16 +124,17 @@
 
 ### CNS-0004: Category-Based Product Browsing
 - **Status:** Implemented
-- **Documentation Status:** 🟡 Needs Documentation
+- **Documentation Status:** ✅ Complete
+- **Documentation:** `docs/requirements/product-browsing-features.md`
 - **Priority:** P1 - High
 - **Components:** `src/components/menu/CategorySelector.tsx`, `src/components/menu/ProductsGrid.tsx`, `src/components/menu/FeaturedProductsSection.tsx`, `src/components/ProductCard.tsx`, `src/pages/ProductDetail.tsx`
 - **Database Tables:** `products`, `product_categories`
 
 **User Stories:**
-- 🟡 US-BROWSE.1: View Products by Category (5 pts) - NEEDS DOCUMENTATION
-- 🟡 US-BROWSE.2: Featured Products Display (5 pts) - NEEDS DOCUMENTATION
-- 🟡 US-BROWSE.3: Product Card Information Display (3 pts) - NEEDS DOCUMENTATION
-- 🟡 US-BROWSE.4: Product Detail View (5 pts) - NEEDS DOCUMENTATION
+- ✅ US-BROWSE.1: View Products by Category (5 pts) - DOCUMENTED
+- ✅ US-BROWSE.2: Featured Products Display (5 pts) - DOCUMENTED
+- ✅ US-BROWSE.3: Product Card Information Display (3 pts) - DOCUMENTED
+- ✅ US-BROWSE.4: Product Detail View (5 pts) - DOCUMENTED
 
 ### CNS-0005: Text-Based Product Search
 - **Status:** Planned
