@@ -1842,76 +1842,335 @@ Provide AI assistance for managing complex group orders, including suggestion ma
 ### User Story: US-GROUP-AI.1 - AI Group Order Coordinator
 
 **As a** user organizing a group order,  
-**I want** AI assistance managing the order process,  
-**So that** coordinating drinks for multiple people is easier.
+**I want** AI assistance managing the entire order process,  
+**So that** coordinating drinks for multiple people is easier and more efficient.
 
-**Story Points:** 13
+**Story Points:** 13  
+**Priority:** P2 - Medium  
+**Dependencies:** CNS-0023 (Social Drinking & Group Orders)
+
+#### Background
+Group orders can be chaotic with multiple people making selections, changing minds, and managing preferences. AI coordination can streamline this process and reduce errors.
+
+#### Acceptance Criteria
 
 ```gherkin
 Feature: AI Group Order Coordination
-  Scenario: AI helps organize group order
+  Epic: AI Order Assistant for Group Orders (CNS-0028)
+
+  Background:
+    Given I am a registered Pours+ user
+    And I have created a group order
+    And multiple friends are invited to participate
+
+  Scenario: AI helps organize initial group order setup
     Given I'm creating a group order for 6 people
-    When I activate AI assistance
-    Then it should track each person's selections
-    And help coordinate timing and preferences
-    And suggest popular group items
+    When I activate AI group order assistance
+    Then the AI should greet the group
+    And it should explain how group ordering works
+    And it should ask "Who's ordering? I can help collect everyone's choices"
+    And it should offer to set a deadline for selections
+    And it should suggest a budget per person if desired
+
+  Scenario: AI tracks individual selections in real-time
+    Given 4 people have joined my group order
+    When each person adds items to the shared order
+    Then the AI should announce each addition
+    And it should maintain a running list of who ordered what
+    And it should update the total automatically
+    And it should notify me when someone changes their selection
+    And it should highlight when someone hasn't ordered yet
+
+  Scenario: AI suggests popular group-friendly items
+    Given my group order has 8 participants
+    When the AI analyzes the order composition
+    Then it should notice if everyone's ordering similar items
+    And it should suggest "Want to get a pitcher instead? It's cheaper"
+    And it should recommend shareable appetizers
+    And it should identify bulk or group discount opportunities
+
+  Scenario: AI manages order modifications and late additions
+    Given the group order is open for 30 minutes
+    And some people have already ordered
+    When someone wants to change their selection
+    Then the AI should update the order smoothly
+    And it should notify the group organizer of the change
+    And it should recalculate totals and splits
+    And it should handle late joiners by extending the deadline
+
+  Scenario: AI coordinates order finalization
+    Given all group members have made their selections
+    When it's time to finalize the order
+    Then the AI should summarize the full order
+    And it should confirm each person's items
+    And it should show the total cost and split
+    And it should ask "Everyone ready? I'll submit this order now."
+    And it should give 60 seconds for final objections
+
+  Scenario: AI handles dropouts and cancellations
+    Given a group member drops out after ordering
+    When they remove themselves from the group order
+    Then the AI should update the total
+    And it should recalculate cost splits for remaining members
+    And it should notify the organizer
+    And it should ask if the order should still proceed
 ```
 
 ---
 
 ### User Story: US-GROUP-AI.2 - Smart Cost Splitting Suggestions
 
-**Story Points:** 8
+**As a** group order participant,  
+**I want** the AI to calculate fair cost splits in multiple ways,  
+**So that** everyone pays their fair share without awkward conversations.
+
+**Story Points:** 8  
+**Priority:** P2 - Medium
+
+#### Acceptance Criteria
 
 ```gherkin
-Feature: Smart Cost Splitting
-  Scenario: AI suggests fair cost split
-    Given a group order with varied item prices
-    When checkout begins
-    Then AI should calculate fair splits
-    And offer multiple split options
+Feature: Smart Cost Splitting Suggestions
+  Epic: AI Order Assistant for Group Orders (CNS-0028)
+
+  Background:
+    Given I am part of a group order with multiple participants
+    And the order total is calculated
+    And checkout is about to begin
+
+  Scenario: AI offers multiple splitting methods
+    Given a group order total of $127.50 for 5 people
+    When the AI presents payment options
+    Then it should offer "Split evenly: $25.50 per person"
+    And it should offer "Split by items: Pay only for what you ordered"
+    And it should offer "One person pays, others Venmo them"
+    And it should show the math for each option clearly
+
+  Scenario: AI calculates itemized split with tax and tip
+    Given each person ordered different priced items
+    And the subtotal is $100, tax is $8, tip is $15
+    When I choose "Split by items"
+    Then the AI should allocate tax and tip proportionally
+    And it should show "Sarah: $22 (your items) + $1.76 tax + $3.30 tip = $27.06"
+    And it should ensure all splits add up exactly to the total
+    And it should round fairly so no one is overcharged
+
+  Scenario: AI handles shared items in the split
+    Given the group ordered 2 appetizers to share
+    And the appetizers cost $18 total
+    When calculating the split
+    Then the AI should ask "How should we split the shared appetizers?"
+    And it should offer to divide evenly among all participants
+    Or allow custom allocation (e.g., 3 people split one, 4 split the other)
+    And it should add each person's share to their individual bill
+
+  Scenario: AI simplifies complex splits
+    Given a messy order with different quantities and prices
+    When the AI calculates the split
+    Then it should present results in the simplest terms
+    And it should highlight "Easiest option: Split evenly at $23 each"
+    And it should note discrepancies: "Range is $19-$28 if itemized"
+    And it should recommend the fairest approach based on variance
+
+  Scenario: AI assists with one-person-pays scenario
+    Given the group decides one person will pay upfront
+    When this payment method is selected
+    Then the AI should calculate what each person owes that person
+    And it should generate Venmo/payment app links if possible
+    And it should create a shareable summary for the payer
+    And it should track who has paid back
 ```
 
 ---
 
 ### User Story: US-GROUP-AI.3 - Preference Conflict Resolution
 
-**Story Points:** 8
+**As a** group order organizer,  
+**I want** AI help resolving conflicts when people want different things,  
+**So that** the group can reach consensus quickly.
+
+**Story Points:** 8  
+**Priority:** P2 - Medium
+
+#### Acceptance Criteria
 
 ```gherkin
 Feature: Preference Conflict Resolution
-  Scenario: AI resolves ordering conflicts
-    Given multiple people want different things
-    Then AI should find compromises
-    And suggest shared items
+  Epic: AI Order Assistant for Group Orders (CNS-0028)
+
+  Background:
+    Given I am organizing a group order
+    And multiple participants have different preferences
+    And conflicts arise during ordering
+
+  Scenario: AI detects timing conflicts
+    Given 3 people want appetizers now
+    And 4 people want to wait for entrees
+    When the AI detects this split
+    Then it should suggest "Should I split this into two orders?"
+    And it should offer to place appetizers immediately
+    And it should hold main orders for later timing
+    And it should coordinate both orders seamlessly
+
+  Scenario: AI mediates budget disagreements
+    Given some group members want expensive cocktails
+    And others want to keep costs low
+    When the AI notices the cost disparity
+    Then it should calculate the average per-person cost
+    And it should highlight "Heads up: cost range is $15-$45 per person"
+    And it should suggest "Want to set a per-person budget?"
+    And it should help the group agree on a fair limit
+
+  Scenario: AI finds compromise options for divided preferences
+    Given 4 people want beer and 3 people want wine
+    When the AI analyzes these preferences
+    Then it should look for overlap opportunities
+    And it should suggest "How about a beer and wine flight to share?"
+    Or recommend venues with both beer and wine specialties
+    And it should find items that bridge both preferences
+
+  Scenario: AI resolves venue selection conflicts
+    Given half the group prefers Venue A
+    And half prefers Venue B
+    When the AI detects this deadlock
+    Then it should compare both venues objectively
+    And it should note pros/cons: "Venue A has your beer, Venue B is closer"
+    And it should suggest "Vote or I can pick based on majority preferences"
+    And it should facilitate democratic decision-making
+
+  Scenario: AI handles dietary restriction conflicts
+    Given one person is vegan
+    And the suggested venue has limited vegan options
+    When the AI recognizes this issue
+    Then it should alert the group early
+    And it should suggest alternative venues with better options
+    Or help find suitable items at the current venue
+    And it should ensure everyone can order comfortably
 ```
 
 ---
 
 ### User Story: US-GROUP-AI.4 - Bulk Order Optimization
 
-**Story Points:** 8
+**As a** organizer of a large group order,  
+**I want** AI to optimize for bulk deals and cost savings,  
+**So that** the group gets the best value.
+
+**Story Points:** 8  
+**Priority:** P2 - Medium
+
+#### Acceptance Criteria
 
 ```gherkin
 Feature: Bulk Order Optimization
-  Scenario: AI optimizes large orders
-    Given a group order for 10+ people
-    Then AI should suggest bulk deals
-    And optimize for cost savings
+  Epic: AI Order Assistant for Group Orders (CNS-0028)
+
+  Background:
+    Given I am organizing a group order for 10+ people
+    And the AI is analyzing order patterns
+
+  Scenario: AI identifies pitcher vs individual drink savings
+    Given 6 people all ordered the same draft beer
+    And individual beers are $7 each ($42 total)
+    When the AI analyzes this pattern
+    Then it should notice the duplication
+    And it should suggest "Get a pitcher for $32 instead? Saves $10"
+    And it should calculate exact savings
+    And it should require group agreement before switching
+
+  Scenario: AI recommends bundle deals for large groups
+    Given a group of 12 ordering various cocktails
+    And the venue offers a "Party Package: 12 cocktails for $90"
+    When the AI detects eligibility for this deal
+    Then it should alert the organizer
+    And it should compare: "Regular price: $108, Package: $90, Save $18"
+    And it should explain any restrictions or limitations
+    And it should facilitate switching to the package
+
+  Scenario: AI optimizes appetizer sharing for groups
+    Given 8 people are ordering
+    And 5 people added individual sides
+    When the AI analyzes the order
+    Then it should suggest "Get 2 large shareable platters instead?"
+    And it should show the cost comparison
+    And it should note "More food for less money, plus easier sharing"
+
+  Scenario: AI detects happy hour or group discount eligibility
+    Given the group is ordering during happy hour
+    But some items selected are not happy hour eligible
+    When the AI reviews the order
+    Then it should highlight happy hour options
+    And it should suggest "Switch to happy hour cocktails and save $24"
+    And it should show which substitutions would maximize savings
+
+  Scenario: AI recommends optimal group order timing
+    Given the group is planning to order at 6:45 PM
+    And happy hour ends at 7:00 PM
+    When the AI knows about the timing
+    Then it should suggest "Order now to catch happy hour prices?"
+    And it should calculate potential savings
+    And it should help the group finalize faster to capture deals
 ```
 
 ---
 
 ### User Story: US-GROUP-AI.5 - Group Budget Management
 
-**Story Points:** 5
+**As a** group order participant,  
+**I want** the AI to track our spending against a group budget,  
+**So that** we don't overspend unintentionally.
+
+**Story Points:** 5  
+**Priority:** P2 - Medium
+
+#### Acceptance Criteria
 
 ```gherkin
 Feature: Group Budget Management
-  Scenario: AI tracks group spending limits
-    Given a group sets a budget
-    Then AI monitors spending
-    And warns before exceeding budget
+  Epic: AI Order Assistant for Group Orders (CNS-0028)
+
+  Background:
+    Given I am part of a group order
+    And a group budget has been set
+
+  Scenario: Group sets a total budget upfront
+    Given we're starting a group order for 8 people
+    When the organizer says "We have a $200 budget"
+    Then the AI should confirm "Got it, $200 total ($25 per person)"
+    And it should display the budget prominently
+    And it should track spending in real-time
+    And it should show "Spent: $87 / $200 remaining: $113"
+
+  Scenario: AI warns when approaching budget limit
+    Given the group budget is $150
+    And current order total is $135
+    When someone tries to add a $20 item
+    Then the AI should warn "This would exceed budget by $5"
+    And it should suggest "Remove something or adjust budget?"
+    And it should show what needs to change to stay in budget
+
+  Scenario: AI prevents exceeding hard budget limits
+    Given the group has set a hard limit of $100
+    And current total is $98
+    When someone tries to add a $5 item
+    Then the AI should block the addition
+    And it should say "Budget limit reached. Remove an item first?"
+    And it should show options to stay within budget
+
+  Scenario: AI provides budget recommendations
+    Given 6 people with a $180 budget ($30/person)
+    When the AI analyzes available options
+    Then it should suggest items that fit the budget
+    And it should note "You can each get 2 drinks and an appetizer"
+    And it should warn about expensive items that break the budget
+
+  Scenario: AI tracks per-person budget allocation
+    Given each person has a $25 individual budget
+    And the order is using itemized split
+    When someone exceeds their personal allocation
+    Then the AI should notify them privately
+    And it should say "You're at $32, group limit is $25 per person"
+    And it should suggest alternatives to get back under budget
 ```
 
 ---
@@ -1930,81 +2189,401 @@ Provide AI-powered analysis of spending patterns, drinking habits, and personali
 
 ### User Story: US-INSIGHTS.1 - AI Spending Analysis
 
-**Story Points:** 13
+**As a** Pours+ user with order history,  
+**I want** the AI to analyze my spending patterns and trends,  
+**So that** I can understand where my money goes and make informed budgeting decisions.
+
+**Story Points:** 13  
+**Priority:** P2 - Medium
+
+#### Background
+Users often don't realize how much they spend on drinks over time. AI-powered spending analysis can provide valuable insights into consumption patterns, helping users make more conscious decisions.
+
+#### Acceptance Criteria
 
 ```gherkin
 Feature: AI Spending Analysis
-  Scenario: User views spending insights
-    Given I have 3+ months of order history
-    When I access spending insights
-    Then AI should show spending patterns
-    And identify trends and anomalies
-    And suggest ways to optimize spending
+  Epic: AI Receipt Analytics & Insights (CNS-0029)
+
+  Background:
+    Given I am a registered Pours+ user
+    And I have at least 3 months of order history
+    And I navigate to the Insights section
+
+  Scenario: AI provides monthly spending overview
+    Given I have spent $450 in the past month
+    When I view my spending insights
+    Then the AI should show "You spent $450 this month"
+    And it should compare to previous months: "Up 15% from last month ($390)"
+    And it should break down by category: "$200 cocktails, $150 beer, $100 food"
+    And it should show a visual chart of spending over time
+
+  Scenario: AI identifies spending trends and patterns
+    Given my spending has increased 20% each month for 3 months
+    When the AI analyzes this trend
+    Then it should alert me: "Your spending is trending up"
+    And it should project: "At this rate, you'll spend $650 next month"
+    And it should ask "Want to set a budget to manage this?"
+    And it should suggest specific actions to reverse the trend
+
+  Scenario: AI detects spending anomalies
+    Given my typical monthly spending is $300
+    But last month I spent $580
+    When the AI reviews the anomaly
+    Then it should highlight "Last month was unusual - 93% above average"
+    And it should identify the cause: "Special events: 2 birthday celebrations"
+    And it should note "Your typical spending is $300/month"
+    And it should confirm if this was expected or concerning
+
+  Scenario: AI breaks down spending by venue
+    Given I frequent 5 different venues
+    When I ask "Where do I spend the most?"
+    Then the AI should rank venues by total spending
+    And it should show: "Venue A: $180 (40%), Venue B: $120 (27%)..."
+    And it should note frequency: "You visit Venue A 2x/week"
+    And it should calculate average spend per visit for each venue
+
+  Scenario: AI provides day-of-week and time spending insights
+    Given my order history spans multiple months
+    When the AI analyzes temporal patterns
+    Then it should show "You spend most on Fridays ($80/week average)"
+    And it should note "Saturday afternoons: $45/week"
+    And it should highlight expensive times: "Friday 9-11 PM is your peak spending"
+    And it should help me understand my spending rhythms
+
+  Scenario: User asks AI for specific spending insights
+    Given I want to know about a specific category
+    When I ask "How much do I spend on cocktails?"
+    Then the AI should calculate total cocktail spending
+    And it should show trends: "Cocktails: $150/month, down 10% from last month"
+    And it should compare to other categories
+    And it should offer suggestions: "Switch to happy hour cocktails to save $40/month"
 ```
 
 ---
 
 ### User Story: US-INSIGHTS.2 - Habit Pattern Recognition
 
-**Story Points:** 8
+**As a** Pours+ user,  
+**I want** the AI to identify my drinking and ordering habits,  
+**So that** I can understand my behaviors and make changes if desired.
+
+**Story Points:** 8  
+**Priority:** P2 - Medium
+
+#### Acceptance Criteria
 
 ```gherkin
 Feature: Habit Pattern Recognition
-  Scenario: AI identifies drinking habits
-    Given sufficient order history
-    Then AI detects patterns like "Friday happy hours"
-    And explains behavioral trends
+  Epic: AI Receipt Analytics & Insights (CNS-0029)
+
+  Background:
+    Given I have sufficient order history for pattern analysis
+    And the AI is analyzing my behavioral data
+
+  Scenario: AI identifies regular happy hour attendance
+    Given I order during happy hour 80% of Fridays
+    When the AI analyzes my habits
+    Then it should recognize "You're a regular Friday happy hour attendee"
+    And it should calculate savings: "You've saved $240 with happy hour pricing"
+    And it should note favorite happy hour venues
+    And it should suggest similar deals I might have missed
+
+  Scenario: AI detects consistent drink preferences
+    Given 70% of my orders include IPAs
+    When the AI reviews my preferences
+    Then it should identify "You're an IPA enthusiast"
+    And it should show my top 5 IPAs ordered
+    And it should suggest new IPAs I haven't tried
+    And it should note venues with best IPA selections for me
+
+  Scenario: AI recognizes social drinking patterns
+    Given I always order more when with certain friends
+    And my solo orders average 1-2 drinks
+    But group orders average 4-5 drinks
+    When the AI analyzes social context
+    Then it should note "You drink more in group settings"
+    And it should identify which friends correlate with higher consumption
+    And it should present this non-judgmentally as awareness
+    And it should offer to help set social drinking goals if I want
+
+  Scenario: AI identifies venue loyalty patterns
+    Given I visit the same venue 60% of the time
+    When the AI recognizes this loyalty
+    Then it should note "You're a regular at Venue X"
+    And it should check if there's a loyalty program I'm missing
+    And it should calculate lifetime value: "You've spent $1,200 here"
+    And it should suggest asking about VIP perks
+
+  Scenario: AI detects comfort zone vs. exploration patterns
+    Given I order the same 3 drinks 90% of the time
+    When the AI reviews my variety score
+    Then it should gently note "You tend to stick with favorites"
+    And it should show "You order Old Fashioned 45% of the time"
+    And it should ask "Curious about trying something new?"
+    And it should suggest similar items I might enjoy
 ```
 
 ---
 
 ### User Story: US-INSIGHTS.3 - Budget Optimization Suggestions
 
-**Story Points:** 8
+**As a** budget-conscious Pours+ user,  
+**I want** AI recommendations on how to save money,  
+**So that** I can enjoy drinks while spending less.
+
+**Story Points:** 8  
+**Priority:** P2 - Medium
+
+#### Acceptance Criteria
 
 ```gherkin
-Feature: Budget Optimization
-  Scenario: AI suggests cost savings
-    Then AI recommends cheaper alternatives
-    And highlights happy hour opportunities
+Feature: Budget Optimization Suggestions
+  Epic: AI Receipt Analytics & Insights (CNS-0029)
+
+  Background:
+    Given I have spending history
+    And I'm interested in saving money
+
+  Scenario: AI identifies cheaper alternatives I'd enjoy
+    Given I frequently order premium cocktails at $15 each
+    And similar cocktails are $10 during happy hour
+    When the AI analyzes my spending
+    Then it should suggest "Order your favorites during happy hour and save $20/week"
+    And it should show exactly which drinks and times
+    And it should calculate annual savings: "$1,040/year"
+    And it should make it easy to shift timing
+
+  Scenario: AI recommends cost-effective venues for my preferences
+    Given I order IPAs at Venue A for $8 each
+    And Venue B offers similar IPAs for $6 each
+    When the AI compares venues
+    Then it should suggest "Get your favorite IPAs at Venue B for 25% less"
+    And it should show side-by-side comparison
+    And it should note "Same beer, $2 cheaper, 0.3 miles away"
+    And it should track if I try the suggestion
+
+  Scenario: AI finds bulk or pitcher savings opportunities
+    Given I typically order 3 individual beers per visit
+    And pitchers would save $5 per visit
+    When the AI reviews my ordering patterns
+    Then it should suggest "Get a pitcher instead and save $5"
+    And it should calculate "That's $260/year based on your frequency"
+    And it should note "Plus, you can share with friends"
+
+  Scenario: AI highlights missed happy hour opportunities
+    Given I often arrive at venues at 6:30 PM
+    And happy hour ends at 6:00 PM
+    When the AI detects this pattern
+    Then it should note "You just miss happy hour 60% of the time"
+    And it should suggest "Arrive 45 minutes earlier to save $12/visit"
+    And it should calculate potential annual savings
+    And it should offer calendar reminders for happy hour times
+
+  Scenario: AI suggests strategic substitutions
+    Given I order expensive imported beers
+    When local craft beers are $3 cheaper with similar ratings
+    Then the AI should recommend "Try local craft beers, save $15/week"
+    And it should match by style and flavor profile
+    And it should explain "Similar taste, local, and cheaper"
+    And it should track if I like the alternatives
 ```
 
 ---
 
 ### User Story: US-INSIGHTS.4 - Comparative Insights
 
-**Story Points:** 5
+**As a** Pours+ user,  
+**I want** to compare my spending and habits to my own averages and benchmarks,  
+**So that** I can understand if my current behavior is typical or unusual.
+
+**Story Points:** 5  
+**Priority:** P2 - Medium
+
+#### Acceptance Criteria
 
 ```gherkin
 Feature: Comparative Insights
-  Scenario: User compares to averages
-    Then AI shows how spending compares to personal averages
+  Epic: AI Receipt Analytics & Insights (CNS-0029)
+
+  Background:
+    Given I have historical spending and consumption data
+    And I want to contextualize my current behavior
+
+  Scenario: Compare current month to personal averages
+    Given my average monthly spending is $350
+    And this month I've spent $480
+    When I view comparative insights
+    Then the AI should show "This month: $480 vs. your average: $350 (+37%)"
+    And it should highlight "Above your typical spending"
+    And it should show a visual indicator (red/yellow/green)
+    And it should ask "Is this expected or concerning?"
+
+  Scenario: Compare this week to last week
+    Given last week I spent $80
+    And this week I've spent $120 so far
+    When I check my weekly comparison
+    Then the AI should note "Up 50% from last week"
+    And it should ask "Any special occasion this week?"
+    And it should project end-of-week total: "On track for $140"
+
+  Scenario: Compare venue spending to my typical pattern
+    Given I typically spend $40 per visit at Venue A
+    But today's order is $75
+    When the AI detects the variance
+    Then it should note during checkout "This is higher than your usual $40 at this venue"
+    And it should be presented as awareness, not judgment
+    And it should ask "Celebrating something special?"
+
+  Scenario: Compare drinking frequency to my baseline
+    Given I typically go out 2 times per week
+    But this week I've been out 5 times
+    When the AI analyzes frequency
+    Then it should note "You're out more than usual this week"
+    And it should compare to my patterns
+    And it should be supportive: "Hope you're having a great week!"
+    And it should offer budget tracking if spending is also elevated
+
+  Scenario: Year-over-year comparison
+    Given I have data from last year
+    When I view annual insights
+    Then the AI should compare "This year: $4,200 vs. last year: $3,800 (+11%)"
+    And it should show monthly trends year-over-year
+    And it should identify what changed (new venues, price increases, etc.)
 ```
 
 ---
 
 ### User Story: US-INSIGHTS.5 - Health Impact Insights
 
-**Story Points:** 5
+**As a** health-conscious Pours+ user,  
+**I want** insights about my alcohol consumption relative to health guidelines,  
+**So that** I can make informed decisions about my drinking.
+
+**Story Points:** 5  
+**Priority:** P2 - Medium
+
+#### Acceptance Criteria
 
 ```gherkin
 Feature: Health Impact Insights
-  Scenario: AI provides health awareness
-    Then shows consumption trends
-    And relates to health guidelines
+  Epic: AI Receipt Analytics & Insights (CNS-0029)
+
+  Background:
+    Given I am a registered Pours+ user
+    And I have consumption history tracked
+    And health insights are enabled
+
+  Scenario: AI shows weekly alcohol consumption vs. health guidelines
+    Given I consumed 15 standard drinks this week
+    And health guidelines recommend max 14 drinks/week
+    When I view health insights
+    Then the AI should show "This week: 15 drinks"
+    And it should note "Health guidelines suggest max 14/week"
+    And it should be educational, not preachy: "Slightly above recommended"
+    And it should explain what constitutes a standard drink
+
+  Scenario: AI tracks drink-free days
+    Given health guidelines recommend 2 alcohol-free days per week
+    And I had only 1 drink-free day this week
+    When the AI analyzes my patterns
+    Then it should note "You had 1 alcohol-free day this week"
+    And it should suggest "Try for 2 alcohol-free days for better health"
+    And it should celebrate when I achieve this goal
+    And it should track my streak of meeting the guideline
+
+  Scenario: AI provides calorie awareness from alcohol
+    Given I consumed 10 drinks this week
+    And each averaged 200 calories
+    When I ask about caloric impact
+    Then the AI should calculate "~2,000 calories from alcohol this week"
+    And it should contextualize: "That's like 3 Big Macs"
+    And it should be factual, not judgmental
+    And it should suggest lower-calorie alternatives if I'm interested
+
+  Scenario: AI detects binge drinking patterns
+    Given I consumed 6+ drinks in one session
+    When the AI reviews this session
+    Then it should gently note "This session was above binge drinking threshold"
+    And it should explain health risks in simple terms
+    And it should suggest strategies for moderation
+    And it should offer to activate more proactive sobriety monitoring
+
+  Scenario: AI celebrates healthy drinking habits
+    Given I stayed within health guidelines for 4 weeks
+    And I had 2+ alcohol-free days each week
+    When the AI reviews my progress
+    Then it should celebrate "Great job staying within guidelines!"
+    And it should show my consistent pattern
+    And it should encourage continuation
+    And it might offer rewards or recognition
 ```
 
 ---
 
 ### User Story: US-INSIGHTS.6 - Predictive Budget Alerts
 
-**Story Points:** 5
+**As a** Pours+ user with a monthly budget,  
+**I want** AI to predict when I might exceed my budget,  
+**So that** I can adjust my spending before it's too late.
+
+**Story Points:** 5  
+**Priority:** P2 - Medium
+
+#### Acceptance Criteria
 
 ```gherkin
 Feature: Predictive Budget Alerts
-  Scenario: AI warns about budget trajectory
-    Then predicts monthly spending
-    And alerts before exceeding budget
+  Epic: AI Receipt Analytics & Insights (CNS-0029)
+
+  Background:
+    Given I have set a monthly spending budget
+    And the AI tracks my spending patterns
+    And it's currently mid-month
+
+  Scenario: AI predicts budget overrun based on current pace
+    Given my monthly budget is $400
+    And I've spent $280 in 15 days
+    When the AI analyzes my trajectory
+    Then it should project "At this pace, you'll spend ~$560 this month"
+    And it should alert me "You're on track to exceed budget by $160"
+    And it should suggest "Slow down to $8/day to stay on budget"
+    And it should offer strategies to cut back
+
+  Scenario: AI provides early warning before budget risk
+    Given my budget is $300/month
+    And I typically spend $75/week
+    But this week I've already spent $120
+    When the AI detects the acceleration
+    Then it should warn "Spending faster than usual this week"
+    And it should project impact on monthly budget
+    And it should suggest "Consider skipping next outing to stay on track"
+
+  Scenario: AI celebrates staying on budget
+    Given my budget is $350/month
+    And it's day 25 of the month
+    And I've spent $290
+    When the AI projects my end-of-month spending
+    Then it should project "You're on track to stay within budget!"
+    And it should show "$60 remaining for 5 days"
+    And it should encourage continued discipline
+    And it might suggest a treat within remaining budget
+
+  Scenario: AI adjusts predictions based on upcoming events
+    Given I have a birthday event scheduled this weekend
+    And I've spent $200 of my $400 budget
+    When the AI considers the event
+    Then it should ask "Big weekend coming up. Want to save budget for it?"
+    And it should suggest "Skip tonight's outing to have $150 for the weekend"
+    And it should help me strategically allocate remaining budget
+
+  Scenario: AI provides weekly budget check-ins
+    Given my monthly budget is $400 ($100/week)
+    When it's the start of a new week
+    Then the AI should send a check-in: "Week 2: You have $280 left ($70/week)"
+    And it should note if I'm ahead or behind pace
+    And it should adjust weekly recommendations based on remaining budget
+    And it should offer to increase notification frequency if I'm struggling
 ```
 
 ---
