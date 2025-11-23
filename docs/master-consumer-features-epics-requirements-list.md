@@ -18,8 +18,9 @@
 8. [Feature Area: Payment Processing](#8-feature-area-payment-processing)
 9. [Feature Area: Security & Compliance](#9-feature-area-security--compliance)
 10. [Feature Area: Business Operations](#10-feature-area-business-operations)
-11. [Epic Master List](#epic-master-list)
-12. [Summary Statistics](#summary-statistics)
+11. [Feature Area: Social Features](#11-feature-area-social-features)
+12. [Epic Master List](#epic-master-list)
+13. [Summary Statistics](#summary-statistics)
 
 **Legend:**
 - ✅ = Implemented & Documented
@@ -55,6 +56,7 @@
 | CNS-0020 | Privacy & Compliance | Compliance | Implemented | 🟡 Needs Docs |
 | CNS-0021 | Venue Partnership | Business Ops | Implemented | ❌ Needs Docs |
 | CNS-0022 | Age Verification | Business Ops | Implemented | ❌ Needs Docs |
+| CNS-0023 | Social Drinking & Group Orders | Social Features | Planned | ✅ Complete |
 
 ---
 
@@ -442,6 +444,42 @@
 
 ---
 
+## 11. Feature Area: Social Features
+
+### CNS-0023: Social Drinking & Group Orders
+- **Status:** Planned
+- **Documentation Status:** ✅ Complete
+- **Documentation:** `docs/requirements/social-drinking-group-orders-features.md`
+- **Priority:** P1 - High
+- **Dependencies:** CNS-0017 (Sobriety Monitoring), CNS-0009 (Checkout Process)
+
+**Sub-Feature: Buddy List Management**
+- Manage drinking buddies for group orders
+- Send and receive buddy requests
+- View buddy list and profiles
+- Privacy controls for buddy connections
+
+**User Stories:**
+- 📋 US-BUDDY.1: Add Buddy to List (8 pts) - DOCUMENTED
+- 📋 US-BUDDY.2: Accept or Decline Buddy Request (5 pts) - DOCUMENTED
+- 📋 US-BUDDY.3: View and Manage Buddy List (5 pts) - DOCUMENTED
+- 📋 US-SOCIAL.1: Assign Drinks to Buddies During Checkout (8 pts) - DOCUMENTED
+- 📋 US-SOCIAL.2: Receive and Review Drink Assignment Notification (5 pts) - DOCUMENTED
+- 📋 US-SOCIAL.3: Accept Drink Assignment (13 pts) - DOCUMENTED
+- 📋 US-SOCIAL.4: Decline Drink Assignment (5 pts) - DOCUMENTED
+- 📋 US-SOCIAL.5: View Drink Assignment History (8 pts) - DOCUMENTED
+- 📋 US-SOCIAL.6: View Buddy Drinking Session Summary (8 pts) - DOCUMENTED
+
+**Database Tables (New):**
+- `buddy_connections` - Friend relationships
+- `drink_assignments` - Drink assignment tracking
+
+**Database Functions (New):**
+- `create_mutual_buddy_connection()` - Mutual buddy relationship
+- `process_drink_assignment_acceptance()` - Handle drink acceptance
+
+---
+
 ## Summary Statistics
 
 ### By Feature Area
@@ -458,17 +496,18 @@
 | Payment Processing | 1 | 0 | 1 |
 | Security & Compliance | 1 | 1 | 0 |
 | Business Operations | 2 | 2 | 0 |
-| **TOTAL** | **22** | **14** | **8** |
+| Social Features | 1 | 0 | 1 |
+| **TOTAL** | **23** | **14** | **9** |
 
 ### By Documentation Status
 
 | Status | Epics | User Stories | Percentage |
 |--------|-------|--------------|------------|
-| ✅ Fully Documented | 9 | 56 | 41% |
-| 🟡 Implemented, Needs Docs | 10 | 53 | 45% |
-| 📋 Planned, Documented | 3 | 21 | 14% |
-| ❌ Planned, Needs Docs | 1 | 7 | - |
-| **TOTAL** | **22** | **137** | **100%** |
+| ✅ Fully Documented | 10 | 65 | 43% |
+| 🟡 Implemented, Needs Docs | 10 | 53 | 35% |
+| 📋 Planned, Documented | 4 | 30 | 20% |
+| ❌ Planned, Needs Docs | 0 | 0 | 2% |
+| **TOTAL** | **23** | **148** | **100%** |
 
 ### By Priority
 
@@ -478,17 +517,17 @@
 
 ### By Implementation Status
 
-- **✅ Implemented:** 14 epics (64%)
+- **✅ Implemented:** 14 epics (61%)
 - **🔄 In Progress:** 0 epics
-- **📋 Planned:** 8 epics (36%)
+- **📋 Planned:** 9 epics (39%)
 
 ### Story Points Summary
 
 - **Completed & Documented:** ~200 story points
 - **Completed, Needs Documentation:** ~220 story points
-- **Planned & Documented:** ~85 story points
-- **Planned, Needs Documentation:** ~30 story points
-- **Total:** ~535 story points
+- **Planned & Documented:** ~150 story points
+- **Planned, Needs Documentation:** ~0 story points
+- **Total:** ~570 story points
 
 ---
 
