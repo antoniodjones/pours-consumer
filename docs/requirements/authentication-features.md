@@ -1,7 +1,7 @@
 # Authentication Features - Product Requirements
 
-**Document Version:** 2.0  
-**Last Updated:** 2025-11-22  
+**Document Version:** 3.0  
+**Last Updated:** 2025-11-23  
 **Epic:** CNS-0001: Core Authentication & User Management  
 **Status:** 🟡 Partially Implemented (Core features complete, enhancements planned)  
 **Priority:** P0 - Critical
@@ -1085,6 +1085,133 @@ Social OAuth authentication reduces friction by allowing users to leverage exist
 ```gherkin
 Given I am on the registration page
 When I click "Continue with Google"
+Then I should be redirected to Google's OAuth consent page
+When I select my Google account and grant permissions
+Then I should be redirected back to the application
+And my account should be created automatically
+And my profile should be populated with Google account data:
+  | Field | Source |
+  | email | Google account email |
+  | first_name | Google first name |
+  | last_name | Google last name |
+  | avatar_url | Google profile picture |
+And I should be signed in
+And I should be redirected to the home page
+```
+
+**Scenario 2: Sign In with Apple**
+```gherkin
+Given I have an existing account linked to my Apple ID
+And I am on the sign-in page
+When I click "Sign in with Apple"
+Then I should see Apple's authentication prompt
+When I authenticate with Face ID or Touch ID
+Then I should be signed in to my account
+And I should be redirected to the home page
+And no OTP or password should be required
+```
+
+**Scenario 3: Sign Up with Facebook**
+```gherkin
+Given I am on the registration page
+When I click "Continue with Facebook"
+Then I should be redirected to Facebook's OAuth page
+When I log in to Facebook and approve the permissions
+Then I should be redirected back to the application
+And my account should be created
+And my profile should include my Facebook display name and email
+```
+
+**Scenario 4: Account Already Exists with OAuth Email**
+```gherkin
+Given I have an existing account with email "user@gmail.com"
+And my account was created via email/OTP
+When I attempt to sign in using "Continue with Google" with the same email
+Then the system should recognize the existing account
+And I should be signed in to my existing account
+And my Google account should be linked to my profile
+And I should see a message "Google account linked successfully"
+```
+
+**Scenario 5: OAuth Provider Denies Access**
+```gherkin
+Given I am attempting to sign in with Google
+When I click "Continue with Google"
+And I deny the permission request on Google's consent page
+Then I should be redirected back to the sign-in page
+And I should see a message "Google sign-in was cancelled"
+And I should still have the option to sign in with email/OTP
+```
+
+**Scenario 6: Profile Data Sync from OAuth Provider**
+```gherkin
+Given I have signed in with Google
+And my Google account has a profile picture and name
+When my account is created
+Then my profile picture should be downloaded and stored
+And my first name and last name should be populated from Google
+And my email should be marked as verified
+```
+
+#### Technical Requirements
+
+**Frontend:**
+- OAuth button components for Google, Apple, Facebook
+- OAuth redirect handling
+- Account linking UI in profile settings
+- Error handling for OAuth failures
+
+**Backend:**
+- Supabase Auth OAuth provider configuration
+- Edge Function: `link-oauth-account` - Links OAuth provider to existing account
+- Database: `auth.identities` table (managed by Supabase)
+- Profile data sync from OAuth providers
+
+**OAuth Providers:**
+- **Google OAuth 2.0**: Client ID, Client Secret, Redirect URI
+- **Apple Sign In**: Service ID, Team ID, Key ID, Private Key
+- **Facebook Login**: App ID, App Secret, Redirect URI
+
+**Security:**
+- OAuth state parameter to prevent CSRF attacks
+- Nonce verification for OpenID Connect
+- Token validation before account creation
+- Secure redirect URI validation
+
+**Data Mapping:**
+```typescript
+// Google OAuth data mapping
+{
+  email: google.email,
+  first_name: google.given_name,
+  last_name: google.family_name,
+  avatar_url: google.picture,
+  email_verified: google.email_verified
+}
+
+// Apple OAuth data mapping
+{
+  email: apple.email,
+  first_name: apple.name?.firstName,
+  last_name: apple.name?.lastName,
+  email_verified: true // Apple always verifies
+}
+
+// Facebook OAuth data mapping
+{
+  email: facebook.email,
+  first_name: facebook.first_name,
+  last_name: facebook.last_name,
+  avatar_url: facebook.picture?.data?.url
+}
+```
+
+#### Acceptance Criteria
+
+**Scenario 1: Sign Up with Google**
+```gherkin
+Given I am on the registration page
+When I click "Continue with Google"
 Then I should be redirected to Google's OAuth consent screen
 When I select my Google account and grant permissions
 Then I should be redirected back to the Pours Consumer app
@@ -1110,7 +1237,24 @@ Then I should be signed in to my existing account
 And I should be redirected to the home page
 ```
 
-**Scenario 3: Link Social Account to Existing Email Account**
+**Scenario 3: Sign Up with Facebook**
+```gherkin
+Given I am on the registration page
+When I click "Continue with Facebook"
+Then I should be redirected to Facebook's OAuth consent page
+When I log in to Facebook and approve the requested permissions
+Then I should be redirected back to the application
+And a new account should be created
+And my profile should be populated with Facebook data:
+  | Field | Source |
+  | Email | Facebook email |
+  | First Name | Facebook first name |
+  | Last Name | Facebook last name |
+  | Avatar | Facebook profile picture |
+And I should be automatically signed in
+```
+
+**Scenario 4: Link Social Account to Existing Email Account**
 ```gherkin
 Given I have an existing account with email "user@example.com"
 And I am signed in
@@ -1122,7 +1266,7 @@ And I should see "Google account connected successfully"
 And I should be able to sign in using Google in the future
 ```
 
-**Scenario 4: OAuth Provider Email Already Registered**
+**Scenario 5: OAuth Provider Email Already Registered**
 ```gherkin
 Given an account exists with email "user@example.com"
 And this account was created with email/OTP authentication
@@ -1134,7 +1278,7 @@ Then my Google account should be linked to the existing account
 And I should be signed in
 ```
 
-**Scenario 5: Handle OAuth Cancellation**
+**Scenario 6: Handle OAuth Cancellation**
 ```gherkin
 Given I am on the sign-in page
 When I click "Continue with Facebook"
@@ -1145,7 +1289,7 @@ And I should see a message "Sign-in cancelled"
 And I should be able to try again or use a different method
 ```
 
-**Scenario 6: Sign In with Apple "Hide My Email"**
+**Scenario 7: Sign In with Apple "Hide My Email"**
 ```gherkin
 Given I am signing up with Apple
 When I choose "Hide My Email" on Apple's consent screen
@@ -1153,6 +1297,16 @@ Then Apple should generate a proxy email (e.g., "abc123@privaterelay.appleid.com
 And my account should be created with the proxy email
 And emails sent to the proxy should be forwarded to my real email
 And I should be able to sign in normally
+```
+
+**Scenario 8: OAuth Permission Scope Changes**
+```gherkin
+Given I previously granted limited permissions to Google OAuth
+When I sign in again using Google
+And Google requests additional permissions
+Then I should see the updated permission request
+When I grant the new permissions
+Then the additional profile data should be synced to my account
 ```
 
 #### Technical Requirements
@@ -1571,6 +1725,7 @@ CREATE TABLE auth_analytics (
 |---------|------|--------|---------|
 | 1.0 | 2025-11-22 | Product Team | Initial documentation based on implemented authentication system |
 | 2.0 | 2025-11-22 | Product Team | Added planned enhancement user stories: US-AUTH.11 (Passkey), US-AUTH.12 (SMS OTP), US-AUTH.13 (Social OAuth), US-AUTH.14 (Unified UI), US-AUTH.15 (Account Linking), US-AUTH.16 (Analytics) with full Gherkin scenarios and implementation status |
+| 3.0 | 2025-11-23 | Product Team | Completed comprehensive Gherkin scenarios for all planned enhancements (US-AUTH.11 through US-AUTH.16), added detailed acceptance criteria, technical requirements, and security considerations for each feature |
 
 ---
 
