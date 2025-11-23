@@ -282,7 +282,7 @@ Feature: Product Card Information Display
       | Product Image | Top section, aspect ratio preserved |
       | Product Name | Below image, left-aligned |
       | Price | Below image, right-aligned, large and bold |
-      | ABV Badge | Below name, if alcoholic product |
+      | Alcohol By Volume (ABV) Badge | Below name, if alcoholic product |
       | Description | Middle section |
       | Add to Cart Controls | Bottom section |
 
@@ -314,7 +314,7 @@ Feature: Product Card Information Display
   Scenario: Display alcohol content badge
     Given the product contains alcohol
     When I view a product card
-    Then I should see an ABV badge displaying "X.X% ABV"
+    Then I should see an Alcohol By Volume (ABV) badge displaying "X.X% ABV"
     And the badge should have:
       | Property | Value |
       | Background | Secondary variant |
@@ -367,7 +367,7 @@ Feature: Product Card Information Display
 - [x] ProductCard component displays all required information
 - [x] Image handling works for local images, URLs, and fallback icons
 - [x] Name and price are prominently displayed
-- [x] ABV badge shown only for alcoholic products
+- [x] Alcohol By Volume (ABV) badge shown only for alcoholic products
 - [x] Description is clearly readable
 - [x] Add to cart button shown when quantity is 0
 - [x] Quantity controls shown when item is in cart
@@ -411,7 +411,7 @@ Feature: Product Detail View
     Given I am viewing products in a category
     When I click on a product card
     Then I should be navigated to the product detail page
-    And the URL should include the product ID as "/menu/product/:id"
+    And the Uniform Resource Locator (URL) should include the product ID as "/menu/product/:id"
     And the page should load the product details from the database
 
   Scenario: Display product detail layout
@@ -422,7 +422,7 @@ Feature: Product Detail View
       | Product Image | Top section, full width |
       | Product Name | Below image, large heading |
       | Price | Next to name, right-aligned |
-      | ABV Badge | Next to price, if applicable |
+      | Alcohol By Volume (ABV) Badge | Next to price, if applicable |
       | Description | Below heading |
       | Volume | Below description, if applicable |
       | Start an Order Button | Below product info, full width |
@@ -446,7 +446,7 @@ Feature: Product Detail View
   Scenario: Display alcohol content
     Given the product contains alcohol
     When I view the product detail page
-    Then I should see an ABV badge showing "X.X% ABV"
+    Then I should see an Alcohol By Volume (ABV) badge showing "X.X% ABV"
     And the badge should have:
       | Property | Value |
       | Background | Purple with transparency |
@@ -500,7 +500,7 @@ Feature: Product Detail View
     And the chevron icon should rotate 180 degrees
 
   Scenario: Product not found
-    Given I navigate to a product detail page with an invalid product ID
+    Given I navigate to a product detail page with an invalid product Identifier (ID)
     When the page attempts to load
     Then I should see a "Product not found" message
     And the page should display the error on the gradient background
@@ -516,7 +516,7 @@ Feature: Product Detail View
     Then the image should be displayed as:
       | Condition | Display |
       | Local image mapping exists | Display mapped local image |
-      | Database image_url exists | Display URL image |
+      | Database image_url exists | Display Uniform Resource Locator (URL) image |
       | No image available | Display wine glass icon |
     And the image should fill the aspect-ratio container
     And the image should be full width
@@ -534,7 +534,7 @@ Feature: Product Detail View
 - [x] All product information is displayed correctly
 - [x] Product image handles local images, URLs, and fallback
 - [x] Price and name are prominently displayed
-- [x] ABV badge shown only for alcoholic products
+- [x] Alcohol By Volume (ABV) badge shown only for alcoholic products
 - [x] Volume displayed when available
 - [x] "START AN ORDER" button adds product to cart
 - [x] Fine print and allergy sections are collapsible
@@ -560,7 +560,7 @@ Feature: Product Detail View
 ### Database Schema
 - **products table**: Stores all product information including images, pricing, descriptions
 - **product_categories table**: Stores category definitions and display order
-- Products are linked to categories via `category_id` foreign key
+- Products are linked to categories via `category_id` (category identifier) foreign key
 
 ### State Management
 - Category selection managed by `useCategoryFilter` hook
@@ -568,9 +568,9 @@ Feature: Product Detail View
 - Product data fetched via `useMenuData` hook with automatic refetching
 
 ### Styling
-- Uses design system tokens for colors (HSL values)
+- Uses design system tokens for colors (Hue, Saturation, Lightness (HSL) values)
 - Gradient backgrounds: purple to yellow theme
-- Responsive grid layouts using Tailwind CSS
+- Responsive grid layouts using Tailwind Cascading Style Sheets (CSS)
 - Consistent card styling with backdrop blur effects
 
 ---
@@ -580,9 +580,9 @@ Feature: Product Detail View
 ### Technical Dependencies
 - React Router for navigation
 - Supabase for data fetching
-- Tailwind CSS for styling
+- Tailwind Cascading Style Sheets (CSS) for styling
 - Lucide React for icons
-- Shadcn UI components (Card, Button, Badge, Collapsible)
+- Shadcn User Interface (UI) components (Card, Button, Badge, Collapsible)
 
 ### Feature Dependencies
 - **Venue Selection**: Users must select a venue before browsing products
@@ -593,9 +593,9 @@ Feature: Product Detail View
 
 ## Future Enhancements
 
-1. **Product Filtering**: Add filters for price range, ABV, dietary restrictions
+1. **Product Filtering**: Add filters for price range, Alcohol By Volume (ABV), dietary restrictions
 2. **Product Search**: Text-based search within categories
-3. **Product Sorting**: Sort by price, name, popularity, ABV
+3. **Product Sorting**: Sort by price, name, popularity, Alcohol By Volume (ABV)
 4. **Product Reviews**: Display user ratings and reviews
 5. **Product Recommendations**: "Customers also bought" suggestions
 6. **Product Variants**: Support for size options or customizations
@@ -625,7 +625,7 @@ Menu Page
 
 ### Testing Notes
 - Test with various numbers of products (0, 1, 4, 20+)
-- Test with products missing images, descriptions, or ABV
+- Test with products missing images, descriptions, or Alcohol By Volume (ABV)
 - Test category selection transitions
 - Test responsive layouts on all screen sizes
 - Test navigation between menu and product detail pages
