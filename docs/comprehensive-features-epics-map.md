@@ -40,8 +40,8 @@
 | CNS-0005 | Text-Based Product Search | Product Discovery | Planned | 📋 Complete |
 | CNS-0006 | Advanced Product Filtering | Product Discovery | Planned | 📋 Complete |
 | CNS-0007 | Product Sort Options | Product Discovery | Planned | 📋 Complete |
-| CNS-0008 | Shopping Cart Management | Shopping | Implemented | 🟡 Needs Docs |
-| CNS-0009 | Checkout Process | Shopping | Implemented | 🟡 Needs Docs |
+| CNS-0008 | Shopping Cart Management | Shopping | Implemented | ✅ Complete |
+| CNS-0009 | Checkout Process | Shopping | Implemented | ✅ Complete |
 | CNS-0010 | Account Dashboard Analytics | Profile | Implemented | ✅ Complete |
 | CNS-0011 | Manage Profile | Profile | Implemented | ✅ Complete |
 | CNS-0012 | Order History Management | Profile | Implemented | ✅ Complete |
@@ -169,37 +169,39 @@
 
 ### CNS-0008: Shopping Cart Management
 - **Status:** Implemented
-- **Documentation Status:** 🟡 Needs Documentation
+- **Documentation Status:** ✅ Complete
+- **Documentation:** `docs/requirements/shopping-cart-features.md`
 - **Priority:** P0 - Critical
 - **Components:** `src/components/CartSummary.tsx`, `src/components/CartIcon.tsx`, `src/hooks/useCart.ts`, `src/hooks/useEnhancedCart.ts`, `src/hooks/useAbandonedCart.ts`
 - **Database Tables:** `abandoned_carts`
 - **Edge Functions:** `send-abandoned-cart-email`, `send-abandoned-cart-reminders`
 
 **User Stories:**
-- 🟡 US-CART.1: Add Products to Cart (5 pts) - NEEDS DOCUMENTATION
-- 🟡 US-CART.2: Update Cart Item Quantities (3 pts) - NEEDS DOCUMENTATION
-- 🟡 US-CART.3: Remove Items from Cart (3 pts) - NEEDS DOCUMENTATION
-- 🟡 US-CART.4: View Cart Summary (5 pts) - NEEDS DOCUMENTATION
-- 🟡 US-CART.5: Cart Persistence Across Sessions (5 pts) - NEEDS DOCUMENTATION
-- 🟡 US-CART.6: Abandoned Cart Recovery Email (8 pts) - NEEDS DOCUMENTATION
-- 🟡 US-CART.7: Cart Badge Notification Count (2 pts) - NEEDS DOCUMENTATION
+- ✅ US-CART.1: Add Products to Cart (5 pts) - DOCUMENTED
+- ✅ US-CART.2: Update Cart Item Quantities (3 pts) - DOCUMENTED
+- ✅ US-CART.3: Remove Items from Cart (3 pts) - DOCUMENTED
+- ✅ US-CART.4: View Cart Summary (5 pts) - DOCUMENTED
+- ✅ US-CART.5: Cart Persistence Across Sessions (5 pts) - DOCUMENTED
+- ✅ US-CART.6: Abandoned Cart Recovery Email (8 pts) - DOCUMENTED
+- ✅ US-CART.7: Cart Badge Notification Count (2 pts) - DOCUMENTED
 
 ### CNS-0009: Checkout Process
 - **Status:** Implemented
-- **Documentation Status:** 🟡 Needs Documentation
+- **Documentation Status:** ✅ Complete
+- **Documentation:** `docs/requirements/checkout-features.md`
 - **Priority:** P0 - Critical
 - **Components:** `src/pages/Checkout.tsx`, `src/pages/CheckoutPage.tsx`, `src/components/GuestCheckoutForm.tsx`
 - **Database Tables:** `orders`, `order_items`
 - **Edge Functions:** `send-order-confirmation`
 
 **User Stories:**
-- 🟡 US-CHECKOUT.1: Guest Checkout Flow (8 pts) - NEEDS DOCUMENTATION
-- 🟡 US-CHECKOUT.2: Authenticated User Checkout (5 pts) - NEEDS DOCUMENTATION
-- 🟡 US-CHECKOUT.3: Order Special Instructions (3 pts) - NEEDS DOCUMENTATION
-- 🟡 US-CHECKOUT.4: Table Number Selection (2 pts) - NEEDS DOCUMENTATION
-- 🟡 US-CHECKOUT.5: Payment Processing (8 pts) - NEEDS DOCUMENTATION
-- 🟡 US-CHECKOUT.6: Order Review and Confirmation (5 pts) - NEEDS DOCUMENTATION
-- 🟡 US-CHECKOUT.7: Order Confirmation Email (5 pts) - NEEDS DOCUMENTATION
+- ✅ US-CHECKOUT.1: Guest Checkout Flow (8 pts) - DOCUMENTED
+- ✅ US-CHECKOUT.2: Authenticated User Checkout (5 pts) - DOCUMENTED
+- ✅ US-CHECKOUT.3: Order Special Instructions (3 pts) - DOCUMENTED
+- ✅ US-CHECKOUT.4: Table Number Selection (2 pts) - DOCUMENTED
+- ✅ US-CHECKOUT.5: Payment Processing (8 pts) - DOCUMENTED
+- ✅ US-CHECKOUT.6: Order Review and Confirmation (5 pts) - DOCUMENTED
+- ✅ US-CHECKOUT.7: Order Confirmation Email (5 pts) - DOCUMENTED
 
 ---
 
