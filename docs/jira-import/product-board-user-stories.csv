@@ -181,292 +181,292 @@ Story,View Detailed Order Information,"As a user, I want to view detailed inform
 Gherkin scenarios cover order detail page display. Acceptance criteria include order detail page, order number, date, status, itemized list (name, quantity, price), subtotal, taxes, fees, grand total, delivery/pickup method, delivery address, payment method, and special instructions.",High,Order Management
 Story,Track Order Status in Real-Time,"As a user, I want to track my order status in real-time so that I know when my order will be ready.
 
-Gherkin scenarios cover real-time status updates and status notifications. Acceptance criteria include order status display (received, preparing, ready, completed, delivered), real-time updates (polling/WebSocket), status timeline/progress bar, ETA display, and push/SMS notifications on status change.",High,CNS-0010
+Gherkin scenarios cover real-time status updates and status notifications. Acceptance criteria include order status display (received, preparing, ready, completed, delivered), real-time updates (polling/WebSocket), status timeline/progress bar, ETA display, and push/SMS notifications on status change.",High,Order Management
 Story,Reorder Previous Orders Quickly,"As a user, I want to quickly reorder from my past orders so that I can save time.
 
-Gherkin scenarios cover reorder button and handling unavailable items. Acceptance criteria include 'Reorder' button on past orders, one-click add to cart, unavailable item notification, and cart summary display.",Medium,CNS-0010
+Gherkin scenarios cover reorder button and handling unavailable items. Acceptance criteria include 'Reorder' button on past orders, one-click add to cart, unavailable item notification, and cart summary display.",Medium,Order Management
 Story,Filter and Sort Order History,"As a user, I want to filter and sort my order history so that I can find specific orders easily.
 
-Gherkin scenarios cover filtering by date range and sorting. Acceptance criteria include filter by date range, filter by status, filter by venue, sort by date (newest/oldest), sort by amount (high/low), and search by order number/product.",Low,CNS-0010
+Gherkin scenarios cover filtering by date range and sorting. Acceptance criteria include filter by date range, filter by status, filter by venue, sort by date (newest/oldest), sort by amount (high/low), and search by order number/product.",Low,Order Management
 Story,Cancel an Order,"As a user, I want to cancel my order if needed so that I can avoid receiving an unwanted order.
 
-Gherkin scenarios cover order cancellation and cancellation deadline. Acceptance criteria include 'Cancel Order' button, cancellation confirmation modal, cancellation reason input, cancellation deadline (e.g., 5 minutes after order), refund processing, and cancellation notification.",Medium,CNS-0010
+Gherkin scenarios cover order cancellation and cancellation deadline. Acceptance criteria include 'Cancel Order' button, cancellation confirmation modal, cancellation reason input, cancellation deadline (e.g., 5 minutes after order), refund processing, and cancellation notification.",Medium,Order Management
 Story,Update Contact Details (Email, Phone),"As a user, I want to update my email and phone number so that my contact information stays current.
 
-Gherkin scenarios cover successful contact update and email/phone verification. Acceptance criteria include editable email/phone fields, OTP verification for changes, duplicate email/phone prevention, and confirmation message.",High,CNS-0011
+Gherkin scenarios cover successful contact update and email/phone verification. Acceptance criteria include editable email/phone fields, OTP verification for changes, duplicate email/phone prevention, and confirmation message.",High,Manage Profile
 Story,Update Birthday and Gender,"As a user, I want to update my birthday and gender so that my profile reflects accurate information.
 
-Gherkin scenarios cover birthday/gender update and privacy controls. Acceptance criteria include editable DOB field (MM/DD/YYYY), gender dropdown/free text, privacy settings (public, private, friends-only), and validation (no future dates).",Medium,CNS-0011
+Gherkin scenarios cover birthday/gender update and privacy controls. Acceptance criteria include editable DOB field (MM/DD/YYYY), gender dropdown/free text, privacy settings (public, private, friends-only), and validation (no future dates).",Medium,Manage Profile
 Story,Manage Addresses (Add, Edit, Delete),"As a user, I want to manage multiple addresses so that I can easily select delivery locations.
 
-Gherkin scenarios cover adding address and deleting address. Acceptance criteria include address list display, 'Add Address' button, address form (street, city, state, ZIP), Google Places autocomplete, set default address, edit/delete options, and address validation.",Medium,CNS-0011
+Gherkin scenarios cover adding address and deleting address. Acceptance criteria include address list display, 'Add Address' button, address form (street, city, state, ZIP), Google Places autocomplete, set default address, edit/delete options, and address validation.",Medium,Manage Profile
 Story,Manage Notification Preferences,"As a user, I want to control my notification settings so that I only receive alerts I want.
 
-Gherkin scenarios cover toggling notifications and granular controls. Acceptance criteria include notification preference toggles (email, SMS, push), granular controls (order updates, promotions, reminders, rewards), 'Mute All' option, and instant save on toggle.",High,CNS-0011
+Gherkin scenarios cover toggling notifications and granular controls. Acceptance criteria include notification preference toggles (email, SMS, push), granular controls (order updates, promotions, reminders, rewards), 'Mute All' option, and instant save on toggle.",High,Manage Profile
 Story,Manage Marketing Communication Preferences,"As a user, I want to opt in or out of marketing communications so that I control what promotional content I receive.
 
-Gherkin scenarios cover marketing opt-out and unsubscribe link. Acceptance criteria include marketing preference toggles (email newsletters, SMS promos, partner offers), granular controls, one-click unsubscribe link in emails, and GDPR/CAN-SPAM compliance.",Medium,CNS-0011
+Gherkin scenarios cover marketing opt-out and unsubscribe link. Acceptance criteria include marketing preference toggles (email newsletters, SMS promos, partner offers), granular controls, one-click unsubscribe link in emails, and GDPR/CAN-SPAM compliance.",Medium,Manage Profile
 Story,Manage Privacy Settings (Data Sharing, Tracking),"As a user, I want to control my privacy settings so that I can decide how my data is used.
 
-Gherkin scenarios cover data sharing controls and ad personalization. Acceptance criteria include privacy settings page, data sharing toggles (analytics, personalized ads, third-party partners), ad tracking opt-out, clear privacy explanations, and instant save on toggle.",High,CNS-0011
+Gherkin scenarios cover data sharing controls and ad personalization. Acceptance criteria include privacy settings page, data sharing toggles (analytics, personalized ads, third-party partners), ad tracking opt-out, clear privacy explanations, and instant save on toggle.",High,Manage Profile
 Story,Manage Consents and Permissions,"As a user, I want to manage my consents so that I have control over how my data is used.
 
-Gherkin scenarios cover consent management and consent history. Acceptance criteria include consent management page, granular consent toggles (cookies, location, biometrics, email, SMS), consent timestamp logging, consent history view, and integration with cookie consent banner.",High,CNS-0011
+Gherkin scenarios cover consent management and consent history. Acceptance criteria include consent management page, granular consent toggles (cookies, location, biometrics, email, SMS), consent timestamp logging, consent history view, and integration with cookie consent banner.",High,Manage Profile
 Story,Validate Profile Data on Submit,"As a system administrator, I want profile updates to be validated so that we maintain data integrity.
 
-Acceptance criteria include client-side validation (email format, phone format, required fields), server-side validation, real-time error messages, validation on blur/submit, and character limits.",Medium,CNS-0011
+Acceptance criteria include client-side validation (email format, phone format, required fields), server-side validation, real-time error messages, validation on blur/submit, and character limits.",Medium,Manage Profile
 Story,Add New Payment Method,"As a user, I want to add new payment methods securely so that I can easily make purchases without re-entering details every time.
 
-Gherkin scenarios cover adding credit card and invalid card handling. Acceptance criteria include 'Add Payment Method' button, Stripe Elements integration, card detail input (number, expiry, CVC, name), real-time validation, PCI compliance, and saved card display.",High,CNS-0012
+Gherkin scenarios cover adding credit card and invalid card handling. Acceptance criteria include 'Add Payment Method' button, Stripe Elements integration, card detail input (number, expiry, CVC, name), real-time validation, PCI compliance, and saved card display.",High,Payment Management
 Story,Set Default Payment Method,"As a user, I want to set a default payment method so that checkout is faster.
 
-Gherkin scenarios cover setting default card and default card usage. Acceptance criteria include 'Set as Default' toggle per card, default card indicator, automatic selection at checkout, and ability to change default.",Medium,CNS-0012
+Gherkin scenarios cover setting default card and default card usage. Acceptance criteria include 'Set as Default' toggle per card, default card indicator, automatic selection at checkout, and ability to change default.",Medium,Payment Management
 Story,Update Existing Payment Method,"As a user, I want to update my payment details (e.g., expiry date) so that my saved methods remain valid.
 
-Gherkin scenarios cover updating card details and invalid update handling. Acceptance criteria include 'Edit' button per card, editable fields (expiry, billing address), Stripe API update call, validation, and confirmation message.",High,CNS-0012
+Gherkin scenarios cover updating card details and invalid update handling. Acceptance criteria include 'Edit' button per card, editable fields (expiry, billing address), Stripe API update call, validation, and confirmation message.",High,Payment Management
 Story,View Payment History,"As a user, I want to view a history of my payments so that I can track my transactions and identify any discrepancies.
 
-Gherkin scenarios cover viewing payment history and transaction details. Acceptance criteria include 'Payment History' section, chronological transaction list, transaction details (date, amount, order link), filter by date range/amount, and sort options.",Medium,CNS-0012
+Gherkin scenarios cover viewing payment history and transaction details. Acceptance criteria include 'Payment History' section, chronological transaction list, transaction details (date, amount, order link), filter by date range/amount, and sort options.",Medium,Payment Management
 Story,PCI Compliance for Payment Management,"As a system administrator, I want to ensure PCI DSS compliance so that customer payment data is secure.
 
-Acceptance criteria include Stripe PCI Level 1 compliance, no raw card data storage, tokenized card storage, HTTPS enforcement, security audit logging, and annual PCI compliance review.",Critical,CNS-0012
+Acceptance criteria include Stripe PCI Level 1 compliance, no raw card data storage, tokenized card storage, HTTPS enforcement, security audit logging, and annual PCI compliance review.",Critical,Payment Management
 Story,View Spending Patterns Over Time,"As a user, I want to view my spending patterns over time (e.g., weekly, monthly) so I can understand my consumption habits and manage my budget effectively.
 
-Gherkin scenarios cover viewing spending patterns and category filtering. Acceptance criteria include spending graph (line/bar chart), time period selection (week, month, year), total spending display, category filtering, and trend indicators.",Medium,CNS-0014
+Gherkin scenarios cover viewing spending patterns and category filtering. Acceptance criteria include spending graph (line/bar chart), time period selection (week, month, year), total spending display, category filtering, and trend indicators.",Medium,Account Dashboard Analytics
 Story,Analyze Order Frequency,"As a user, I want to see how often I order so I can understand my usage patterns.
 
-Gherkin scenarios cover order frequency metrics. Acceptance criteria include order frequency display (orders per week/month), frequency trend chart, average order value, peak order times, and comparison to previous periods.",Medium,CNS-0014
+Gherkin scenarios cover order frequency metrics. Acceptance criteria include order frequency display (orders per week/month), frequency trend chart, average order value, peak order times, and comparison to previous periods.",Medium,Account Dashboard Analytics
 Story,View Loyalty Points Earned and Redeemed,"As a user, I want to see a breakdown of points I've earned and redeemed so I can track my rewards activity.
 
-Gherkin scenarios cover points breakdown and tier progression. Acceptance criteria include points earned/redeemed chart, monthly/yearly breakdown, top earning activities, redemption history, and tier progression timeline.",Medium,CNS-0014
+Gherkin scenarios cover points breakdown and tier progression. Acceptance criteria include points earned/redeemed chart, monthly/yearly breakdown, top earning activities, redemption history, and tier progression timeline.",Medium,Account Dashboard Analytics
 Story,Receive Personalized Insights and Recommendations,"As a user, I want to receive personalized insights so I can make better decisions about my orders.
 
-Gherkin scenarios cover personalized insights and actionable recommendations. Acceptance criteria include AI-generated insights (e.g., 'You order most on Fridays'), spending/budget tips, product recommendations, rewards optimization tips, and insight refresh frequency.",Medium,CNS-0014
+Gherkin scenarios cover personalized insights and actionable recommendations. Acceptance criteria include AI-generated insights (e.g., 'You order most on Fridays'), spending/budget tips, product recommendations, rewards optimization tips, and insight refresh frequency.",Medium,Account Dashboard Analytics
 Story,Export Dashboard Data (CSV, PDF),"As a user, I want to export my dashboard data so I can analyze it offline or share it.
 
-Gherkin scenarios cover CSV export and PDF export. Acceptance criteria include 'Export' button, CSV format (spending, orders, points), PDF format (charts and summaries), date range selection, and email delivery option.",Low,CNS-0014
+Gherkin scenarios cover CSV export and PDF export. Acceptance criteria include 'Export' button, CSV format (spending, orders, points), PDF format (charts and summaries), date range selection, and email delivery option.",Low,Account Dashboard Analytics
 Story,Compare Analytics Across Time Periods,"As a user, I want to compare my analytics across different time periods so I can see how my habits have changed.
 
-Gherkin scenarios cover period comparison and metric comparison. Acceptance criteria include period selector (week vs. week, month vs. month, year vs. year), comparison charts (side-by-side, overlay), percentage change display, and comparison insights.",Low,CNS-0014
+Gherkin scenarios cover period comparison and metric comparison. Acceptance criteria include period selector (week vs. week, month vs. month, year vs. year), comparison charts (side-by-side, overlay), percentage change display, and comparison insights.",Low,Account Dashboard Analytics
 Story,Set Up Biometric Authentication (Face ID, Touch ID),"As a user, I want to enable biometric authentication so I can log in quickly and securely using Face ID or Touch ID.
 
-Gherkin scenarios cover biometric setup, successful login, and fallback to password. Acceptance criteria include biometric setup UI, WebAuthn/Passkey integration, Face ID/Touch ID support, fingerprint support, fallback to OTP, and device-specific enrollment.",High,CNS-0015
+Gherkin scenarios cover biometric setup, successful login, and fallback to password. Acceptance criteria include biometric setup UI, WebAuthn/Passkey integration, Face ID/Touch ID support, fingerprint support, fallback to OTP, and device-specific enrollment.",High,Biometric Security Settings
 Story,Disable Biometric Authentication,"As a user, I want to disable biometric authentication so I can switch back to password-based login if needed.
 
-Gherkin scenarios cover disabling biometrics and subsequent password login. Acceptance criteria include 'Disable Biometrics' button, confirmation prompt, credential removal, fallback to OTP, and confirmation message.",Medium,CNS-0015
+Gherkin scenarios cover disabling biometrics and subsequent password login. Acceptance criteria include 'Disable Biometrics' button, confirmation prompt, credential removal, fallback to OTP, and confirmation message.",Medium,Biometric Security Settings
 Story,Manage Biometric Preferences (When to Use Biometrics),"As a user, I want to choose when biometric authentication is required so I can balance security and convenience.
 
-Gherkin scenarios cover biometric trigger settings and preference enforcement. Acceptance criteria include biometric preference settings (login only, transactions, profile changes), toggle controls, preference persistence, and instant save.",Medium,CNS-0015
+Gherkin scenarios cover biometric trigger settings and preference enforcement. Acceptance criteria include biometric preference settings (login only, transactions, profile changes), toggle controls, preference persistence, and instant save.",Medium,Biometric Security Settings
 Story,Fallback to Password/OTP if Biometrics Fail,"As a user, I want to use my password or OTP if biometric authentication fails so I'm not locked out.
 
-Gherkin scenarios cover biometric failure and fallback. Acceptance criteria include automatic fallback on biometric failure (3 attempts), 'Use Password/OTP' option, clear error messages, and seamless fallback flow.",High,CNS-0015
+Gherkin scenarios cover biometric failure and fallback. Acceptance criteria include automatic fallback on biometric failure (3 attempts), 'Use Password/OTP' option, clear error messages, and seamless fallback flow.",High,Biometric Security Settings
 Story,Register Multiple Biometric Credentials,"As a user, I want to register multiple biometric credentials (e.g., two fingerprints) so I have backup authentication options.
 
-Gherkin scenarios cover multiple credential registration and usage. Acceptance criteria include support for multiple fingerprints, multiple Face ID profiles, credential management UI, and label/name for each credential.",Low,CNS-0015
+Gherkin scenarios cover multiple credential registration and usage. Acceptance criteria include support for multiple fingerprints, multiple Face ID profiles, credential management UI, and label/name for each credential.",Low,Biometric Security Settings
 Story,View Biometric Authentication Audit Log,"As a user, I want to view a log of biometric authentication attempts so I can monitor my account security.
 
-Gherkin scenarios cover audit log display and suspicious activity alerts. Acceptance criteria include audit log page, authentication attempt list (timestamp, device, success/failure), failed attempt alerts, and activity monitoring.",Medium,CNS-0015
+Gherkin scenarios cover audit log display and suspicious activity alerts. Acceptance criteria include audit log page, authentication attempt list (timestamp, device, success/failure), failed attempt alerts, and activity monitoring.",Medium,Biometric Security Settings
 Story,View Real-Time BAC Estimation,"As a user, I want to see my estimated blood alcohol content (BAC) in real-time so I can monitor my alcohol consumption.
 
-Gherkin scenarios cover BAC display and BAC updates. Acceptance criteria include BAC dashboard, real-time BAC calculation (Widmark formula), BAC level indicator (safe, caution, danger), last updated timestamp, and BAC trend chart.",Critical,CNS-0016
+Gherkin scenarios cover BAC display and BAC updates. Acceptance criteria include BAC dashboard, real-time BAC calculation (Widmark formula), BAC level indicator (safe, caution, danger), last updated timestamp, and BAC trend chart.",Critical,Sobriety Monitoring
 Story,Log Drinks for BAC Calculation,"As a user, I want to log drinks I consume so my BAC estimation is accurate.
 
-Gherkin scenarios cover manual drink logging and automatic logging from orders. Acceptance criteria include 'Log Drink' button, drink details (type, volume, ABV), timestamp, automatic logging from completed orders, and drink history.",High,CNS-0016
+Gherkin scenarios cover manual drink logging and automatic logging from orders. Acceptance criteria include 'Log Drink' button, drink details (type, volume, ABV), timestamp, automatic logging from completed orders, and drink history.",High,Sobriety Monitoring
 Story,Receive Safety Alerts Based on BAC Levels,"As a user, I want to receive alerts when my BAC is elevated so I can make safer decisions.
 
-Gherkin scenarios cover BAC threshold alerts and alert acknowledgment. Acceptance criteria include safety alert thresholds (0.05%, 0.08%, 0.10%), push/SMS notifications, in-app alert modal, suggested actions (stop drinking, call ride, hydrate), and alert acknowledgment.",Critical,CNS-0016
+Gherkin scenarios cover BAC threshold alerts and alert acknowledgment. Acceptance criteria include safety alert thresholds (0.05%, 0.08%, 0.10%), push/SMS notifications, in-app alert modal, suggested actions (stop drinking, call ride, hydrate), and alert acknowledgment.",Critical,Sobriety Monitoring
 Story,Connect Wearable Devices for Biometric Monitoring,"As a user, I want to connect my wearable device so my health metrics (heart rate, etc.) are monitored during drinking.
 
-Gherkin scenarios cover device connection and biometric data display. Acceptance criteria include wearable device integration (Apple Health, Google Fit, Fitbit), biometric data sync (heart rate, BP, O2), real-time health monitoring, and health alert triggers.",Medium,CNS-0016
+Gherkin scenarios cover device connection and biometric data display. Acceptance criteria include wearable device integration (Apple Health, Google Fit, Fitbit), biometric data sync (heart rate, BP, O2), real-time health monitoring, and health alert triggers.",Medium,Sobriety Monitoring
 Story,View Responsible Drinking Tips,"As a user, I want to see responsible drinking tips so I can consume alcohol more safely.
 
-Gherkin scenarios cover tips display and personalized tips. Acceptance criteria include tips library (hydration, pacing, food), context-based tips (based on BAC, session duration), tip rotation, and 'Learn More' links.",Medium,CNS-0016
+Gherkin scenarios cover tips display and personalized tips. Acceptance criteria include tips library (hydration, pacing, food), context-based tips (based on BAC, session duration), tip rotation, and 'Learn More' links.",Medium,Sobriety Monitoring
 Story,End Drinking Session,"As a user, I want to manually end my drinking session so my BAC tracking resets.
 
-Gherkin scenarios cover session end and session summary. Acceptance criteria include 'End Session' button, session summary (total drinks, peak BAC, duration), BAC decay timeline, and session archiving.",Medium,CNS-0016
+Gherkin scenarios cover session end and session summary. Acceptance criteria include 'End Session' button, session summary (total drinks, peak BAC, duration), BAC decay timeline, and session archiving.",Medium,Sobriety Monitoring
 Story,Add Payment Method via Stripe,"As a user, I want to add my credit/debit card securely using Stripe so I can make purchases.
 
-Gherkin scenarios cover adding card and invalid card handling. Acceptance criteria include Stripe Elements integration, card input (number, expiry, CVC, ZIP), real-time validation, PCI compliance, tokenized storage, and 3D Secure support.",Critical,CNS-0018
+Gherkin scenarios cover adding card and invalid card handling. Acceptance criteria include Stripe Elements integration, card input (number, expiry, CVC, ZIP), real-time validation, PCI compliance, tokenized storage, and 3D Secure support.",Critical,Stripe Payment Integration
 Story,View Saved Payment Methods,"As a user, I want to see all my saved payment methods so I can choose how to pay.
 
-Gherkin scenarios cover payment method list display and card details. Acceptance criteria include payment method list, card display (last 4 digits, brand, expiry), default indicator, and 'Add New' button.",High,CNS-0018
+Gherkin scenarios cover payment method list display and card details. Acceptance criteria include payment method list, card display (last 4 digits, brand, expiry), default indicator, and 'Add New' button.",High,Stripe Payment Integration
 Story,Remove Payment Method via Stripe,"As a user, I want to remove a saved payment method so I can keep my account clean.
 
-Gherkin scenarios cover card removal and default card removal. Acceptance criteria include 'Remove' button, confirmation prompt, Stripe PaymentMethod detach API, and update payment method list.",High,CNS-0018
+Gherkin scenarios cover card removal and default card removal. Acceptance criteria include 'Remove' button, confirmation prompt, Stripe PaymentMethod detach API, and update payment method list.",High,Stripe Payment Integration
 Story,Process Payment Securely via Stripe PaymentIntent,"As a system, I want to process payments securely using Stripe PaymentIntent so that transactions are reliable and PCI-compliant.
 
-Gherkin scenarios cover successful payment and payment failure. Acceptance criteria include Stripe PaymentIntent creation, amount/currency specification, 3D Secure (SCA) handling, payment confirmation, webhook integration, and error handling.",Critical,CNS-0018
+Gherkin scenarios cover successful payment and payment failure. Acceptance criteria include Stripe PaymentIntent creation, amount/currency specification, 3D Secure (SCA) handling, payment confirmation, webhook integration, and error handling.",Critical,Stripe Payment Integration
 Story,Handle Payment Failures and Retries,"As a user, I want clear guidance when my payment fails so I can resolve the issue.
 
-Gherkin scenarios cover payment decline and retry logic. Acceptance criteria include payment failure error messages, decline reason display (insufficient funds, invalid card), retry option, alternative payment method prompt, and payment status tracking.",High,CNS-0018
+Gherkin scenarios cover payment decline and retry logic. Acceptance criteria include payment failure error messages, decline reason display (insufficient funds, invalid card), retry option, alternative payment method prompt, and payment status tracking.",High,Stripe Payment Integration
 Story,Process Refunds via Stripe,"As a user, I want to receive refunds for canceled orders so my payment is returned.
 
-Gherkin scenarios cover full refund and partial refund. Acceptance criteria include refund processing via Stripe Refund API, full/partial refund support, refund reason tracking, refund confirmation email, and refund status display.",High,CNS-0018
+Gherkin scenarios cover full refund and partial refund. Acceptance criteria include refund processing via Stripe Refund API, full/partial refund support, refund reason tracking, refund confirmation email, and refund status display.",High,Stripe Payment Integration
 Story,Manage Stripe Webhooks for Payment Events,"As a system administrator, I want to receive webhook events from Stripe so payment status is synchronized.
 
-Acceptance criteria include webhook endpoint creation, event handling (payment_intent.succeeded, payment_intent.failed, charge.refunded), webhook signature verification, event logging, and retry mechanism for failed events.",High,CNS-0018
+Acceptance criteria include webhook endpoint creation, event handling (payment_intent.succeeded, payment_intent.failed, charge.refunded), webhook signature verification, event logging, and retry mechanism for failed events.",High,Stripe Payment Integration
 Story,Support Subscription Billing via Stripe,"As a user, I want to subscribe to a loyalty membership so I can receive ongoing benefits.
 
-Gherkin scenarios cover subscription creation and subscription billing. Acceptance criteria include Stripe Subscription creation, recurring billing setup, subscription plan selection, billing cycle display, payment method requirement, and subscription management UI.",Medium,CNS-0018
+Gherkin scenarios cover subscription creation and subscription billing. Acceptance criteria include Stripe Subscription creation, recurring billing setup, subscription plan selection, billing cycle display, payment method requirement, and subscription management UI.",Medium,Stripe Payment Integration
 Story,View Payment Analytics (Admin),"As a system administrator, I want to view payment analytics so I can monitor transaction performance.
 
-Acceptance criteria include payment analytics dashboard, metrics (transaction volume, success rate, refund rate, average transaction value), date range filtering, payment method breakdown, and data export (CSV).",Medium,CNS-0018
+Acceptance criteria include payment analytics dashboard, metrics (transaction volume, success rate, refund rate, average transaction value), date range filtering, payment method breakdown, and data export (CSV).",Medium,Stripe Payment Integration
 Story,Accept Cookie Consent on First Visit,"As a user, I want to accept or decline cookies so I control how my data is tracked.
 
-Gherkin scenarios cover cookie consent acceptance and consent decline. Acceptance criteria include cookie consent banner on first visit, 'Accept All' and 'Reject All' buttons, granular cookie settings, consent persistence (localStorage/cookie), and banner dismissal.",High,CNS-0019
+Gherkin scenarios cover cookie consent acceptance and consent decline. Acceptance criteria include cookie consent banner on first visit, 'Accept All' and 'Reject All' buttons, granular cookie settings, consent persistence (localStorage/cookie), and banner dismissal.",High,Privacy & Compliance
 Story,Manage Cookie Preferences,"As a user, I want to manage my cookie preferences so I can control what types of cookies are used.
 
-Gherkin scenarios cover cookie preference updates and preference persistence. Acceptance criteria include cookie settings page, cookie categories (essential, analytics, marketing), toggle controls, preference saving, and 'Accept All'/'Reject All' options.",Medium,CNS-0019
+Gherkin scenarios cover cookie preference updates and preference persistence. Acceptance criteria include cookie settings page, cookie categories (essential, analytics, marketing), toggle controls, preference saving, and 'Accept All'/'Reject All' options.",Medium,Privacy & Compliance
 Story,Export Personal Data (GDPR/CCPA),"As a user, I want to export my personal data so I can review what information is stored about me.
 
-Gherkin scenarios cover data export request and export file delivery. Acceptance criteria include 'Export Data' button in profile, data export format (JSON, CSV), export scope (profile, orders, payments, points), email delivery, and 30-day processing time.",High,CNS-0019
+Gherkin scenarios cover data export request and export file delivery. Acceptance criteria include 'Export Data' button in profile, data export format (JSON, CSV), export scope (profile, orders, payments, points), email delivery, and 30-day processing time.",High,Privacy & Compliance
 Story,Request Data Deletion (Right to be Forgotten),"As a user, I want to request deletion of my personal data so I can exercise my right to be forgotten.
 
-Gherkin scenarios cover deletion request and account closure. Acceptance criteria include 'Delete My Data' option, confirmation with warning, 30-day grace period, account deactivation, data deletion after grace period, and email confirmation.",High,CNS-0019
+Gherkin scenarios cover deletion request and account closure. Acceptance criteria include 'Delete My Data' option, confirmation with warning, 30-day grace period, account deactivation, data deletion after grace period, and email confirmation.",High,Privacy & Compliance
 Story,View Security Audit Log,"As a user, I want to view a log of security events on my account so I can monitor for suspicious activity.
 
-Gherkin scenarios cover audit log display and suspicious activity alerts. Acceptance criteria include security audit log page, event list (login, profile change, payment method change, order placement), timestamp and IP address display, and suspicious activity notifications.",Medium,CNS-0019
+Gherkin scenarios cover audit log display and suspicious activity alerts. Acceptance criteria include security audit log page, event list (login, profile change, payment method change, order placement), timestamp and IP address display, and suspicious activity notifications.",Medium,Privacy & Compliance
 Story,Manage Data Sharing Consents,"As a user, I want to control which partners can access my data so I can protect my privacy.
 
-Gherkin scenarios cover data sharing consent toggles and consent withdrawal. Acceptance criteria include consent management page, partner list, data sharing toggles (analytics, personalized ads, third-party partners), consent timestamp logging, and instant save.",High,CNS-0019
+Gherkin scenarios cover data sharing consent toggles and consent withdrawal. Acceptance criteria include consent management page, partner list, data sharing toggles (analytics, personalized ads, third-party partners), consent timestamp logging, and instant save.",High,Privacy & Compliance
 Story,View and Accept Privacy Policy,"As a user, I want to view the privacy policy so I understand how my data is used.
 
-Gherkin scenarios cover privacy policy display and acceptance requirement. Acceptance criteria include 'Privacy Policy' link in footer, policy display page, acceptance required on signup, policy version tracking, and update notifications.",High,CNS-0019
+Gherkin scenarios cover privacy policy display and acceptance requirement. Acceptance criteria include 'Privacy Policy' link in footer, policy display page, acceptance required on signup, policy version tracking, and update notifications.",High,Privacy & Compliance
 Story,Receive Privacy Policy Change Notifications,"As a user, I want to be notified when the privacy policy changes so I can review updates.
 
-Gherkin scenarios cover policy change notification and re-consent requirement. Acceptance criteria include email notification on policy update, in-app notification, policy change summary, re-consent requirement, and policy version history.",Medium,CNS-0019
+Gherkin scenarios cover policy change notification and re-consent requirement. Acceptance criteria include email notification on policy update, in-app notification, policy change summary, re-consent requirement, and policy version history.",Medium,Privacy & Compliance
 Story,View Data Retention Policy,"As a user, I want to understand how long my data is retained so I know my privacy rights.
 
-Acceptance criteria include data retention policy page, retention periods by data type (profile: indefinite, orders: 7 years, logs: 1 year), data deletion schedule, and clear explanations.",Medium,CNS-0019
+Acceptance criteria include data retention policy page, retention periods by data type (profile: indefinite, orders: 7 years, logs: 1 year), data deletion schedule, and clear explanations.",Medium,Privacy & Compliance
 Story,View Partnership Benefits (Landing Page),"As a venue owner, I want to see the benefits of partnering so I can decide if I want to join.
 
-Gherkin scenarios cover landing page display and benefits breakdown. Acceptance criteria include partnership landing page, benefits list (increased revenue, customer acquisition, marketing support, analytics), success stories/testimonials, and 'Get Started' CTA.",High,CNS-0020
+Gherkin scenarios cover landing page display and benefits breakdown. Acceptance criteria include partnership landing page, benefits list (increased revenue, customer acquisition, marketing support, analytics), success stories/testimonials, and 'Get Started' CTA.",High,Venue Partnership
 Story,Submit Partnership Inquiry,"As a venue owner, I want to submit an inquiry to partner so I can start the onboarding process.
 
-Gherkin scenarios cover inquiry submission and confirmation email. Acceptance criteria include partnership inquiry form, required fields (venue name, location, contact email, phone, venue type, description), form validation, confirmation email, and sales team notification.",High,CNS-0020
+Gherkin scenarios cover inquiry submission and confirmation email. Acceptance criteria include partnership inquiry form, required fields (venue name, location, contact email, phone, venue type, description), form validation, confirmation email, and sales team notification.",High,Venue Partnership
 Story,View Partnership Program Details,"As a venue owner, I want to view detailed information about the partnership program so I understand the terms and expectations.
 
-Gherkin scenarios cover program details display and FAQ access. Acceptance criteria include program details page, terms and conditions, partnership tiers (if applicable), revenue sharing model, support resources, and FAQ section.",Medium,CNS-0020
+Gherkin scenarios cover program details display and FAQ access. Acceptance criteria include program details page, terms and conditions, partnership tiers (if applicable), revenue sharing model, support resources, and FAQ section.",Medium,Venue Partnership
 Story,Contact Sales Team Directly,"As a venue owner, I want to contact the sales team directly so I can ask questions before partnering.
 
-Gherkin scenarios cover sales contact form and phone number display. Acceptance criteria include 'Contact Sales' form or email link, phone number display, sales team response time estimate, and inquiry submission confirmation.",Medium,CNS-0020
+Gherkin scenarios cover sales contact form and phone number display. Acceptance criteria include 'Contact Sales' form or email link, phone number display, sales team response time estimate, and inquiry submission confirmation.",Medium,Venue Partnership
 Story,Track Partnership Inquiry Status,"As a venue owner, I want to track the status of my partnership inquiry so I know where I am in the process.
 
-Gherkin scenarios cover status tracking and email updates. Acceptance criteria include inquiry status page (submitted, under review, approved, rejected), status email notifications, and estimated processing time.",Low,CNS-0020
+Gherkin scenarios cover status tracking and email updates. Acceptance criteria include inquiry status page (submitted, under review, approved, rejected), status email notifications, and estimated processing time.",Low,Venue Partnership
 Story,Create and Manage Buddy List,"As a user, I want to create a buddy list so I can assign drinks to friends during group outings.
 
-Gherkin scenarios cover adding buddy and removing buddy. Acceptance criteria include buddy list management UI, 'Add Buddy' button, search by username/email/phone, buddy request/approval flow, buddy list display, and 'Remove Buddy' option.",High,CNS-0023
+Gherkin scenarios cover adding buddy and removing buddy. Acceptance criteria include buddy list management UI, 'Add Buddy' button, search by username/email/phone, buddy request/approval flow, buddy list display, and 'Remove Buddy' option.",High,Social Drinking & Group Orders
 Story,Assign Drinks to Buddies When Adding to Cart,"As a user, I want to assign drinks to buddies when adding to cart so I know who each drink is for.
 
-Gherkin scenarios cover drink assignment and unassigned drinks. Acceptance criteria include 'Assign to' dropdown in cart, buddy list display, default to 'Me', assignment indicator per item, and reassignment option.",High,CNS-0023
+Gherkin scenarios cover drink assignment and unassigned drinks. Acceptance criteria include 'Assign to' dropdown in cart, buddy list display, default to 'Me', assignment indicator per item, and reassignment option.",High,Social Drinking & Group Orders
 Story,Accept or Decline Assigned Drinks,"As a user, I want to accept or decline drinks assigned to me so I control what's added to my sobriety tracker.
 
-Gherkin scenarios cover drink assignment notification and acceptance. Acceptance criteria include push notification on assignment, in-app notification, 'Accept' or 'Decline' buttons, acceptance deadline (5 minutes), and automatic decline on timeout.",High,CNS-0023
+Gherkin scenarios cover drink assignment notification and acceptance. Acceptance criteria include push notification on assignment, in-app notification, 'Accept' or 'Decline' buttons, acceptance deadline (5 minutes), and automatic decline on timeout.",High,Social Drinking & Group Orders
 Story,Track Assigned Drinks in Sobriety Monitor,"As a user, I want accepted assigned drinks to be logged in my sobriety monitor so my BAC tracking is accurate.
 
-Gherkin scenarios cover drink logging and BAC update. Acceptance criteria include automatic logging of accepted drinks, BAC calculation update, drink history display, and drinking session update.",High,CNS-0023
+Gherkin scenarios cover drink logging and BAC update. Acceptance criteria include automatic logging of accepted drinks, BAC calculation update, drink history display, and drinking session update.",High,Social Drinking & Group Orders
 Story,Create Group Orders,"As a user, I want to create a group order so I can place one order for multiple people.
 
-Gherkin scenarios cover group order creation and buddy selection. Acceptance criteria include 'Create Group Order' button, buddy selection from list, drink assignment to buddies, group order summary, and payment method selection.",Medium,CNS-0023
+Gherkin scenarios cover group order creation and buddy selection. Acceptance criteria include 'Create Group Order' button, buddy selection from list, drink assignment to buddies, group order summary, and payment method selection.",Medium,Social Drinking & Group Orders
 Story,Split Payment for Group Orders,"As a user, I want to split payment for group orders so everyone can pay their share.
 
-Gherkin scenarios cover split payment and payment confirmation. Acceptance criteria include payment split options (even split, by assignee, single payer), payment request notifications, individual payment processing, and group order completion after all payments.",Medium,CNS-0023
+Gherkin scenarios cover split payment and payment confirmation. Acceptance criteria include payment split options (even split, by assignee, single payer), payment request notifications, individual payment processing, and group order completion after all payments.",Medium,Social Drinking & Group Orders
 Story,View Group Order History,"As a user, I want to view my group order history so I can see past group outings.
 
-Gherkin scenarios cover group order history and order details. Acceptance criteria include group order history section, group order list, order date/total/participants display, group order details (items, assignees, payments), and reorder option.",Low,CNS-0023
+Gherkin scenarios cover group order history and order details. Acceptance criteria include group order history section, group order list, order date/total/participants display, group order details (items, assignees, payments), and reorder option.",Low,Social Drinking & Group Orders
 Story,Receive Real-Time Safety Recommendations,"As a user, I want to receive AI-powered safety advice in real-time so I can make safer drinking decisions.
 
-Gherkin scenarios cover safety recommendation and personalized advice. Acceptance criteria include AI Sobriety Advisor integration (Lovable AI, google/gemini-2.5-flash), real-time BAC analysis, personalized safety tips (slow down, hydrate, eat, stop drinking), context-aware advice (time of day, location, drinking pace), and in-app/push notifications.",Critical,CNS-0024
+Gherkin scenarios cover safety recommendation and personalized advice. Acceptance criteria include AI Sobriety Advisor integration (Lovable AI, google/gemini-2.5-flash), real-time BAC analysis, personalized safety tips (slow down, hydrate, eat, stop drinking), context-aware advice (time of day, location, drinking pace), and in-app/push notifications.",Critical,AI Sobriety Advisor
 Story,Receive Predictive BAC Alerts,"As a user, I want to be alerted before my BAC reaches unsafe levels so I can slow down proactively.
 
-Gherkin scenarios cover predictive alert and alert threshold. Acceptance criteria include predictive BAC calculation (based on current BAC + drinks in cart), alert thresholds (0.05%, 0.08%, 0.10%), early warning notifications (15-30 minutes before threshold), and actionable suggestions (order water, skip next drink).",Critical,CNS-0024
+Gherkin scenarios cover predictive alert and alert threshold. Acceptance criteria include predictive BAC calculation (based on current BAC + drinks in cart), alert thresholds (0.05%, 0.08%, 0.10%), early warning notifications (15-30 minutes before threshold), and actionable suggestions (order water, skip next drink).",Critical,AI Sobriety Advisor
 Story,Receive AI-Generated Intervention Strategies,"As a user, I want personalized intervention strategies when my drinking becomes risky so I can regain control.
 
-Gherkin scenarios cover intervention suggestion and escalation. Acceptance criteria include AI-generated intervention strategies (take a break, drink water, eat food, call a friend, end session), escalating interventions (based on BAC level), user response tracking (acknowledged, dismissed), and effectiveness analysis.",High,CNS-0024
+Gherkin scenarios cover intervention suggestion and escalation. Acceptance criteria include AI-generated intervention strategies (take a break, drink water, eat food, call a friend, end session), escalating interventions (based on BAC level), user response tracking (acknowledged, dismissed), and effectiveness analysis.",High,AI Sobriety Advisor
 Story,Trigger Emergency Notifications,"As a user, I want the app to alert my emergency contacts if my BAC reaches critical levels so I can get help.
 
-Gherkin scenarios cover emergency contact alert and emergency services notification. Acceptance criteria include emergency contact setup (name, phone, relationship), critical BAC threshold (e.g., 0.15%), automatic SMS/call to emergency contacts, emergency contact message (location, BAC, alert reason), and manual emergency alert option.",Critical,CNS-0024
+Gherkin scenarios cover emergency contact alert and emergency services notification. Acceptance criteria include emergency contact setup (name, phone, relationship), critical BAC threshold (e.g., 0.15%), automatic SMS/call to emergency contacts, emergency contact message (location, BAC, alert reason), and manual emergency alert option.",Critical,AI Sobriety Advisor
 Story,Track AI Sobriety Advisor Effectiveness,"As a product manager, I want to track the effectiveness of AI interventions so we can improve the system.
 
-Acceptance criteria include intervention tracking (type, timestamp, BAC at intervention), user response tracking (acknowledged, dismissed, action taken), effectiveness metrics (BAC reduction post-intervention, session end rate), and AI model retraining based on feedback.",Medium,CNS-0024
+Acceptance criteria include intervention tracking (type, timestamp, BAC at intervention), user response tracking (acknowledged, dismissed, action taken), effectiveness metrics (BAC reduction post-intervention, session end rate), and AI model retraining based on feedback.",Medium,AI Sobriety Advisor
 Story,Use Voice Commands to Add Items to Cart,"As a user, I want to use voice commands to add items to my cart so I can order hands-free.
 
-Gherkin scenarios cover voice command and item confirmation. Acceptance criteria include voice activation button, speech-to-text API integration (Web Speech API, Google Speech-to-Text), natural language processing (e.g., 'Add a margarita'), item recognition and matching, voice confirmation prompt, and cart update.",High,CNS-0025
+Gherkin scenarios cover voice command and item confirmation. Acceptance criteria include voice activation button, speech-to-text API integration (Web Speech API, Google Speech-to-Text), natural language processing (e.g., 'Add a margarita'), item recognition and matching, voice confirmation prompt, and cart update.",High,Voice-Activated Ordering
 Story,Use Voice Commands to Search Products,"As a user, I want to search for products using voice so I can find items quickly.
 
-Gherkin scenarios cover voice search and search result display. Acceptance criteria include voice-activated search, speech-to-text conversion, keyword extraction, search result display, and 'Did you mean?' suggestions for unclear commands.",High,CNS-0025
+Gherkin scenarios cover voice search and search result display. Acceptance criteria include voice-activated search, speech-to-text conversion, keyword extraction, search result display, and 'Did you mean?' suggestions for unclear commands.",High,Voice-Activated Ordering
 Story,Confirm Orders via Voice,"As a user, I want to confirm my order using voice so I can complete checkout hands-free.
 
-Gherkin scenarios cover voice confirmation and voice cancellation. Acceptance criteria include order summary read aloud, 'Confirm Order' voice command, 'Cancel Order' voice command, voice authentication (optional), and order placement confirmation.",Medium,CNS-0025
+Gherkin scenarios cover voice confirmation and voice cancellation. Acceptance criteria include order summary read aloud, 'Confirm Order' voice command, 'Cancel Order' voice command, voice authentication (optional), and order placement confirmation.",Medium,Voice-Activated Ordering
 Story,Use Voice for Navigation,"As a user, I want to navigate the app using voice commands so I can browse without touching my device.
 
-Gherkin scenarios cover voice navigation and navigation commands. Acceptance criteria include voice commands (e.g., 'Go to Menu', 'View Cart', 'Show Rewards'), command recognition, page navigation, and command help ('What can I say?').",Low,CNS-0025
+Gherkin scenarios cover voice navigation and navigation commands. Acceptance criteria include voice commands (e.g., 'Go to Menu', 'View Cart', 'Show Rewards'), command recognition, page navigation, and command help ('What can I say?').",Low,Voice-Activated Ordering
 Story,Support Multiple Languages for Voice Commands,"As a user, I want to use voice commands in my preferred language so I can interact naturally.
 
-Gherkin scenarios cover language selection and multi-language recognition. Acceptance criteria include language selection in settings, supported languages (English, Spanish, French, etc.), language-specific command recognition, and language switching.",Medium,CNS-0025
+Gherkin scenarios cover language selection and multi-language recognition. Acceptance criteria include language selection in settings, supported languages (English, Spanish, French, etc.), language-specific command recognition, and language switching.",Medium,Voice-Activated Ordering
 Story,Enable Voice Ordering for Accessibility,"As a user with disabilities, I want to use voice commands so I can order independently.
 
-Acceptance criteria include accessibility compliance (WCAG 2.1), voice command tutorial, visual feedback for voice commands, error correction via voice, and screen reader compatibility.",High,CNS-0025
+Acceptance criteria include accessibility compliance (WCAG 2.1), voice command tutorial, visual feedback for voice commands, error correction via voice, and screen reader compatibility.",High,Voice-Activated Ordering
 Story,Set Up Allergen Profile,"As a user with allergies, I want to set up my allergen profile so the app can warn me about unsafe products.
 
-Gherkin scenarios cover allergen profile setup and severity selection. Acceptance criteria include allergen profile setup page, allergen selection (peanuts, shellfish, gluten, dairy, soy, eggs, tree nuts, etc.), severity levels (mild, moderate, severe), multiple allergen support, and profile saving.",High,CNS-0026
+Gherkin scenarios cover allergen profile setup and severity selection. Acceptance criteria include allergen profile setup page, allergen selection (peanuts, shellfish, gluten, dairy, soy, eggs, tree nuts, etc.), severity levels (mild, moderate, severe), multiple allergen support, and profile saving.",High,AI Allergen Guardian
 Story,Receive Real-Time Allergen Warnings,"As a user, I want to be warned when a product contains my allergens so I can avoid it.
 
-Gherkin scenarios cover allergen warning display and severity-based alerts. Acceptance criteria include real-time allergen checking, warning badge on product cards, modal alert on product detail view, severity-based styling (color-coded: yellow for mild, red for severe), and 'View Alternatives' button.",Critical,CNS-0026
+Gherkin scenarios cover allergen warning display and severity-based alerts. Acceptance criteria include real-time allergen checking, warning badge on product cards, modal alert on product detail view, severity-based styling (color-coded: yellow for mild, red for severe), and 'View Alternatives' button.",Critical,AI Allergen Guardian
 Story,View Safe Alternatives to Allergen-Containing Products,"As a user, I want to see safe alternatives when a product contains allergens so I can still enjoy similar items.
 
-Gherkin scenarios cover alternative suggestions and filtering. Acceptance criteria include AI-powered alternative suggestions (similar products without allergens), alternative product list, filter by category/taste profile, and 'Add to Cart' option for alternatives.",High,CNS-0026
+Gherkin scenarios cover alternative suggestions and filtering. Acceptance criteria include AI-powered alternative suggestions (similar products without allergens), alternative product list, filter by category/taste profile, and 'Add to Cart' option for alternatives.",High,AI Allergen Guardian
 Story,Receive Cross-Contamination Warnings,"As a user, I want to be warned about cross-contamination risks so I can make fully informed decisions.
 
-Gherkin scenarios cover cross-contamination warnings and risk levels. Acceptance criteria include cross-contamination data (prepared in same kitchen, shared equipment), risk level indicators (low, medium, high), warning display on product detail page, and venue cross-contamination policies.",Medium,CNS-0026
+Gherkin scenarios cover cross-contamination warnings and risk levels. Acceptance criteria include cross-contamination data (prepared in same kitchen, shared equipment), risk level indicators (low, medium, high), warning display on product detail page, and venue cross-contamination policies.",Medium,AI Allergen Guardian
 Story,Block Allergen-Containing Products from Cart,"As a user, I want the app to prevent me from adding allergen-containing products so I avoid accidental purchases.
 
-Gherkin scenarios cover product blocking and override option. Acceptance criteria include automatic product blocking (based on allergen profile), block confirmation modal with reason, override option ('Add Anyway'), and override confirmation logging.",Medium,CNS-0026
+Gherkin scenarios cover product blocking and override option. Acceptance criteria include automatic product blocking (based on allergen profile), block confirmation modal with reason, override option ('Add Anyway'), and override confirmation logging.",Medium,AI Allergen Guardian
 Story,Receive AI-Powered Venue Recommendations,"As a user, I want AI-powered venue suggestions based on my preferences so I can discover new places.
 
-Gherkin scenarios cover personalized recommendations and occasion-based suggestions. Acceptance criteria include AI venue recommendation engine (Lovable AI, google/gemini-2.5-flash), preference learning (favorite drinks, cuisine, price range, atmosphere), personalized venue ranking, recommendation reasons ('Matches your taste', 'Popular with similar users'), and recommendation refresh.",High,CNS-0027
+Gherkin scenarios cover personalized recommendations and occasion-based suggestions. Acceptance criteria include AI venue recommendation engine (Lovable AI, google/gemini-2.5-flash), preference learning (favorite drinks, cuisine, price range, atmosphere), personalized venue ranking, recommendation reasons ('Matches your taste', 'Popular with similar users'), and recommendation refresh.",High,Smart Venue Discovery
 Story,Get Occasion-Based Venue Suggestions,"As a user, I want venue suggestions based on occasions (date night, happy hour, etc.) so I can find the right atmosphere.
 
-Gherkin scenarios cover occasion selection and venue filtering. Acceptance criteria include occasion selector (date night, happy hour, casual hangout, celebration, etc.), occasion-appropriate venue filtering (ambiance, price, hours), AI-powered matching, and occasion-specific recommendations.",Medium,CNS-0027
+Gherkin scenarios cover occasion selection and venue filtering. Acceptance criteria include occasion selector (date night, happy hour, casual hangout, celebration, etc.), occasion-appropriate venue filtering (ambiance, price, hours), AI-powered matching, and occasion-specific recommendations.",Medium,Smart Venue Discovery
 Story,Match Venues with Social Group Preferences,"As a user, I want venue suggestions that match my group's preferences so everyone enjoys the outing.
 
-Gherkin scenarios cover group preference input and consensus recommendation. Acceptance criteria include group member selection (from buddy list), preference aggregation (favorite drinks, dietary restrictions, price range), AI-powered consensus venue selection, and 'Best for Group' indicator.",Medium,CNS-0027
+Gherkin scenarios cover group preference input and consensus recommendation. Acceptance criteria include group member selection (from buddy list), preference aggregation (favorite drinks, dietary restrictions, price range), AI-powered consensus venue selection, and 'Best for Group' indicator.",Medium,Smart Venue Discovery
 Story,View Real-Time Venue Availability,"As a user, I want to see real-time venue availability so I know where I can order now.
 
-Gherkin scenarios cover availability display and reservation integration. Acceptance criteria include real-time availability status (open now, closing soon, closed), wait time estimates, reservation availability, and venue capacity indicators (busy, moderate, quiet).",Medium,CNS-0027
+Gherkin scenarios cover availability display and reservation integration. Acceptance criteria include real-time availability status (open now, closing soon, closed), wait time estimates, reservation availability, and venue capacity indicators (busy, moderate, quiet).",Medium,Smart Venue Discovery
 Story,Receive Personalized Venue Ranking,"As a user, I want venues ranked based on my preferences so I see the best options first.
 
-Gherkin scenarios cover personalized ranking and ranking factors. Acceptance criteria include AI-powered venue ranking, ranking factors (preference match, distance, price, rating, availability), ranking explanation ('Top pick for you because...'), and ranking adjustments based on feedback.",Low,CNS-0027
+Gherkin scenarios cover personalized ranking and ranking factors. Acceptance criteria include AI-powered venue ranking, ranking factors (preference match, distance, price, rating, availability), ranking explanation ('Top pick for you because...'), and ranking adjustments based on feedback.",Low,Smart Venue Discovery
 Story,Coordinate Group Order Preferences with AI,"As a user, I want AI to help coordinate group order preferences so everyone gets what they want.
 
-Gherkin scenarios cover preference collection and AI coordination. Acceptance criteria include group order preference collection (drink type, dietary restrictions, budget), AI-powered preference analysis (Lovable AI, google/gemini-2.5-flash), order suggestions (products that satisfy group preferences), and preference conflict identification.",High,CNS-0028
+Gherkin scenarios cover preference collection and AI coordination. Acceptance criteria include group order preference collection (drink type, dietary restrictions, budget), AI-powered preference analysis (Lovable AI, google/gemini-2.5-flash), order suggestions (products that satisfy group preferences), and preference conflict identification.",High,AI Order Assistant for Group Orders
 Story,Resolve Preference Conflicts with AI,"As a user, I want AI to resolve conflicts in group preferences so ordering is smoother.
 
-Gherkin scenarios cover conflict detection and resolution suggestions. Acceptance criteria include conflict detection (incompatible preferences, budget limits), AI-generated resolution suggestions (compromise options, alternative products), conflict severity scoring, and user decision support.",Medium,CNS-0028
+Gherkin scenarios cover conflict detection and resolution suggestions. Acceptance criteria include conflict detection (incompatible preferences, budget limits), AI-generated resolution suggestions (compromise options, alternative products), conflict severity scoring, and user decision support.",Medium,AI Order Assistant for Group Orders
 Story,Optimize Group Order Budget with AI,"As a user, I want AI to optimize our group order within a budget so we stay within spending limits.
 
-Gherkin scenarios cover budget setting and optimization. Acceptance criteria include budget setting for group order, AI-powered budget optimization (maximize value within budget), product suggestions (best value, group favorites), and budget tracking (real-time spending).",Medium,CNS-0028
+Gherkin scenarios cover budget setting and optimization. Acceptance criteria include budget setting for group order, AI-powered budget optimization (maximize value within budget), product suggestions (best value, group favorites), and budget tracking (real-time spending).",Medium,AI Order Assistant for Group Orders
 Story,Coordinate Order Timing for Groups,"As a user, I want AI to coordinate order timing so everyone's drinks arrive together.
 
-Gherkin scenarios cover timing coordination and staggered orders. Acceptance criteria include order timing preferences (all at once, staggered), AI-powered timing coordination, preparation time estimation, and order submission scheduling.",Low,CNS-0028
+Gherkin scenarios cover timing coordination and staggered orders. Acceptance criteria include order timing preferences (all at once, staggered), AI-powered timing coordination, preparation time estimation, and order submission scheduling.",Low,AI Order Assistant for Group Orders
 Story,Ensure Dietary Accommodations in Group Orders,"As a user, I want AI to ensure dietary restrictions are met in group orders so everyone can enjoy safely.
 
-Gherkin scenarios cover dietary restriction checking and allergy alerts. Acceptance criteria include dietary restriction collection (allergies, preferences), AI-powered dietary accommodation check, allergen-free product suggestions, and group dietary summary.",High,CNS-0028
+Gherkin scenarios cover dietary restriction checking and allergy alerts. Acceptance criteria include dietary restriction collection (allergies, preferences), AI-powered dietary accommodation check, allergen-free product suggestions, and group dietary summary.",High,AI Order Assistant for Group Orders
 Story,View AI-Powered Spending Insights,"As a user, I want to see AI-generated insights about my spending so I can understand my habits.
 
-Gherkin scenarios cover spending insights and spending categories. Acceptance criteria include AI spending analysis (Lovable AI, google/gemini-2.5-flash), insights generation (spending trends, patterns, peak times, average order value), spending visualization (charts, graphs), and insights refresh frequency.",Medium,CNS-0029
+Gherkin scenarios cover spending insights and spending categories. Acceptance criteria include AI spending analysis (Lovable AI, google/gemini-2.5-flash), insights generation (spending trends, patterns, peak times, average order value), spending visualization (charts, graphs), and insights refresh frequency.",Medium,AI Receipt Analytics
 Story,Automatically Categorize Spending,"As a user, I want my spending automatically categorized so I can see where my money goes.
 
-Gherkin scenarios cover automatic categorization and category breakdown. Acceptance criteria include AI-powered spending categorization (beer, wine, spirits, food, etc.), category breakdown chart, category spending trends, category comparison (month-to-month), and manual category override.",Medium,CNS-0029
+Gherkin scenarios cover automatic categorization and category breakdown. Acceptance criteria include AI-powered spending categorization (beer, wine, spirits, food, etc.), category breakdown chart, category spending trends, category comparison (month-to-month), and manual category override.",Medium,AI Receipt Analytics
 Story,Receive Budget Tracking Alerts,"As a user, I want to receive alerts when I'm approaching my spending budget so that I can stay within my limits.
 
-Gherkin scenarios cover budget setting and budget alert. Acceptance criteria include budget setting (weekly, monthly), AI-powered budget tracking, budget progress display, budget threshold alerts (80%, 100%), overspending warnings, and budget recommendations.",High,CNS-0029
+Gherkin scenarios cover budget setting and budget alert. Acceptance criteria include budget setting (weekly, monthly), AI-powered budget tracking, budget progress display, budget threshold alerts (80%, 100%), overspending warnings, and budget recommendations.",High,AI Receipt Analytics
 Story,Get Predictive Spending Forecasts,"As a user, I want to see AI predictions of my future spending so that I can plan my budget proactively.
 
-Gherkin scenarios cover spending forecast and forecast accuracy. Acceptance criteria include AI-powered spending predictions (next week, next month), prediction based on historical data, forecast display (chart), confidence intervals, and forecast adjustments (based on upcoming events, seasonality).",Low,CNS-0029
+Gherkin scenarios cover spending forecast and forecast accuracy. Acceptance criteria include AI-powered spending predictions (next week, next month), prediction based on historical data, forecast display (chart), confidence intervals, and forecast adjustments (based on upcoming events, seasonality).",Low,AI Receipt Analytics
 Story,Generate Tax and Expense Reports,"As a user, I want to generate tax/expense reports from my receipts so that I can manage business expenses easily.
 
-Gherkin scenarios cover report generation and report format. Acceptance criteria include expense report generation, date range selection, report formats (PDF, CSV), tax calculation (if applicable), receipt attachment, and email delivery.",Low,CNS-0029
+Gherkin scenarios cover report generation and report format. Acceptance criteria include expense report generation, date range selection, report formats (PDF, CSV), tax calculation (if applicable), receipt attachment, and email delivery.",Low,AI Receipt Analytics
 Story,Set and Track Financial Goals,"As a user, I want to set financial goals (e.g., reduce spending by 20%) and track progress with AI so that I can improve my habits.
 
-Gherkin scenarios cover goal setting and goal tracking. Acceptance criteria include financial goal setting (spending reduction, savings, frequency reduction), AI-powered progress tracking, goal progress display (progress bar), goal achievement notifications, and AI-generated tips for goal achievement.",Medium,CNS-0029
+Gherkin scenarios cover goal setting and goal tracking. Acceptance criteria include financial goal setting (spending reduction, savings, frequency reduction), AI-powered progress tracking, goal progress display (progress bar), goal achievement notifications, and AI-generated tips for goal achievement.",Medium,AI Receipt Analytics
